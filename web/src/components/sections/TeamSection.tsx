@@ -1,3 +1,5 @@
+import { motion } from 'motion/react';
+
 import { gm, teams } from '../../data/team';
 import { cn } from '../../lib/cn';
 import type { Accent, Manager } from '../../types';
@@ -137,12 +139,27 @@ export default function TeamSection() {
 
                 <Reveal index={3}>
                     <div className="relative mx-auto mb-6 flex w-full max-w-[440px] flex-col items-center rounded-2xl border border-line bg-navy px-10 pt-10 pb-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
-                        <Avatar
-                            initials={gm.initials}
-                            size="xl"
-                            ringClass="ring-blue-lt/50"
-                            textClass="text-blue-lt"
-                        />
+                        <div className="relative">
+                            <motion.span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-blue-lt"
+                                animate={{
+                                    opacity: [0.35, 0, 0.35],
+                                    scale: [1, 1.2, 1],
+                                }}
+                                transition={{
+                                    duration: 3.2,
+                                    repeat: Number.POSITIVE_INFINITY,
+                                    ease: 'easeInOut',
+                                }}
+                            />
+                            <Avatar
+                                initials={gm.initials}
+                                size="xl"
+                                ringClass="ring-blue-lt/50"
+                                textClass="text-blue-lt"
+                            />
+                        </div>
                         <div className="mt-5 mb-2 text-[11px] tracking-[0.24em] text-blue-lt uppercase">
                             General Manager
                         </div>
