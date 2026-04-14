@@ -12,7 +12,7 @@ export const teams: Team[] = [
     {
         id: 'engineering-platforms',
         name: 'Engineering Platforms',
-        shortName: 'EP',
+        shortName: 'EPL',
         accent: 'orange',
         seniorManager: {
             name: 'Dmytro Lavrinenko',
@@ -39,8 +39,8 @@ export const teams: Team[] = [
             {
                 name: 'Oleksandr Soshenko',
                 initials: 'OS',
-                role: 'Technical Lead',
-                focus: 'Technical direction and code quality for the platforms team.',
+                role: 'Azure DevOps Technical Lead',
+                focus: 'Azure cloud architecture, DevOps tooling, and platform reliability.',
                 since: '2021',
             },
             {
@@ -74,9 +74,9 @@ export const teams: Team[] = [
         ],
     },
     {
-        id: 'digital-products',
-        name: 'Digital Products',
-        shortName: 'DP',
+        id: 'engineering-products',
+        name: 'Engineering Products',
+        shortName: 'EPR',
         accent: 'blue-lt',
         seniorManager: {
             name: 'Dmytro Lavrinenko',
