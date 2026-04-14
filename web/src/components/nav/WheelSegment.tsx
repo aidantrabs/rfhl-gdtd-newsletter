@@ -31,6 +31,8 @@ type WheelSegmentProps = {
     label: string;
     isActive: boolean;
     onClick: () => void;
+    onHoverStart: () => void;
+    onHoverEnd: () => void;
 };
 
 export default function WheelSegment({
@@ -39,6 +41,8 @@ export default function WheelSegment({
     label,
     isActive,
     onClick,
+    onHoverStart,
+    onHoverEnd,
 }: WheelSegmentProps) {
     function handleKeyDown(event: KeyboardEvent<SVGPathElement>) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -55,6 +59,10 @@ export default function WheelSegment({
             aria-label={`Jump to ${label}`}
             onClick={onClick}
             onKeyDown={handleKeyDown}
+            onMouseEnter={onHoverStart}
+            onMouseLeave={onHoverEnd}
+            onFocus={onHoverStart}
+            onBlur={onHoverEnd}
             strokeWidth={isActive ? 1.5 : 1}
             className={cn(
                 'cursor-pointer transition-all duration-300 hover:stroke-blue-lt focus:outline-none',

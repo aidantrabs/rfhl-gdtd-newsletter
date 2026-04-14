@@ -1,4 +1,5 @@
 import { motion, useTransform } from 'motion/react';
+import { useState } from 'react';
 
 import { sections } from '../../data/sections';
 import { scrollToSection } from '../../hooks/useLenis';
@@ -47,9 +48,16 @@ export default function WheelNav() {
     const { rotation, activeIndex, progress } = useSectionProgress();
     const opacity = useTransform(progress, [0, 0.05], [0, 1]);
     const scale = useTransform(progress, [0, 0.05], [0.85, 1]);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const displayIndex = hoveredIndex ?? activeIndex;
+    const displaySection = sections[displayIndex];
 
     return (
         <motion.div className="fixed right-10 bottom-10 z-40" style={{ opacity, scale }}>
+            <div className="pointer-events-none absolute top-1/2 right-[calc(100%+16px)] flex -translate-y-1/2 items-baseline gap-2 font-mono text-xs tracking-[0.18em] whitespace-nowrap uppercase">
+                <span className="text-dim">{String(displayIndex + 1).padStart(2, '0')}</span>
+                <span className="text-light">{displaySection.label}</span>
+            </div>
             <div
                 aria-hidden="true"
                 className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1"
@@ -80,6 +88,8 @@ export default function WheelNav() {
                             label={section.label}
                             isActive={index === activeIndex}
                             onClick={() => scrollToSection(section.id)}
+                            onHoverStart={() => setHoveredIndex(index)}
+                            onHoverEnd={() => setHoveredIndex(null)}
                         />
                     ))}
                     {sections.map((section, index) => (
