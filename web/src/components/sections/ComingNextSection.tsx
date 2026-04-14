@@ -5,11 +5,11 @@ import Reveal from '../effects/Reveal';
 export default function ComingNextSection() {
     return (
         <SectionShell id="coming-next" background="navy-2">
-            <Watermark number="08" position="left" />
+            <Watermark number="09" position="left" />
             <div className="relative z-10 w-full max-w-[1000px]">
                 <Reveal index={0}>
                     <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        08 / COMING NEXT
+                        09 / COMING NEXT
                     </p>
                 </Reveal>
                 <Reveal index={1}>

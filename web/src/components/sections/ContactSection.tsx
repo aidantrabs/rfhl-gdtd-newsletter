@@ -16,11 +16,11 @@ const channels: ContactChannel[] = [
 export default function ContactSection() {
     return (
         <SectionShell id="contact" background="navy">
-            <Watermark number="07" position="right" />
+            <Watermark number="08" position="right" />
             <div className="relative z-10 w-full max-w-[1100px]">
                 <Reveal index={0}>
                     <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        07 / GET IN TOUCH
+                        08 / GET IN TOUCH
                     </p>
                 </Reveal>
                 <Reveal index={1}>

@@ -116,11 +116,11 @@ function PersonCard({ label, person, size, ringClass, textClass }: PersonCardPro
 export default function TeamSection() {
     return (
         <SectionShell id="team" background="navy-2" fullHeight={false}>
-            <Watermark number="05" position="right" />
+            <Watermark number="06" position="right" />
             <div className="relative z-10 w-full max-w-[1280px]">
                 <Reveal index={0}>
                     <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        05 / THE TEAM
+                        06 / THE TEAM
                     </p>
                 </Reveal>
                 <Reveal index={1}>

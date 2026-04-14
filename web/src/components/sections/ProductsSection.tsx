@@ -19,11 +19,11 @@ const accentDotClass: Record<Accent, string> = {
 export default function ProductsSection() {
     return (
         <SectionShell id="products" background="surface">
-            <Watermark number="06" position="left" />
+            <Watermark number="07" position="left" />
             <div className="relative z-10 w-full max-w-[1200px]">
                 <Reveal index={0}>
                     <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        06 / WHAT WE OWN
+                        07 / WHAT WE OWN
                     </p>
                 </Reveal>
                 <Reveal index={1}>

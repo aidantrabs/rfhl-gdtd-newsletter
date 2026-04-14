@@ -22,6 +22,11 @@ export const sections: Section[] = [
         accent: 'blue-lt',
     },
     {
+        id: 'key-updates',
+        label: 'Key Updates',
+        accent: 'green',
+    },
+    {
         id: 'team',
         label: 'The Team',
         accent: 'orange',
