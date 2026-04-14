@@ -1,0 +1,2796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Republic Bank Group | Lending Transformation — CEO Pitch 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rb-blue: #0096C7;
+    --rb-blue-dark: #006D9B;
+    --rb-blue-light: #00B4E6;
+    --rb-navy: #02304A;
+    --rb-navy-deep: #011D2E;
+    --rb-teal: #00B4D8;
+    --rb-sky: #90E0EF;
+    --rb-gold: #F5A623;
+    --rb-orange: #FF6B35;
+    --rb-red: #E63946;
+    --rb-green: #06D6A0;
+    --rb-light: #F0F8FF;
+    --rb-white: #FFFFFF;
+    --rb-muted: #CBD5E0;
+    --rb-dark: #0A1628;
+    --rb-surface: #0D2035;
+    --rb-surface2: #102540;
+    --rb-border: rgba(0,150,199,0.2);
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--rb-navy-deep);
+    color: var(--rb-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ======= NAV ======= */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(1,29,46,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rb-border);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; }
+  .nav-logo svg { width: 36px; height: 36px; }
+  .nav-brand { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--rb-blue); }
+  .nav-subtitle { font-size: 11px; color: var(--rb-muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-link {
+    font-size: 11px; letter-spacing: 0.8px; text-transform: uppercase; font-weight: 600;
+    color: var(--rb-muted); text-decoration: none; padding: 6px 12px; border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .nav-link:hover { color: var(--rb-blue-light); background: rgba(0,150,199,0.1); }
+  .nav-badge {
+    background: var(--rb-blue); color: white; font-size: 10px; font-weight: 700;
+    padding: 4px 10px; border-radius: 100px; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* ======= SECTIONS ======= */
+  section { position: relative; overflow: hidden; }
+
+  /* ======= HERO ======= */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 80px 80px;
+    background: linear-gradient(135deg, var(--rb-navy-deep) 0%, var(--rb-navy) 50%, #03455E 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,150,199,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,150,199,0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; width: 800px; height: 800px;
+    border-radius: 50%; top: -200px; right: -200px;
+    background: radial-gradient(circle, rgba(0,150,199,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; width: 600px; height: 600px;
+    border-radius: 50%; bottom: -100px; left: -100px;
+    background: radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%);
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,150,199,0.15); border: 1px solid var(--rb-border);
+    padding: 8px 18px; border-radius: 100px; width: fit-content;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    color: var(--rb-blue-light); margin-bottom: 32px;
+  }
+  .hero-dot { width: 6px; height: 6px; background: var(--rb-green); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    max-width: 900px;
+  }
+  .hero h1 em { font-style: normal; color: var(--rb-blue-light); }
+  .hero-sub {
+    font-size: 20px; color: var(--rb-muted); max-width: 680px;
+    line-height: 1.7; margin-bottom: 56px; font-weight: 300;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    border-top: 1px solid var(--rb-border); padding-top: 40px;
+  }
+  .hero-meta-item { }
+  .hero-meta-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--rb-muted); margin-bottom: 6px; }
+  .hero-meta-value { font-size: 16px; font-weight: 600; color: var(--rb-white); }
+  .hero-kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 64px; max-width: 1000px;
+  }
+  .hero-kpi {
+    background: rgba(255,255,255,0.04); border: 1px solid var(--rb-border);
+    border-radius: 16px; padding: 24px; position: relative; overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .hero-kpi:hover { transform: translateY(-4px); border-color: var(--rb-blue); }
+  .hero-kpi::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--rb-blue);
+  }
+  .kpi-num { font-family: var(--font-display); font-size: 40px; font-weight: 900; color: var(--rb-blue-light); line-height: 1; }
+  .kpi-unit { font-size: 16px; font-weight: 400; }
+  .kpi-label { font-size: 12px; color: var(--rb-muted); margin-top: 8px; letter-spacing: 0.5px; }
+  .kpi-delta { font-size: 11px; color: var(--rb-green); font-weight: 600; margin-top: 6px; }
+  .partner-card{
+    border: 1px solid #fff;
+    padding: 8px;
+  }
+  /* ======= SECTION HEADER ======= */
+  .section-header {
+    text-align: center; padding: 80px 40px 48px; max-width: 800px; margin: 0 auto;
+  }
+  .section-tag {
+    display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; color: var(--rb-blue); margin-bottom: 16px;
+    padding-bottom: 4px; border-bottom: 2px solid var(--rb-blue);
+  }
+  .section-title {
+    font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700; line-height: 1.15; margin-bottom: 20px;
+  }
+  .section-desc { font-size: 17px; color: var(--rb-muted); line-height: 1.75; font-weight: 300; }
+
+  /* ======= CONTAINER ======= */
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+  /* ======= SECTION BG VARIANTS ======= */
+  .bg-dark { background: var(--rb-navy-deep); }
+  .bg-surface { background: var(--rb-surface); }
+  .bg-surface2 { background: var(--rb-surface2); }
+
+  .section-pad { padding-bottom: 100px; }
+
+  /* ======= GEO CARDS ======= */
+  .geo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 60px; }
+  .geo-card {
+    background: var(--rb-surface); border: 1px solid var(--rb-border);
+    border-radius: 20px; overflow: hidden; position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .geo-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,150,199,0.15); }
+  .geo-header {
+    padding: 28px 28px 20px; border-bottom: 1px solid var(--rb-border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .geo-flag { font-size: 32px; }
+  .geo-name { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-top: 8px; }
+  .geo-type { font-size: 11px; color: var(--rb-muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .geo-badge {
+    font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .badge-mature { background: rgba(0,150,199,0.15); color: var(--rb-blue-light); }
+  .badge-growth { background: rgba(6,214,160,0.15); color: var(--rb-green); }
+  .badge-premium { background: rgba(245,166,35,0.15); color: var(--rb-gold); }
+  .geo-metrics { padding: 24px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .geo-metric-val { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--rb-white); }
+  .geo-metric-label { font-size: 11px; color: var(--rb-muted); margin-top: 4px; letter-spacing: 0.5px; }
+  .geo-stat-row {
+    padding: 16px 28px; border-top: 1px solid var(--rb-border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .geo-stat { font-size: 13px; color: var(--rb-muted); }
+  .geo-stat strong { color: var(--rb-white); }
+  .geo-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .accent-tt { background: linear-gradient(90deg, var(--rb-blue), var(--rb-teal)); }
+  .accent-gy { background: linear-gradient(90deg, var(--rb-green), var(--rb-blue)); }
+  .accent-bvi { background: linear-gradient(90deg, var(--rb-gold), var(--rb-orange)); }
+
+  /* ======= PAIN POINT TABLE ======= */
+  .pain-section { padding: 0 0 80px; }
+  .pain-table-wrap { overflow-x: auto; }
+  .pain-table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    font-size: 13px;
+  }
+  .pain-table th {
+    background: var(--rb-surface2); color: var(--rb-blue-light);
+    font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 16px 20px; text-align: left;
+    border-bottom: 2px solid var(--rb-blue);
+  }
+  .pain-table th:first-child { border-radius: 12px 0 0 0; }
+  .pain-table th:last-child { border-radius: 0 12px 0 0; }
+  .pain-table td { padding: 16px 20px; border-bottom: 1px solid var(--rb-border); vertical-align: top; }
+  .pain-table tr:hover td { background: rgba(0,150,199,0.05); }
+  .pain-table .product-cell { font-weight: 700; color: var(--rb-white); font-size: 14px; }
+  .pain-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; padding: 4px 10px; border-radius: 6px; margin: 2px;
+    line-height: 1.3;
+  }
+  .chip-red { background: rgba(230,57,70,0.15); color: #FF6B75; border: 1px solid rgba(230,57,70,0.3); }
+  .chip-orange { background: rgba(255,107,53,0.15); color: #FF9B7A; border: 1px solid rgba(255,107,53,0.3); }
+  .chip-yellow { background: rgba(245,166,35,0.15); color: var(--rb-gold); border: 1px solid rgba(245,166,35,0.3); }
+  .chip-blue { background: rgba(0,150,199,0.15); color: var(--rb-blue-light); border: 1px solid var(--rb-border); }
+  .chip-green { background: rgba(6,214,160,0.15); color: var(--rb-green); border: 1px solid rgba(6,214,160,0.3); }
+  .severity-bar { height: 6px; border-radius: 3px; margin-top: 8px; }
+
+  /* ======= JOURNEY TIMELINE ======= */
+  .journey-section { padding: 0 0 80px; }
+  .journey-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .journey-sub { color: var(--rb-muted); font-size: 14px; margin-bottom: 36px; }
+  .journey-product-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+  .jtab {
+    padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--rb-border); background: transparent; color: var(--rb-muted);
+    transition: all 0.2s;
+  }
+  .jtab.active { background: var(--rb-blue); border-color: var(--rb-blue); color: white; }
+  .journey-flow { display: none; }
+  .journey-flow.active { display: block; }
+  .journey-stages { display: flex; gap: 0; position: relative; margin-bottom: 24px; }
+  .journey-stages::after {
+    content: ''; position: absolute; top: 36px; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--rb-red), var(--rb-orange), var(--rb-gold), var(--rb-blue), var(--rb-green));
+    z-index: 0;
+  }
+  .stage-item { flex: 1; text-align: center; position: relative; z-index: 1; }
+  .stage-dot {
+    width: 20px; height: 20px; border-radius: 50%; margin: 28px auto 12px;
+    border: 2px solid;
+  }
+  .stage-dot.red { background: var(--rb-red); border-color: var(--rb-red); }
+  .stage-dot.orange { background: var(--rb-orange); border-color: var(--rb-orange); }
+  .stage-dot.yellow { background: var(--rb-gold); border-color: var(--rb-gold); }
+  .stage-dot.blue { background: var(--rb-blue); border-color: var(--rb-blue); }
+  .stage-dot.green { background: var(--rb-green); border-color: var(--rb-green); }
+  .stage-name { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--rb-muted); }
+  .stage-time { font-family: var(--font-mono); font-size: 12px; color: var(--rb-orange); margin-top: 4px; }
+  .stage-pains { padding: 12px; }
+  .pain-item {
+    background: rgba(230,57,70,0.08); border: 1px solid rgba(230,57,70,0.2);
+    border-radius: 8px; padding: 10px 12px; margin-bottom: 8px;
+    font-size: 12px; color: var(--rb-muted);
+  }
+  .pain-item::before { content: '✕  '; color: var(--rb-red); font-weight: 700; }
+  .drop-badge {
+    background: rgba(230,57,70,0.2); border: 1px solid rgba(230,57,70,0.4);
+    color: #FF6B75; border-radius: 8px; padding: 12px 20px; font-size: 13px;
+    font-weight: 600; text-align: center; margin-top: 16px;
+  }
+
+  /* ======= INTERNAL ISSUES ======= */
+  .issues-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .issue-card {
+    background: var(--rb-surface); border: 1px solid var(--rb-border);
+    border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .issue-card:hover { transform: translateY(-4px); }
+  .issue-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+  .issue-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--rb-white); }
+  .issue-body { font-size: 13px; color: var(--rb-muted); line-height: 1.7; }
+  .issue-cost {
+    margin-top: 16px; font-family: var(--font-mono); font-size: 20px; font-weight: 500;
+    color: var(--rb-red);
+  }
+  .issue-cost-label { font-size: 11px; color: var(--rb-muted); margin-top: 4px; }
+  .issue-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--rb-red);
+  }
+
+  /* ======= TRAJECTORY ======= */
+  .traj-section { padding: 0 0 80px; }
+  .traj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .traj-text h3 { font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 20px; }
+  .traj-text p { color: var(--rb-muted); font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+  .risk-list { list-style: none; }
+  .risk-list li { display: flex; gap: 12px; margin-bottom: 14px; font-size: 14px; color: var(--rb-muted); }
+  .risk-list li::before { content: '⚠'; color: var(--rb-orange); flex-shrink: 0; margin-top: 1px; }
+  .bar-chart { background: var(--rb-surface); border: 1px solid var(--rb-border); border-radius: 20px; padding: 32px; }
+  .bar-chart-title { font-size: 14px; font-weight: 600; margin-bottom: 24px; color: var(--rb-muted); letter-spacing: 0.5px; }
+  .bar-row { margin-bottom: 16px; }
+  .bar-label { font-size: 12px; color: var(--rb-muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .bar-track { height: 10px; background: rgba(255,255,255,0.06); border-radius: 5px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 5px; transition: width 1s ease-out; }
+  .bar-miss { background: linear-gradient(90deg, var(--rb-red), var(--rb-orange)); }
+  .bar-hit { background: linear-gradient(90deg, var(--rb-blue), var(--rb-teal)); }
+
+  /* ======= FUTURE STATE ======= */
+  .future-section { padding: 0 0 80px; }
+  .future-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
+  .pillar-card {
+    background: linear-gradient(135deg, var(--rb-surface), rgba(0,150,199,0.05));
+    border: 1px solid var(--rb-border); border-radius: 20px; padding: 32px;
+    position: relative; overflow: hidden; transition: all 0.3s;
+  }
+  .pillar-card:hover { border-color: var(--rb-blue); transform: translateY(-6px); }
+  .pillar-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rb-blue), var(--rb-teal));
+  }
+  .pillar-num {
+    font-family: var(--font-display); font-size: 64px; font-weight: 900;
+    color: rgba(0,150,199,0.12); line-height: 1; margin-bottom: -12px;
+  }
+  .pillar-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+  .pillar-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+  .pillar-body { font-size: 13px; color: var(--rb-muted); line-height: 1.75; }
+  .pillar-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .future-chip {
+    font-size: 11px; padding: 4px 10px; border-radius: 6px; font-weight: 600;
+    background: rgba(0,150,199,0.12); color: var(--rb-blue-light);
+    border: 1px solid rgba(0,150,199,0.25);
+  }
+
+  /* ======= PRODUCT ROADMAP ======= */
+  .roadmap-section { padding: 0 0 80px; }
+  .roadmap-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .phase-card {
+    border-radius: 20px; overflow: hidden; border: 1px solid var(--rb-border);
+  }
+  .phase-header {
+    padding: 20px 24px; display: flex; align-items: center; gap: 16px;
+  }
+  .phase-mvp { background: linear-gradient(135deg, var(--rb-blue-dark), var(--rb-blue)); }
+  .phase-scale { background: linear-gradient(135deg, #1a3d5c, #0096C7); opacity: 0.85; }
+  .phase-expand { background: linear-gradient(135deg, #062a3e, #004d73); opacity: 0.7; }
+  .phase-num {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 18px; font-weight: 700; flex-shrink: 0;
+  }
+  .phase-info { }
+  .phase-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+  .phase-name { font-size: 16px; font-weight: 700; margin-top: 2px; }
+  .phase-timeline { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+  .phase-body { background: var(--rb-surface); padding: 24px; }
+  .phase-item {
+    display: flex; gap: 10px; margin-bottom: 12px; font-size: 13px; color: var(--rb-muted);
+    align-items: flex-start;
+  }
+  .phase-item::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--rb-blue); flex-shrink: 0; margin-top: 6px;
+  }
+  .phase-item.active { color: var(--rb-white); }
+  .phase-item.active::before { background: var(--rb-green); }
+  .phase-products { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rb-border); }
+  .prod-tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 4px; font-weight: 600;
+  }
+  .prod-mvp { background: rgba(0,180,216,0.15); color: var(--rb-teal); }
+  .prod-scale { background: rgba(6,214,160,0.12); color: var(--rb-green); }
+  .prod-future { background: rgba(245,166,35,0.12); color: var(--rb-gold); }
+
+  /* ======= FINANCIAL ======= */
+  .financial-section { padding: 0 0 100px; }
+  .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 60px; }
+  .roi-card {
+    background: var(--rb-surface); border: 1px solid var(--rb-border);
+    border-radius: 20px; padding: 32px;
+  }
+  .roi-title { font-size: 14px; font-weight: 600; letter-spacing: 0.5px; color: var(--rb-muted); margin-bottom: 20px; text-transform: uppercase; }
+  .roi-big { font-family: var(--font-display); font-size: 56px; font-weight: 900; line-height: 1; }
+  .roi-big.green { color: var(--rb-green); }
+  .roi-big.blue { color: var(--rb-blue-light); }
+  .roi-sub { font-size: 14px; color: var(--rb-muted); margin-top: 8px; }
+  .cost-benefit { margin-top: 24px; }
+  .cb-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--rb-border); font-size: 14px;
+  }
+  .cb-row:last-child { border-bottom: none; }
+  .cb-label { color: var(--rb-muted); }
+  .cb-val { font-weight: 700; font-family: var(--font-mono); font-size: 15px; }
+  .cb-val.cost { color: var(--rb-red); }
+  .cb-val.benefit { color: var(--rb-green); }
+  .cb-val.total { color: var(--rb-blue-light); }
+
+  .chart-3yr { margin-top: 32px; }
+  .chart-3yr-title { font-size: 13px; font-weight: 600; color: var(--rb-muted); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+  .chart-bar-group { display: flex; gap: 8px; align-items: flex-end; height: 160px; margin-bottom: 8px; }
+  .c-bar {
+    flex: 1; border-radius: 6px 6px 0 0; position: relative; display: flex; align-items: flex-end;
+    justify-content: center;
+  }
+  .c-bar-val { font-size: 11px; font-weight: 700; padding: 6px 0; }
+  .bar-cost-c { background: linear-gradient(180deg, rgba(230,57,70,0.6) 0%, var(--rb-red) 100%); }
+  .bar-ben-c { background: linear-gradient(180deg, rgba(0,180,216,0.6) 0%, var(--rb-blue) 100%); }
+  .bar-net-c { background: linear-gradient(180deg, rgba(6,214,160,0.6) 0%, var(--rb-green) 100%); }
+  .chart-legend { display: flex; gap: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--rb-muted); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  /* Comparison table */
+  .comp-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  .comp-table th { background: var(--rb-surface2); color: var(--rb-blue-light); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 20px; text-align: left; border-bottom: 2px solid var(--rb-blue); }
+  .comp-table th.highlight { background: rgba(0,150,199,0.2); }
+  .comp-table td { padding: 14px 20px; border-bottom: 1px solid var(--rb-border); font-size: 13px; }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table .metric-name { color: var(--rb-muted); }
+  .comp-table .as-is { color: #FF6B75; font-family: var(--font-mono); }
+  .comp-table .to-be { color: var(--rb-green); font-family: var(--font-mono); font-weight: 600; }
+  .comp-table .delta { color: var(--rb-blue-light); font-weight: 700; }
+  .comp-table-wrap { border: 1px solid var(--rb-border); border-radius: 16px; overflow: hidden; }
+
+  /* ======= INVESTMENT ASK ======= */
+  .ask-section { padding: 100px 0; text-align: center; }
+  .ask-inner { max-width: 900px; margin: 0 auto; }
+  .ask-amount {
+    font-family: var(--font-display); font-size: 80px; font-weight: 900;
+    color: var(--rb-blue-light); line-height: 1; margin: 24px 0;
+  }
+  .ask-desc { font-size: 18px; color: var(--rb-muted); line-height: 1.7; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .ask-breakdown { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; text-align: left; margin-bottom: 48px; }
+  .ask-item {
+    background: var(--rb-surface); border: 1px solid var(--rb-border);
+    border-radius: 12px; padding: 20px;
+  }
+  .ask-item-num { font-family: var(--font-mono); font-size: 24px; font-weight: 500; color: var(--rb-blue-light); }
+  .ask-item-label { font-size: 12px; color: var(--rb-muted); margin-top: 6px; line-height: 1.4; }
+  .ask-outcomes { display: flex; justify-content: center; gap: 40px; margin-bottom: 48px; flex-wrap: wrap; }
+  .outcome { text-align: center; }
+  .outcome-num { font-family: var(--font-display); font-size: 42px; font-weight: 900; color: var(--rb-green); }
+  .outcome-label { font-size: 13px; color: var(--rb-muted); margin-top: 4px; }
+  .cta-box {
+    background: linear-gradient(135deg, var(--rb-blue-dark), var(--rb-navy));
+    border: 1px solid var(--rb-blue); border-radius: 20px; padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rb-blue), var(--rb-teal), var(--rb-green));
+  }
+  .cta-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+  .cta-steps { display: flex; gap: 20px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+  .cta-step {
+    background: rgba(255,255,255,0.06); border: 1px solid var(--rb-border);
+    border-radius: 12px; padding: 20px 24px; font-size: 14px; flex: 1; min-width: 180px;
+  }
+  .cta-step-num { font-family: var(--font-display); font-size: 32px; font-weight: 900; color: var(--rb-blue-light); line-height: 1; margin-bottom: 8px; }
+  .cta-step-text { color: var(--rb-muted); font-size: 13px; line-height: 1.5; }
+
+  /* ======= FOOTER ======= */
+  .footer {
+    background: var(--rb-navy-deep); border-top: 1px solid var(--rb-border);
+    padding: 40px; text-align: center; font-size: 12px; color: var(--rb-muted);
+  }
+  .footer strong { color: var(--rb-blue); }
+
+  /* ======= DIVIDER ======= */
+  .divider { height: 1px; background: var(--rb-border); margin: 0; }
+
+  /* ======= STAT CALLOUT ======= */
+  .stat-callout-row { display: flex; gap: 20px; margin-bottom: 48px; flex-wrap: wrap; }
+  .stat-callout {
+    flex: 1; min-width: 160px; background: var(--rb-surface); border: 1px solid var(--rb-border);
+    border-radius: 16px; padding: 24px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .stat-callout::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--rb-blue);
+  }
+  .sc-val { font-family: var(--font-display); font-size: 38px; font-weight: 900; color: var(--rb-white); line-height: 1; }
+  .sc-label { font-size: 12px; color: var(--rb-muted); margin-top: 6px; }
+  .sc-sub { font-size: 11px; color: var(--rb-orange); margin-top: 4px; font-weight: 600; }
+
+  /* Scroll fade in */
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ======= BCG INSPIRED MATRIX ======= */
+  .matrix-section { padding: 0 0 80px; }
+  .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--rb-border); border: 1px solid var(--rb-border); border-radius: 12px; overflow: hidden; }
+  .matrix-cell { background: var(--rb-surface); padding: 28px; }
+  .matrix-cell-title { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .matrix-cell-body { font-size: 13px; color: var(--rb-muted); line-height: 1.7; }
+
+
+  /* ======= FUTURE JOURNEY STYLES ======= */
+  .fjtab {
+    padding: 10px 22px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer;
+    border: 1px solid var(--rb-border); background: transparent; color: var(--rb-muted);
+    transition: all 0.2s;
+  }
+  .fjtab.active { background: var(--rb-green); border-color: var(--rb-green); color: var(--rb-navy-deep); }
+  .fjtab:hover:not(.active) { border-color: var(--rb-green); color: var(--rb-green); }
+
+  .fjourney-flow { display: none; }
+  .fjourney-flow.active { display: block; }
+
+  .fj-compare-bar {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 32px;
+    background: var(--rb-surface2); border: 1px solid var(--rb-border);
+    border-radius: 16px; padding: 24px 32px; flex-wrap: wrap;
+  }
+  .fj-compare-item { flex: 1; min-width: 200px; }
+  .fj-compare-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .fj-compare-val { display: block; font-family: var(--font-display); font-size: 32px; font-weight: 900; line-height: 1.1; }
+  .fj-compare-sub { display: block; font-size: 12px; margin-top: 4px; }
+  .red-side .fj-compare-label { color: var(--rb-red); }
+  .red-side .fj-compare-val { color: #FF6B75; }
+  .red-side .fj-compare-sub { color: var(--rb-muted); }
+  .green-side .fj-compare-label { color: var(--rb-green); }
+  .green-side .fj-compare-val { color: var(--rb-green); }
+  .green-side .fj-compare-sub { color: var(--rb-muted); }
+  .fj-arrow { font-size: 36px; color: var(--rb-blue); font-weight: 700; flex-shrink: 0; }
+
+  .fj-persona-row { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .fj-persona {
+    flex: 1; min-width: 160px; display: flex; align-items: center; gap: 12px;
+    background: var(--rb-surface); border: 1px solid var(--rb-border); border-radius: 12px;
+    padding: 14px 18px; cursor: pointer; transition: all 0.2s;
+  }
+  .fj-persona:hover { border-color: var(--rb-blue); }
+  .fj-persona.active-persona { border-color: var(--rb-green); background: rgba(6,214,160,0.08); }
+  .fj-persona-icon { font-size: 24px; flex-shrink: 0; }
+  .fj-persona-label { font-size: 13px; font-weight: 600; color: var(--rb-white); line-height: 1.4; }
+  .fj-persona-label small { display: block; font-size: 11px; color: var(--rb-muted); font-weight: 400; }
+
+  .fj-persona-flow { display: none; }
+  .fj-persona-flow.active { display: block; }
+
+  .fj-stage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+  @media (max-width:900px) { .fj-stage-grid { grid-template-columns: 1fr; } }
+
+  .fj-stage {
+    background: var(--rb-surface); border: 1px solid var(--rb-border);
+    border-radius: 16px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .fj-stage:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,150,199,0.12); }
+
+  .fj-stage-header { padding: 20px 20px 16px; }
+  .fj-stage-num { font-family: var(--font-display); font-size: 36px; font-weight: 900; color: rgba(255,255,255,0.25); line-height: 1; margin-bottom: -4px; }
+  .fj-stage-name { font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .fj-stage-time { font-size: 12px; font-weight: 600; }
+  .fj-stage-time.green { color: var(--rb-green); }
+
+  .fj-stage-body { padding: 16px 20px 20px; }
+  .fj-channel-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+    color: var(--rb-blue-light); margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--rb-border);
+  }
+  .fj-step {
+    font-size: 12px; color: var(--rb-muted); line-height: 1.5; margin-bottom: 8px;
+    padding: 8px 12px; border-radius: 6px; border: 1px solid;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .fj-step.good { border-color: rgba(6,214,160,0.2); background: rgba(6,214,160,0.04); }
+  .fj-step.good::before { content: '✓'; color: var(--rb-green); font-weight: 700; flex-shrink: 0; font-size: 13px; }
+
+  .fj-auto-tag {
+    margin-top: 12px; font-size: 11px; font-weight: 600; padding: 10px 12px;
+    border-radius: 8px; border: 1px solid rgba(0,150,199,0.25);
+    background: rgba(0,150,199,0.06); color: var(--rb-blue-light); line-height: 1.5;
+  }
+
+  .fj-outcome-bar {
+    display: flex; gap: 12px; flex-wrap: wrap; padding: 20px 24px;
+    background: rgba(6,214,160,0.06); border: 1px solid rgba(6,214,160,0.2);
+    border-radius: 12px; margin-top: 8px;
+  }
+  .fj-outcome { font-size: 13px; color: var(--rb-muted); padding: 4px 12px; border-right: 1px solid var(--rb-border); }
+  .fj-outcome:last-child { border-right: none; }
+  .fj-outcome strong { color: var(--rb-green); }
+
+  @media (max-width: 900px) {
+    .hero { padding: 100px 24px 60px; }
+    .hero-kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .geo-grid { grid-template-columns: 1fr; }
+    .issues-grid { grid-template-columns: 1fr; }
+    .future-pillars { grid-template-columns: 1fr; }
+    .roadmap-phases { grid-template-columns: 1fr; }
+    .roi-grid { grid-template-columns: 1fr; }
+    .ask-breakdown { grid-template-columns: 1fr 1fr; }
+    .traj-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 20px; }
+    .nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAkCAMAAABPCnNaAAAArlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8tivQqAAAAOXRSTlMACgcDDoIqGFYmEx4i6zLIknlzbdNQ+86+nX12OS71QRCN48KJYaWhU0bYZ+/nq5hLPd6pArmuXLINYLIxAAAFPElEQVRYw82Y6XbaMBCFx/KGNxxjx4AxOyWsZQtQvf+L9Y4MxG5o0185vjlHsbbRp/GM5AOVpTUcImtN9dR7S86FtpLxO9VRPSnlzt9K2aIaCnTQixPWkq8lC5l+HflieZfptevGJ3ryQxnz9TSqj4ayrIjf74HqI80s46WZtf01ojoplmXtqnC6JoTQNPH1gYiBt1ECwr9Pc4QobOn0XDzg0yTPiQdlvjej3NufhN231bET9b+g0y+raZirRcz26dQnqxNpVNF4de6Gk0nHXP4luvPwdFlUm+yjzK8Vvotb6vY3aAm4eP2Pl/CDWFc8NSiQMqaK1hJKAj5in/P5qZTtSoubSLltNip8P8v+a6LBo54q/603hlJ6kXJPmPGLqupKOSv2caWnegV5xXdn5pn00V7SvLS5A+oWOeyQL2Jvfvew2PFTI038P2524I0RBhOGeKprtcfuFDwTZ/GJr3TwNMm67Xi0XNpFvpC7bILJEJpOGte1n9iBw2ElugrULYy4++Y9PN+K1TuKkrxXtkUCJjBqyCH1gwcIDX9lOuZrPOdTeJbCWyJ6UsnXin/cHEPOcuFsgkGEW3G7OTAeYiQ4KLz8unqbrm/nVtJ/4M1I2dpzB2SOyNqm2x1XXoHH4DHMvLyD+PzBM2n+GDzlA17qUIaIFAQjMSInUjdNBoiuG2Fx8jC1IYDX5Q5HR8/STnipUSg3zUym9h1v7uUdmbZ0vujXsH0mLeYojXhi4T1HvS+yVmWetttLy/VkdMfD5IsMxzbtYZ3ERUrfw34452Xel/JENJNywd5b0AtDqdgDqUkRQFX1jqeUCZU+TZ43ZG8GLj82CrxcdkYqJyvK/aBcPboPvAAdM52II9v25rADvK2qZ02F96LwbguE2ph5MriZs8CjWCbuHW8at9B2xrHYjV0PFiLmOMObt9lZX3aLc9saVNyXm88OF+Alw4QdYxzvnWsfzDqBYtev4rGHU8+84bUwbmMT2Vo59twpZo/I2KvYMhlvpT3wkqNc36+EtMLnZB9Hs1FKjYk7QyEEsqETRfE6cvoKb/YcTzoPPKfAq2YuQ8g9f5vHLze8o0a9Ak+p/5zPy0p05cz11LE3fXwMHh54f77cZcV7mDf4jJez06ZApPgznomH+f3idSrvN7TNB131WJ4jamhcWKcGJ8SEOOQj2H4jMh94CwwU99jriQB5xLeVXTqWic8wkLYNyj6/3JZQZ8xTvqmdcaKWL12QSF9BLl0ULqeU6WErpAWcT3w20AkZKFAsKeIFgXegGHjskxiL3NbbqdjrB1iIEW06c2p4ysSaZ79iAF8dKafuk/zo2JFM7PK90ubWkVhxbmNzQaMHuxZq4zl8oOsbnHZzicJro1jAtJ3zpX/Y4tHSQkBemQRCJxyFdtCLCdzwU+XGDMXQA/PJgqGBWPAo+8HXrvivuXCo8kWQBgNpIeQHOFz2nLy4SgGgLBtE+QSkrXayWmZmzFuxKErDZHpONxuEqtHiQ6q4fC9yE/C90olQ77eBMoywYicJt/EwaCft2SpJVofrtp0E+YPACSv5YVFZujsyRq5OhBIe16zcEcR4odf00YwO3xO4dTW+fP0D92oGqq5rGC7wyXV8QUoamoyRob5t2VRzRLrlaEqCC8PgJ6HqVMjYja2OLGuo01fqA4++RYinmVfls+kL6Q2Vzt8hjn3TmJboeoK+kCOhjUHfIQHXRdoH3/o/tvS6X+5fvweP2HU9QBaq349oRsj+69SUjmh0Ur//1JQOfHN5efe28gfVU05mER3q5LvfJuxFoLOrXRkAAAAASUVORK5CYII="    alt="Republic Bank" style="height:36px;width:auto;filter:brightness(1.1);">
+    <div style="margin-left:4px;">
+      <div class="nav-subtitle">Group Digital Lending (Strictly Confidential)</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#current-state" class="nav-link">Current State</a>
+    <a href="#pain-points" class="nav-link">Pain Points</a>
+    <a href="#future-state" class="nav-link">Future Vision</a>
+    <a href="#future-journeys" class="nav-link" style="color:var(--rb-green);">Future Journeys ✦</a>
+    <a href="#risk-compliance" class="nav-link">Risk &amp; Compliance</a>
+    <a href="#fintech" class="nav-link">Fintech &amp; Partners</a>
+    <a href="#corporate" class="nav-link">Corporate</a>
+    <a href="#mobile-screens" class="nav-link" style="color:var(--rb-gold);">Screens ✦</a>
+    <span class="nav-badge">For Internal Use Only</span>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div style="position:relative;z-index:1;">
+    <!-- <div style="margin-bottom:32px;">
+      <img src="data:image/jpeg;base64,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" alt="Republic Bank" style="height:80px;width:auto;margin-bottom:20px;display:block;">
+    </div> -->
+    <!-- <div class="hero-tag">
+      <span class="hero-dot"></span>
+      CEO Strategic Pitch | April 2026 | RFHL Group Digital Lending
+    </div> -->
+    <h1>
+      From Branch Queues<br>
+      to <em>Caribbean's</em><br>
+      Digital Lending Leader
+    </h1>
+    <p class="hero-sub">
+     A strategic transition from manual, localized lending processes to a unified Group digital lending platform, enabling faster decisions, lower costs, improved risk management, and scalable growth across the Caribbean.
+    </p>
+    <!-- <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Prepared By</div>
+        <div class="hero-meta-value">Digital Product Owner / Chief Digital Strategist</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Audience</div>
+        <div class="hero-meta-value">Group CEO & Executive Leadership Team</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Classification</div>
+        <div class="hero-meta-value">Strictly Confidential — Internal Only</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Date</div>
+        <div class="hero-meta-value">April 2026</div>
+      </div>
+    </div> -->
+     <div class="hero-meta-item">
+        <div class="hero-meta-value" style="font-size: 30px;">Lending Business at a Glance</div>
+      </div>
+    <div class="hero-kpi-row">
+      <div class="hero-kpi">
+        <div class="kpi-num">3<span class="kpi-unit">+</span></div>
+        <div class="kpi-label">Markets Assessed<br>(T&T, Guyana, BVI)</div>
+        <div class="kpi-delta">↑ Expansion Ready</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="kpi-num" style="color:var(--rb-orange)">4–6<span class="kpi-unit">wk</span></div>
+        <div class="kpi-label">Current Mortgage TAT<br>(Manual Process)</div>
+        <div class="kpi-delta" style="color:var(--rb-red)">Target: 72 hrs</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="kpi-num" style="color:var(--rb-red)">&#60;50<span class="kpi-unit">%</span></div>
+        <div class="kpi-label">Collections Recovery Rate<br>(Group-wide)</div>
+        <div class="kpi-delta" style="color:var(--rb-red)">↓ Below industry 65–75%</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXECUTIVE DASHBOARD ========== -->
+<section id="exec-dashboard" class="bg-surface section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Executive Dashboard</div>
+      <h2 class="section-title">Republic Bank Group Lending – Current Reality</h2>
+      <p class="section-desc">A data-driven overview of performance in Trinidad & Tobago, Guyana, and the British Virgin Islands, derived from January 2026 Key Stats.</p>
+    </div>
+
+    <!-- Key callout stats -->
+    <div class="stat-callout-row fade-in">
+      <div class="stat-callout">
+        <div class="sc-val">~$2.15B</div>
+        <div class="sc-label">T&T Personal Loan Balance (USD)</div>
+        <div class="sc-sub">Largest market, flat growth</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">$360M</div>
+        <div class="sc-label">Guyana Loan Balance (USD)</div>
+        <div class="sc-sub">25–40% demand surge untapped</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">7/mo</div>
+        <div class="sc-label">BVI Mortgage Cases Processed</div>
+        <div class="sc-sub">All manual; target: 20+/mo</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">42</div>
+        <div class="sc-label">CCU Collections Staff</div>
+        <div class="sc-sub">TTD $6M/yr, largely admin tasks</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">20+</div>
+        <div class="sc-label">Documents per Mortgage App</div>
+        <div class="sc-sub">Manual indexing, high error rate</div>
+      </div>
+      <div class="stat-callout">
+        <div class="sc-val">30%</div>
+        <div class="sc-label">Unbanked in Key Markets</div>
+        <div class="sc-sub">Capturable via digital products</div>
+      </div>
+    </div>
+
+    <!-- Geo Cards -->
+    <div class="section-tag" id="current-state">BY GEOGRAPHY</div>
+    <br><br>
+    <div class="geo-grid fade-in">
+      <!-- T&T -->
+      <div class="geo-card">
+        <div class="geo-accent accent-tt"></div>
+        <div class="geo-header">
+          <div>
+            <div class="geo-flag">🇹🇹</div>
+            <div class="geo-name">Trinidad & Tobago</div>
+            <div class="geo-type">Mature Market — Largest Territory</div>
+          </div>
+          <span class="geo-badge badge-mature">Mature</span>
+        </div>
+        <div class="geo-metrics">
+          <div>
+            <div class="geo-metric-val">74,134</div>
+            <div class="geo-metric-label">Total Retail Loans</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">$2.15B</div>
+            <div class="geo-metric-label">Loan Balance (USD)</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">[5,000]</div>
+            <div class="geo-metric-label">Mortgage Customers</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">[$500M]</div>
+            <div class="geo-metric-label">Mortgage Balance (USD)</div>
+          </div>
+        </div>
+        <div class="geo-stat-row">
+          <div class="geo-stat">Mortgage Growth Target Achieved: <strong style="color:var(--rb-orange)">Mixed (−0.04% to +0.75%)</strong></div>
+        </div>
+        <div class="geo-stat-row">
+          <div class="geo-stat">Digital Loan Origination: <strong style="color:var(--rb-red)">NONE</strong></div>
+          <div class="geo-stat">IB/MB Usage: <strong style="color:var(--rb-green)">~50–60%</strong></div>
+        </div>
+        <div style="padding:16px 28px 24px;">
+          <div style="font-size:12px;color:var(--rb-muted);margin-bottom:10px;font-weight:600;letter-spacing:0.5px;">PRODUCT MIX (Loans)</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <div class="future-chip">Personal Loans</div>
+            <div class="future-chip">Home Loans (ML)</div>
+            <div class="future-chip">Mortgage (30K+ active)</div>
+            <div class="future-chip">Credit Cards 106K</div>
+            <div class="future-chip">Commercial</div>
+            <div class="future-chip">SME</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guyana -->
+      <div class="geo-card">
+        <div class="geo-accent accent-gy"></div>
+        <div class="geo-header">
+          <div>
+            <div class="geo-flag">🇬🇾</div>
+            <div class="geo-name">Guyana</div>
+            <div class="geo-type">High-Growth Market — Oil Boom</div>
+          </div>
+          <span class="geo-badge badge-growth">High Growth</span>
+        </div>
+        <div class="geo-metrics">
+          <div>
+            <div class="geo-metric-val">30,704</div>
+            <div class="geo-metric-label">Total Retail Loans</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">$360M</div>
+            <div class="geo-metric-label">Loan Balance (USD)</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">[2,500]</div>
+            <div class="geo-metric-label">Mortgage Customers</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">[$180M]</div>
+            <div class="geo-metric-label">Mortgage Balance (USD)</div>
+          </div>
+        </div>
+        <div class="geo-stat-row">
+          <div class="geo-stat">Mortgage Demand Surge: <strong style="color:var(--rb-green)">+25–40%</strong> post 5% Easy Home Rate</div>
+        </div>
+        <div class="geo-stat-row">
+          <div class="geo-stat">Digital Loan Origination: <strong style="color:var(--rb-red)">NONE</strong></div>
+          <div class="geo-stat">Branch Queues: <strong style="color:var(--rb-orange)">HIGH</strong></div>
+        </div>
+        <div style="padding:16px 28px 24px;">
+          <div style="font-size:12px;color:var(--rb-muted);margin-bottom:10px;font-weight:600;letter-spacing:0.5px;">KEY OPPORTUNITY</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <div class="future-chip">5% Easy Home Mortgage</div>
+            <div class="future-chip">Oil Sector SME</div>
+            <div class="future-chip">Rural Microfinance</div>
+            <div class="future-chip">Diaspora Lending</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BVI -->
+      <div class="geo-card">
+        <div class="geo-accent accent-bvi"></div>
+        <div class="geo-header">
+          <div>
+            <div class="geo-flag">🇻🇬</div>
+            <div class="geo-name">British Virgin Islands</div>
+            <div class="geo-type">Premium Market — Luxury Real Estate</div>
+          </div>
+          <span class="geo-badge badge-premium">Premium</span>
+        </div>
+        <div class="geo-metrics">
+          <div>
+            <div class="geo-metric-val">200</div>
+            <div class="geo-metric-label">Total Retail Loans</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">$194.4M</div>
+            <div class="geo-metric-label">Loan Balance (USD)</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">[150]</div>
+            <div class="geo-metric-label">Mortgage Customers</div>
+          </div>
+          <div>
+            <div class="geo-metric-val">[$120M]</div>
+            <div class="geo-metric-label">Mortgage Balance (USD)</div>
+          </div>
+        </div>
+        <div class="geo-stat-row">
+          <div class="geo-stat">Real Estate Growth: <strong style="color:var(--rb-green)">+5–10%</strong> in 2026 (RBI Program)</div>
+        </div>
+        <div class="geo-stat-row">
+          <div class="geo-stat">Processing Cost: <strong style="color:var(--rb-red)">~USD $200K/yr</strong> (manual labor)</div>
+        </div>
+        <div style="padding:16px 28px 24px;">
+          <div style="font-size:12px;color:var(--rb-muted);margin-bottom:10px;font-weight:600;letter-spacing:0.5px;">MARKET PROPERTY AVG</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <div class="future-chip">Tortola avg: $1.75M</div>
+            <div class="future-chip">Waterfront: $1.5M–$5M+</div>
+            <div class="future-chip">RBI Investor Demand</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PAIN POINTS ========== -->
+<section id="pain-points" class="bg-dark section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">As-Is Analysis</div>
+      <h2 class="section-title">Pain Point Matrix by Product & Geography</h2>
+      <p class="section-desc">This document synthesizes the CCU (Shared Services), BVI business 
+, group LMP analysis, and January 2026 key statistics, focusing on customer experience and operational efficiency.</p>
+    </div>
+
+    <div class="pain-table-wrap fade-in">
+      <table class="pain-table">
+        <thead>
+          <tr>
+            <th style="width:140px;">Product</th>
+            <th>T&T (Mature)</th>
+            <th>Guyana (Growth)</th>
+            <th>BVI (Premium)</th>
+            <th>Customer Journey Impact</th>
+            <th>Internal / Operational Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-cell">🏦 Personal Loans</td>
+            <td>
+              <span class="pain-chip chip-orange">High Volume</span><br>
+              <span class="pain-chip chip-yellow">50–58% IB/MB usage</span><br>
+              <span class="pain-chip chip-red">No digital origination</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-orange">Moderate volume</span><br>
+              <span class="pain-chip chip-red">Branch queues heavy</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-blue">Limited volume</span><br>
+              <span class="pain-chip chip-yellow">Expat/HNWI focus</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">⏱ 1–2 week TAT</span><br>
+              <span style="color:var(--rb-muted);font-size:12px;">Manual forms + branch visits required. 30–40% drop-off during application due to friction.</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">Repetitive data entry across Phoenix/Euronet silos. No real-time scoring. High labour cost per loan.</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="product-cell">🏠 Home Loans / Mortgages</td>
+            <td>
+              <span class="pain-chip chip-red">Targets missed multiple branches</span><br>
+              <span class="pain-chip chip-red">−0.04% to +0.75% growth</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-green">25–40% demand surge</span><br>
+              <span class="pain-chip chip-red">Absorbed by queues or lost</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-red">Only 7 cases/month</span><br>
+              <span class="pain-chip chip-yellow">Luxury waterfront avg $1.75M</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">⏱ 4–6+ weeks TAT</span><br>
+              <span style="color:var(--rb-muted);font-size:12px;">20+ documents, manual indexing (ECM), manual DSR calculations, no real-time tracking. Highest drop-off of all products.</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">Highest manual effort. Manual AML/KYC forms (AML-4A/5/11, A24). BCQS valuation coordination. Siloed ECM/Phoenix/Euronet. Compliance risk. USD ~$200K/yr BVI alone.</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="product-cell">🏢 SME / Commercial</td>
+            <td>
+              <span class="pain-chip chip-orange">Fragmented queues</span><br>
+              <span class="pain-chip chip-orange">Manual underwriting</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-green">Growing with oil economy</span><br>
+              <span class="pain-chip chip-red">No digital tools</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-blue">Limited but high-value</span><br>
+              <span class="pain-chip chip-yellow">Offshore finance links</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">⏱ 2–8 weeks TAT</span><br>
+              <span style="color:var(--rb-muted);font-size:12px;">Complex doc + site visits. Weeks for approval. No SME self-service portal. Founder frustration leads to competitor banking.</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">No group-level portfolio visibility. Manual risk concentration tracking. Higher error rates in underwriting. SME loans require separate territory configurations.</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="product-cell">🏗️ Corporate Loans</td>
+            <td>
+              <span class="pain-chip chip-blue">Relationship-driven</span><br>
+              <span class="pain-chip chip-orange">Slow velocity</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-green">Oil/energy sector demand</span>
+            </td>
+            <td>
+              <span class="pain-chip chip-yellow">Offshore finance</span><br>
+              <span class="pain-chip chip-blue">International HNWIs</span>
+            </td>
+            <td>
+              <span style="color:var(--rb-muted);font-size:13px;">Custom negotiations. Heavy manual due diligence. No cross-territory customer identity.</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">Portfolio concentration risk undetectable without unified view. Customer delinquent in TT could get new loan in Guyana undetected.</span>
+            </td>
+          </tr>
+          <tr style="background:rgba(230,57,70,0.05);">
+            <td class="product-cell">⚠️ Collections & Recoveries (CCU) </td>
+            <td colspan="3" style="text-align:center;">
+              <span class="pain-chip chip-red">CRITICAL — Group-Wide Issue</span><br>
+              <span style="color:var(--rb-muted);font-size:12px;">All products follow the same manual processes across all three territories</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;">Redundant customer calls (no unified view). Delayed PTP follow-up. No multi-channel self-cure (WhatsApp/SMS). Broken customer trust during hardship.</span>
+            </td>
+            <td>
+              <span style="color:#FF6B75;font-size:13px;font-weight:600;">TTD ~$6M/yr (42 staff). Manual letter preparation, folding, stuffing. NPL relegation via manual Phoenix entries. Recovery rate &lt;50%. DCA commissions manually calculated. No real-time dashboards.</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CUSTOMER JOURNEY ========== -->
+<section class="bg-surface section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Customer Experience</div>
+      <h2 class="section-title">AS-IS Customer Journeys — Where We Lose People</h2>
+      <p class="section-desc">These are the actual journeys our customers experience today, product by product. Every friction point represents a direct barrier to conversion and lost revenue.</p>
+    </div>
+
+    <div class="journey-product-tabs fade-in">
+      <button class="jtab active" onclick="showJourney('mortgage')">🏠 Home Loan / Mortgage</button>
+      <button class="jtab" onclick="showJourney('personal')">💳 Personal Loan</button>
+      <button class="jtab" onclick="showJourney('sme')">🏢 SME Loan</button>
+      <button class="jtab" onclick="showJourney('collections')">⚠️ Collections</button>
+    </div>
+
+    <!-- MORTGAGE JOURNEY -->
+    <div class="journey-flow active" id="journey-mortgage">
+      <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:16px;padding:32px;">
+        <div class="journey-title">Home Loan / Mortgage — Current State Journey</div>
+        <div class="journey-sub">Average completion time: 4–6 weeks | Drop-off rate: ~45–55% | Manual steps: 20+</div>
+
+        <div class="journey-stages">
+          <div class="stage-item">
+            <div class="stage-dot red"></div>
+            <div class="stage-name">Discover</div>
+            <div class="stage-time">Day 1–3</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot orange"></div>
+            <div class="stage-name">Apply</div>
+            <div class="stage-time">Day 3–7</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot yellow"></div>
+            <div class="stage-name">Document</div>
+            <div class="stage-time">Day 7–14</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot blue"></div>
+            <div class="stage-name">Assess</div>
+            <div class="stage-time">Day 14–28</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot green"></div>
+            <div class="stage-name">Close</div>
+            <div class="stage-time">Day 28–42+</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <div class="stage-pains">
+            <div class="pain-item">Branch-only info; no 24/7 simulator</div>
+            <div class="pain-item">No rate comparison tool</div>
+            <div class="pain-item">Phone/in-person enquiries only</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual AML-4A/5/11 forms</div>
+            <div class="pain-item">Branch appointment required</div>
+            <div class="pain-item">A24 form completed by hand</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">20+ documents collected manually</div>
+            <div class="pain-item">Manual ECM indexing — errors/duplicates</div>
+            <div class="pain-item">No checklist or status visibility</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual DSR calculation (spreadsheets)</div>
+            <div class="pain-item">Credit check via Phoenix screenshots</div>
+            <div class="pain-item">BCQS valuation coordination (weeks)</div>
+            <div class="pain-item">Manual sanction conditions</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">In-person signing only</div>
+            <div class="pain-item">Manual disbursement controls</div>
+            <div class="pain-item">No digital confirmation</div>
+          </div>
+        </div>
+        <div class="drop-badge">
+          ⚠️ At every stage, frustrated customers call branches for status — creating staff overload and customer dissatisfaction. Estimated 30–55% of interested customers never complete the mortgage application. Each lost customer represents ~$1.75M–$2M in BVI mortgage value.
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONAL LOAN JOURNEY -->
+    <div class="journey-flow" id="journey-personal">
+      <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:16px;padding:32px;">
+        <div class="journey-title">Personal Loan — Current State Journey</div>
+        <div class="journey-sub">Average completion time: 1–2 weeks | Drop-off rate: ~30–40% | IB/MB used for service, not origination</div>
+
+        <div class="journey-stages">
+          <div class="stage-item">
+            <div class="stage-dot red"></div>
+            <div class="stage-name">Shop</div>
+            <div class="stage-time">Day 1</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot orange"></div>
+            <div class="stage-name">Enquire</div>
+            <div class="stage-time">Day 1–3</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot yellow"></div>
+            <div class="stage-name">Apply</div>
+            <div class="stage-time">Day 2–5</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot blue"></div>
+            <div class="stage-name">Decision</div>
+            <div class="stage-time">Day 5–10</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot green"></div>
+            <div class="stage-name">Disburse</div>
+            <div class="stage-time">Day 10–14</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <div class="stage-pains">
+            <div class="pain-item">No EMI calculator online</div>
+            <div class="pain-item">No comparison across products</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Branch visit or phone call only</div>
+            <div class="pain-item">Limited digital self-serve</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual forms + payslips</div>
+            <div class="pain-item">Multiple branch trips</div>
+            <div class="pain-item">50% IB users expect digital — don't get it</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual credit check (rule-based)</div>
+            <div class="pain-item">No predictive pre-approval</div>
+            <div class="pain-item">Repeat data entry: Phoenix/Euronet</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual disbursement to account</div>
+            <div class="pain-item">No SMS/WhatsApp updates</div>
+          </div>
+        </div>
+        <div class="drop-badge">
+          ⚠️ Tech-savvy Gen Y/Z customers, who make up 53% of our T&T deposit base, expect a seamless mobile experience but still need to visit a branch to obtain a loan. This inconsistency leads to a 30–40% drop-off, pushing them toward competitors.
+        </div>
+      </div>
+    </div>
+
+    <!-- SME JOURNEY -->
+    <div class="journey-flow" id="journey-sme">
+      <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:16px;padding:32px;">
+        <div class="journey-title">SME Loan — Current State Journey</div>
+        <div class="journey-sub">Average completion time: 2–8 weeks | No digital SME portal | Each territory configured separately</div>
+
+        <div class="journey-stages">
+          <div class="stage-item">
+            <div class="stage-dot red"></div>
+            <div class="stage-name">Research</div>
+            <div class="stage-time">Week 1</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot orange"></div>
+            <div class="stage-name">Application</div>
+            <div class="stage-time">Week 1–2</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot yellow"></div>
+            <div class="stage-name">Documents</div>
+            <div class="stage-time">Week 2–3</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot blue"></div>
+            <div class="stage-name">Underwrite</div>
+            <div class="stage-time">Week 3–6</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot green"></div>
+            <div class="stage-name">Approval</div>
+            <div class="stage-time">Week 6–8+</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <div class="stage-pains">
+            <div class="pain-item">No SME product discovery portal</div>
+            <div class="pain-item">No pre-qualification tool</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Physical branch + manual forms</div>
+            <div class="pain-item">No online SME application</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Financial statements, tax docs, ownership docs — all physical</div>
+            <div class="pain-item">Site visit required</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual risk assessment</div>
+            <div class="pain-item">No automated financial spreading</div>
+            <div class="pain-item">Territory-by-territory only</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">No e-signature</div>
+            <div class="pain-item">Physical document signing</div>
+          </div>
+        </div>
+        <div class="drop-badge">
+          ⚠️ Guyana's oil boom is driving rapid growth in SME credit demand. Without digital origination, we risk losing this segment to faster fintech competitors. Caribbean fintech lending has surged by 340% since 2017.
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLECTIONS JOURNEY -->
+    <div class="journey-flow" id="journey-collections">
+      <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:16px;padding:32px;">
+        <div class="journey-title">Collections & Recovery — Current State Journey (CCU)</div>
+        <div class="journey-sub">Recovery rate: &lt;50% | Labor cost: TTD ~$6M/year | 42 staff largely on admin tasks | Zero automation</div>
+
+        <div class="journey-stages">
+          <div class="stage-item">
+            <div class="stage-dot red"></div>
+            <div class="stage-name">Detect DPD</div>
+            <div class="stage-time">Nightly</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot orange"></div>
+            <div class="stage-name">Notify</div>
+            <div class="stage-time">Days 1–30</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot yellow"></div>
+            <div class="stage-name">Chase</div>
+            <div class="stage-time">Days 30–60</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot blue"></div>
+            <div class="stage-name">NPL Relegate</div>
+            <div class="stage-time">Day 91+</div>
+          </div>
+          <div class="stage-item">
+            <div class="stage-dot red" style="background:var(--rb-red);border-color:var(--rb-red);"></div>
+            <div class="stage-name">Recover/Write</div>
+            <div class="stage-time">Ongoing</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <div class="stage-pains">
+            <div class="pain-item">Manual nightly DPD bucket calculation</div>
+            <div class="pain-item">No predictive early warning</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Staff manually draft letters</div>
+            <div class="pain-item">Physical fold &amp; stuff envelopes</div>
+            <div class="pain-item">Copy/paste emails from Phoenix</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">No dynamic call lists</div>
+            <div class="pain-item">Redundant calls (no unified view)</div>
+            <div class="pain-item">No multi-channel (WhatsApp/SMS)</div>
+            <div class="pain-item">No PTP auto-tracking</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual book entries in Phoenix</div>
+            <div class="pain-item">Accounting entry errors</div>
+            <div class="pain-item">No automated provisioning trigger</div>
+          </div>
+          <div class="stage-pains">
+            <div class="pain-item">Manual DCA commission calculation</div>
+            <div class="pain-item">Manual agency SLA tracking</div>
+            <div class="pain-item">No real-time recovery dashboard</div>
+          </div>
+        </div>
+        <div class="drop-badge">
+          ⚠️ TTD ~$6 million annually supports 42 CCU staff, largely consumed by admin tasks rather than active recovery. Recovery rates sit below 50%, versus an industry benchmark of 65–75%. A 5% improvement would meaningfully protect Group NIM.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INTERNAL PAIN / COST ========== -->
+<section class="bg-dark section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Operational Reality</div>
+      <h2 class="section-title">Internal Pain: The Hidden Cost of Staying the Same </h2>
+      <p class="section-desc">What isn't visible to customers is eroding the bank's efficiency, compliance posture, and competitive capacity from the inside.</p>
+    </div>
+
+    <div class="issues-grid fade-in">
+      <div class="issue-card">
+        <span class="issue-icon">🔗</span>
+        <div class="issue-title">No Unified View of the Customer & Risk</div>
+        <div class="issue-body">Phoenix, ECM (NewGen), Euronet, and manual spreadsheets operate in silos. A customer delinquent in Trinidad can apply for a new mortgage in Guyana without detection. No group-level risk, concentration, or portfolio analytics exist.</div>
+        <div class="issue-cost">RISK: Unlimited</div>
+        <div class="issue-cost-label">Cross-territory credit exposure uncontrolled</div>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">📋</span>
+        <div class="issue-title">Manual Credit Scoring Rule-Based and Siloed</div>
+        <div class="issue-body">Credit risk scoring performed manually via rule-based spreadsheets, per territory. No enterprise-level predictive analytics. Conservative decision-making limits growth while exposing the bank to underwriting risk through lack of forward-looking signals.</div>
+        <div class="issue-cost">COST: Growth Lost</div>
+        <div class="issue-cost-label">Overly conservative decisions suppress origination volume</div>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">📬</span>
+        <div class="issue-title">CCU Labor Cost TTD $6 Million Annually</div>
+        <div class="issue-body"> 42+  CCU staff primarily spend their time on manually drafting arrears letters, physically folding and stuffing envelopes, copying and pasting email addresses, entering manual NPL relegation entries in Phoenix, and reconciling DCA commissions via spreadsheets.</div>
+        <div class="issue-cost">TTD ~$6M/yr</div>
+        <div class="issue-cost-label">42 FTEs — ~7 FTEs directly saveable via automation</div>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">⚖️</span>
+        <div class="issue-title">Compliance & AML Risk Heightened by Manual Processes</div>
+        <div class="issue-body">Manual AML-4A/5/11 form completion, manual KYC document collection, and manual credit bureau screenshots as evidence create significant compliance risk. As regulatory scrutiny increases across Caribbean jurisdictions, the bank's exposure grows.</div>
+        <div class="issue-cost">RISK: Regulatory</div>
+        <div class="issue-cost-label">Central Bank NPL guidelines breachable without automation</div>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">🚀</span>
+        <div class="issue-title">Time-to-Market Months per Product & Territory</div>
+        <div class="issue-body">Without a unified platform, each new offering like green mortgages or BNPL must be created from scratch in every territory, requiring unique configurations and compliance approvals. In contrast, competitors with a single platform can launch once and easily replicate across markets.</div>
+        <div class="issue-cost">COST: Speed Gap</div>
+        <div class="issue-cost-label">RFHL rebuilds every time; competitors iterate once</div>
+      </div>
+      <div class="issue-card">
+        <span class="issue-icon">📉</span>
+        <div class="issue-title">Missed Revenue — Demand Absorbed or Lost to Competitors</div>
+        <div class="issue-body">Guyana’s 25–40% mortgage demand surge is either absorbed by branch queues or captured by digital-first competitors. In BVI, the RBI-driven luxury real estate boom generates only 7 mortgages per month under manual processing. Caribbean fintech volume is growing 46%+ annually.</div>
+        <div class="issue-cost">USD $4.5M+</div>
+        <div class="issue-cost-label">We are potentially missing a 3-year Net Interest Margin (NIM) uplift by not using the LMP platform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ========== FUTURE STATE USER JOURNEYS ========== -->
+<section id="future-journeys" class="bg-surface section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">To-Be Customer Experience</div>
+      <h2 class="section-title">Future State User Journeys — Product by Product</h2>
+      <p class="section-desc">This is what the customer experience looks and feels like after the Group Lending Platform goes live. Each journey is benchmarked to global best practice and calibrated to Caribbean market realities — mobile-first, trust-respecting, 24/7 accessible.</p>
+    </div>
+
+    <!-- PRODUCT TABS -->
+    <div class="journey-product-tabs fade-in" style="justify-content:center; margin-bottom:40px;">
+      <button class="fjtab active" onclick="showFutureJourney('fmortgage', this)">🏠 Home Loan / Mortgage</button>
+      <button class="fjtab" onclick="showFutureJourney('fpersonal', this)">💳 Personal Loan</button>
+      <button class="fjtab" onclick="showFutureJourney('fsalary', this)" title="Salary Transfer Customers from Corporate Business">💼 Salary Transfer</button>
+      <button class="fjtab" onclick="showFutureJourney('fsme', this)">🏢 SME Loan</button>
+      <button class="fjtab" onclick="showFutureJourney('fcorporate', this)" title="Corporate Loan — CFO Digital Journey">🏛️ Corporate Loan</button>
+      <button class="fjtab" onclick="showFutureJourney('fcollections', this)">⚠️ Collections</button>
+    </div>
+
+    <!-- ======= MORTGAGE FUTURE JOURNEY ======= -->
+    <div class="fjourney-flow active" id="fj-fmortgage">
+
+      <!-- Quick compare bar -->
+      <div class="fj-compare-bar fade-in">
+        <div class="fj-compare-item red-side">
+          <span class="fj-compare-label">AS-IS</span>
+          <span class="fj-compare-val">4–6 weeks</span>
+          <span class="fj-compare-sub">20+ manual steps · Branch-only · 45–55% drop-off</span>
+        </div>
+        <div class="fj-arrow">→</div>
+        <div class="fj-compare-item green-side">
+          <span class="fj-compare-label">TO-BE</span>
+          <span class="fj-compare-val">72 hours</span>
+          <span class="fj-compare-sub">60%+ automated · 24/7 digital · &lt;15% drop-off target</span>
+        </div>
+      </div>
+
+      <!-- Journey Personas -->
+      <div class="fj-persona-row fade-in">
+        <div class="fj-persona active-persona" id="persona-new" onclick="switchPersona('mortgage','new')">
+          <span class="fj-persona-icon">👤</span>
+          <span class="fj-persona-label">New Customer<br><small>First time with Republic Bank</small></span>
+        </div>
+        <div class="fj-persona" id="persona-existing" onclick="switchPersona('mortgage','existing')">
+          <span class="fj-persona-icon">🏦</span>
+          <span class="fj-persona-label">Existing Customer<br><small>Already has deposit account</small></span>
+        </div>
+        <div class="fj-persona" id="persona-hnwi" onclick="switchPersona('mortgage','hnwi')">
+          <span class="fj-persona-icon">💎</span>
+          <span class="fj-persona-label">BVI HNWI / RBI Investor<br><small>International luxury buyer</small></span>
+        </div>
+      </div>
+
+      <!-- Journey flow for NEW customer -->
+      <div class="fj-persona-flow active" id="pmortgage-new">
+        <div class="fj-stage-grid fade-in">
+
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#006d9b);">
+              <div class="fj-stage-num">01</div>
+              <div class="fj-stage-name">Discover & Simulate</div>
+              <div class="fj-stage-time green">⚡ 5 minutes</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 SuperApp / Internet Banking / Web</div>
+              <div class="fj-step good">Opens Republic Bank app — Home Loans tab visible on homepage</div>
+              <div class="fj-step good">Live EMI calculator — adjusts amount, term, rate in real-time</div>
+              <div class="fj-step good">Instant eligibility indicator based on anonymised income input</div>
+              <div class="fj-step good">Compare products (Easy Home, Standard, Green Mortgage)</div>
+              <div class="fj-step good">Save simulation — receive WhatsApp/email summary instantly</div>
+              <div class="fj-auto-tag">🤖 No staff required. 100% self-service.</div>
+            </div>
+          </div>
+
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#0077a8);">
+              <div class="fj-stage-num">02</div>
+              <div class="fj-stage-name">Digital Onboarding (eKYC)</div>
+              <div class="fj-stage-time green">⚡ 15–20 minutes</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 GDO (Group Digital Onboarding)</div>
+              <div class="fj-step good">Selfie + ID upload (passport/national ID) — biometric liveness check</div>
+              <div class="fj-step good">Auto-validation of ID authenticity via AI</div>
+              <div class="fj-step good">AML-4A, AML-5, AML-11 forms auto-populated from ID data</div>
+              <div class="fj-step good">A24 form auto-completed from onboarding profile</div>
+              <div class="fj-step good">OTP verification (mobile number + email)</div>
+              <div class="fj-step good">CIF record created automatically</div>
+              <div class="fj-auto-tag">🤖 Was: Manual branch AML form completion → Now: Automated in 15 mins</div>
+            </div>
+          </div>
+
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#008ab5);">
+              <div class="fj-stage-num">03</div>
+              <div class="fj-stage-name">Smart Application</div>
+              <div class="fj-stage-time green">⚡ 25–30 minutes</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 HES LoanBox — Digital Origination Layer</div>
+              <div class="fj-step good">Application pre-filled from CIF profile data</div>
+              <div class="fj-step good">Smart document checklist — only requests what's missing</div>
+              <div class="fj-step good">Document upload via camera (payslips, bank statements)</div>
+              <div class="fj-step good">Auto-tagging and ECM indexing — zero manual indexing</div>
+              <div class="fj-step good">Digital DSR (Debt Service Ratio) calculated automatically</div>
+              <div class="fj-step good">Real-time application progress bar — visible to customer at all times</div>
+              <div class="fj-auto-tag">🤖 Was: 20+ manually indexed docs, multiple branch visits → Now: Smart upload, auto-indexed</div>
+            </div>
+          </div>
+
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#0096c7);">
+              <div class="fj-stage-num">04</div>
+              <div class="fj-stage-name">AI-Assisted Decisioning</div>
+              <div class="fj-stage-time green">⚡ 24–48 hours</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">🤖 HES Decisioning Engine + Credit Bureau + Phoenix</div>
+              <div class="fj-step good">Auto credit bureau pull — integrated, not screenshot evidence</div>
+              <div class="fj-step good">Rule-based underwriting engine evaluates application (MVP Phase 1)</div>
+              <div class="fj-step good">Risk score generated — Low/Medium/High classification</div>
+              <div class="fj-step good">60%+ Straight-Through Processing: auto-approve with conditions</div>
+              <div class="fj-step good">Complex cases flagged to officer with pre-populated review dashboard</div>
+              <div class="fj-step good">Valuation order triggered automatically (BCQS or approved panel)</div>
+              <div class="fj-step good">Customer receives push notification + WhatsApp update at each milestone</div>
+              <div class="fj-auto-tag">🤖 Was: Manual DSR + Phoenix screenshots + days of coordination → Now: Automated end-to-end</div>
+            </div>
+          </div>
+
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#0a3d0a,#0f6b0f);">
+              <div class="fj-stage-num">05</div>
+              <div class="fj-stage-name">Sanction & e-Sign</div>
+              <div class="fj-stage-time green">⚡ Same day – 24 hrs</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 e-Signature + Legal Integration</div>
+              <div class="fj-step good">Sanction letter auto-generated with personalised conditions</div>
+              <div class="fj-step good">Customer reviews all terms digitally — no branch visit required</div>
+              <div class="fj-step good">e-Signature via OTP-authenticated signing flow</div>
+              <div class="fj-step good">Legal documents digitally prepared and signed</div>
+              <div class="fj-step good">Branch option always available for customers who prefer in-person</div>
+              <div class="fj-auto-tag">🤖 Was: In-person signing only → Now: Digital-first, branch-optional</div>
+            </div>
+          </div>
+
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#0a3d0a,#1a8a1a);">
+              <div class="fj-stage-num">06</div>
+              <div class="fj-stage-name">Disbursement & Welcome</div>
+              <div class="fj-stage-time green">⚡ Same day</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">🏦 Phoenix Auto-Disbursement + CRM</div>
+              <div class="fj-step good">Automatic disbursement trigger to Phoenix upon signing confirmation</div>
+              <div class="fj-step good">Funds credited to account — real-time notification</div>
+              <div class="fj-step good">Digital welcome kit: repayment schedule, account dashboard link</div>
+              <div class="fj-step good">CRM case closed — customer journey data captured for analytics</div>
+              <div class="fj-step good">Cross-sell triggered: Republic Life insurance, home protection offer</div>
+              <div class="fj-auto-tag">🎉 Total Journey: From interest to disbursement in 72 hours</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="fj-outcome-bar">
+          <div class="fj-outcome">📉 Drop-off Rate: <strong>from ~50% → &lt;15%</strong></div>
+          <div class="fj-outcome">⚡ TAT: <strong>4–6 weeks → 72 hours</strong></div>
+          <div class="fj-outcome">🤖 Manual Steps: <strong>20+ → ~3</strong></div>
+          <div class="fj-outcome">💰 BVI Volume: <strong>7 → 20+ cases/month</strong></div>
+          <div class="fj-outcome">😊 Customer NPS: <strong>Projected +35 pts</strong></div>
+        </div>
+      </div>
+
+      <!-- Journey flow for EXISTING customer -->
+      <div class="fj-persona-flow" id="pmortgage-existing">
+        <div class="fj-stage-grid fade-in">
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#1a0050,#3a0080);">
+              <div class="fj-stage-num">01</div>
+              <div class="fj-stage-name">Instant Pre-Qualification</div>
+              <div class="fj-stage-time green">⚡ 2 minutes</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 SuperApp / Internet Banking (Logged In)</div>
+              <div class="fj-step good">Customer already authenticated — no re-KYC required</div>
+              <div class="fj-step good">Pre-qualification offer shown based on existing account behaviour</div>
+              <div class="fj-step good">Pre-filled EMI with existing salary/income data from CIF</div>
+              <div class="fj-step good">Tap "Apply Now" — profile auto-populated from CIF</div>
+              <div class="fj-auto-tag">🤖 KYC bypass for existing customers — verified identity skips onboarding</div>
+            </div>
+          </div>
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#1a0050,#4a00a0);">
+              <div class="fj-stage-num">02</div>
+              <div class="fj-stage-name">Upload Missing Docs Only</div>
+              <div class="fj-stage-time green">⚡ 10–15 minutes</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 Smart Document Request Engine</div>
+              <div class="fj-step good">System identifies only the documents not already on file</div>
+              <div class="fj-step good">Smart checklist: "We only need 3 things from you" (vs 20+ before)</div>
+              <div class="fj-step good">Latest payslip + property valuation instruction — camera upload</div>
+              <div class="fj-step good">Auto-indexed to ECM immediately</div>
+              <div class="fj-auto-tag">🤖 Existing profile = 80% of application already complete before customer starts</div>
+            </div>
+          </div>
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#1a0050,#5500cc);">
+              <div class="fj-stage-num">03</div>
+              <div class="fj-stage-name">Instant Credit Check</div>
+              <div class="fj-stage-time green">⚡ Seconds</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">🤖 HES + Credit Bureau + CIF History</div>
+              <div class="fj-step good">Credit bureau API pull in real-time — no screenshots</div>
+              <div class="fj-step good">Account history from CIF used to strengthen score</div>
+              <div class="fj-step good">Existing delinquency check across all territories (group-wide)</div>
+              <div class="fj-step good">Risk score in seconds — decision path determined automatically</div>
+              <div class="fj-auto-tag">🤖 Was: Manual Phoenix credit check → Now: Real-time API in seconds</div>
+            </div>
+          </div>
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#0a3d0a,#0f6b0f);">
+              <div class="fj-stage-num">04</div>
+              <div class="fj-stage-name">Decision + Offer</div>
+              <div class="fj-stage-time green">⚡ Same Day</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 In-App Decision Notification</div>
+              <div class="fj-step good">Push notification: "Your mortgage has been approved in principle"</div>
+              <div class="fj-step good">Conditional offer presented with personalised rate and term</div>
+              <div class="fj-step good">Customer accepts and proceeds to e-sign within the app</div>
+              <div class="fj-step good">Valuation and legal steps proceed in parallel — not sequentially</div>
+              <div class="fj-auto-tag">🎉 Existing customers: Interest to approval in under 4 hours</div>
+            </div>
+          </div>
+        </div>
+        <div class="fj-outcome-bar">
+          <div class="fj-outcome">⚡ TAT: <strong>Same Day Approval-in-Principle</strong></div>
+          <div class="fj-outcome">📄 Docs Required: <strong>20+ → 2–3 only</strong></div>
+          <div class="fj-outcome">🔁 Re-KYC: <strong>Zero — bypass for existing customers</strong></div>
+          <div class="fj-outcome">😊 Effort: <strong>Minimal — mostly pre-filled</strong></div>
+        </div>
+      </div>
+
+      <!-- Journey flow for HNWI -->
+      <div class="fj-persona-flow" id="pmortgage-hnwi">
+        <div class="fj-stage-grid fade-in">
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#3d2a00,#7a5500);">
+              <div class="fj-stage-num">01</div>
+              <div class="fj-stage-name">Premium Discovery</div>
+              <div class="fj-stage-time green">⚡ Any time, any device</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">💎 RBL Premium Web / BVI Fast-Track Portal</div>
+              <div class="fj-step good">Dedicated BVI mortgage microsite — luxury property focused</div>
+              <div class="fj-step good">RBI (Residency by Investment) product clearly featured</div>
+              <div class="fj-step good">USD-denominated EMI calculator with waterfront property examples</div>
+              <div class="fj-step good">WhatsApp-first enquiry option for international buyers</div>
+              <div class="fj-step good">Assigned relationship manager contact at first touch</div>
+              <div class="fj-auto-tag">💎 HNWI expectation: Premium, fast, frictionless, human-backed</div>
+            </div>
+          </div>
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#3d2a00,#9a6a00);">
+              <div class="fj-stage-num">02</div>
+              <div class="fj-stage-name">Remote Onboarding</div>
+              <div class="fj-stage-time green">⚡ Under 30 minutes</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 GDO — International ID + VASP-Aware KYC</div>
+              <div class="fj-step good">International passport + address proof — remote upload</div>
+              <div class="fj-step good">VASP Act-compliant onboarding for digital asset holders</div>
+              <div class="fj-step good">Enhanced due diligence workflow triggered automatically for HNWIs</div>
+              <div class="fj-step good">Proof of funds uploaded securely (bank statements, investment docs)</div>
+              <div class="fj-auto-tag">💎 International buyers complete full KYC from New York, London, or Miami</div>
+            </div>
+          </div>
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#3d2a00,#b87a00);">
+              <div class="fj-stage-num">03</div>
+              <div class="fj-stage-name">Sub-24hr Pre-Approval</div>
+              <div class="fj-stage-time green">⚡ Under 24 hours</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">🤖 HES Priority Processing Queue</div>
+              <div class="fj-step good">HNWI flag triggers priority review queue</div>
+              <div class="fj-step good">Relationship manager reviews AI-prepared case summary</div>
+              <div class="fj-step good">Mortgage pre-approval issued — formal letter + digital certificate</div>
+              <div class="fj-step good">Property valuation ordered with preferred BVI panel surveyor</div>
+              <div class="fj-auto-tag">💎 International buyers negotiate on property with pre-approval in hand</div>
+            </div>
+          </div>
+          <div class="fj-stage">
+            <div class="fj-stage-header" style="background:linear-gradient(135deg,#0a3d0a,#1a8a1a);">
+              <div class="fj-stage-num">04</div>
+              <div class="fj-stage-name">Remote Close</div>
+              <div class="fj-stage-time green">⚡ Zero travel required</div>
+            </div>
+            <div class="fj-stage-body">
+              <div class="fj-channel-tag">📱 e-Signature + Digital Disbursement</div>
+              <div class="fj-step good">All legal documents signed remotely via e-signature platform</div>
+              <div class="fj-step good">USD disbursement instruction sent to Phoenix automatically</div>
+              <div class="fj-step good">Property transaction funds released to BVI solicitor</div>
+              <div class="fj-step good">Welcome call from relationship manager post-closing</div>
+              <div class="fj-auto-tag">🎉 Entire mortgage from discovery to disbursement — zero flights required</div>
+            </div>
+          </div>
+        </div>
+        <div class="fj-outcome-bar" style="background:linear-gradient(90deg,rgba(245,166,35,0.1),rgba(245,166,35,0.05));">
+          <div class="fj-outcome">✈️ Travel Required: <strong>Zero</strong></div>
+          <div class="fj-outcome">⚡ Pre-Approval TAT: <strong>&lt;24 hours</strong></div>
+          <div class="fj-outcome">💰 Avg Mortgage: <strong>USD $1.75M+</strong></div>
+          <div class="fj-outcome">🌍 Location: <strong>Anywhere in the world</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= PERSONAL LOAN FUTURE JOURNEY ======= -->
+    <div class="fjourney-flow" id="fj-fpersonal">
+      <div class="fj-compare-bar fade-in">
+        <div class="fj-compare-item red-side">
+          <span class="fj-compare-label">AS-IS</span>
+          <span class="fj-compare-val">1–2 weeks</span>
+          <span class="fj-compare-sub">Branch visit required · Manual forms · 30–40% drop-off</span>
+        </div>
+        <div class="fj-arrow">→</div>
+        <div class="fj-compare-item green-side">
+          <span class="fj-compare-label">TO-BE</span>
+          <span class="fj-compare-val">Minutes to Hours</span>
+          <span class="fj-compare-sub">100% digital · Pre-approved offer · Zero branch visits for existing customers</span>
+        </div>
+      </div>
+      <div class="fj-stage-grid fade-in">
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#006d9b);">
+            <div class="fj-stage-num">01</div>
+            <div class="fj-stage-name">Discover — In the App</div>
+            <div class="fj-stage-time green">⚡ Instant</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 SuperApp — Personal Loans Tab</div>
+            <div class="fj-step good">Pre-approved personal loan offer shown on app homepage for eligible customers</div>
+            <div class="fj-step good">Live EMI slider — adjust amount ($5K–$100K) and term instantly</div>
+            <div class="fj-step good">Interest rate displayed upfront — no hidden fees</div>
+            <div class="fj-step good">Tap "Apply" — existing customer profile pre-loaded from CIF</div>
+            <div class="fj-auto-tag">🤖 Gen Y/Z customers: same experience as top fintech apps — but from their trusted bank</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#0096c7);">
+            <div class="fj-stage-num">02</div>
+            <div class="fj-stage-name">One-Screen Application</div>
+            <div class="fj-stage-time green">⚡ 5–10 minutes</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 HES LoanBox — Simplified PL Flow</div>
+            <div class="fj-step good">Name, employment, income — pre-filled from CIF profile</div>
+            <div class="fj-step good">Only missing items requested: latest payslip (camera upload)</div>
+            <div class="fj-step good">Open banking integration (where available): income auto-verified from statement</div>
+            <div class="fj-step good">Purpose of loan selected from dropdown (holiday, home improvement, etc.)</div>
+            <div class="fj-step good">Review and submit — one-tap confirmation</div>
+            <div class="fj-auto-tag">🤖 Was: Multiple branch visits + manual forms → Now: One screen, 10 minutes</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#00aade);">
+            <div class="fj-stage-num">03</div>
+            <div class="fj-stage-name">Instant Decision</div>
+            <div class="fj-stage-time green">⚡ 30 seconds – 2 hours</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🤖 HES Decisioning Engine</div>
+            <div class="fj-step good">Straight-Through Processing for eligible profiles: decision in 30 seconds</div>
+            <div class="fj-step good">Credit bureau check triggered automatically in background</div>
+            <div class="fj-step good">Existing account behaviour (CIF) used to supplement credit score</div>
+            <div class="fj-step good">Complex applications flagged to officer — resolved within 2 hours (not days)</div>
+            <div class="fj-step good">Push notification: "Your loan has been approved!" with amount and terms</div>
+            <div class="fj-auto-tag">🤖 No manual credit check. No Phoenix screenshots. No waiting.</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#00c4f0);">
+            <div class="fj-stage-num">04</div>
+            <div class="fj-stage-name">Accept & e-Sign</div>
+            <div class="fj-stage-time green">⚡ 2 minutes</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 In-App e-Signature</div>
+            <div class="fj-step good">Loan agreement presented in clear, plain-language format</div>
+            <div class="fj-step good">Customer reviews terms, repayment schedule, total cost of borrowing</div>
+            <div class="fj-step good">OTP-authenticated e-signature — no printing, no scanning</div>
+            <div class="fj-step good">Confirmation receipt sent to email and WhatsApp</div>
+            <div class="fj-auto-tag">🤖 Was: In-branch signing + paper documents → Now: 2 taps and done</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#0a3d0a,#1a8a1a);">
+            <div class="fj-stage-num">05</div>
+            <div class="fj-stage-name">Same-Day Disbursement</div>
+            <div class="fj-stage-time green">⚡ Hours after approval</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🏦 Phoenix Auto-Disbursement</div>
+            <div class="fj-step good">Funds credited to customer's Republic Bank account immediately</div>
+            <div class="fj-step good">Push notification + in-app confirmation: "Your funds are ready"</div>
+            <div class="fj-step good">Repayment schedule visible in app — first payment date set</div>
+            <div class="fj-step good">Credit card cross-sell prompt shown (if not already a CC customer)</div>
+            <div class="fj-step good">WhatsApp welcome message from dedicated service number</div>
+            <div class="fj-auto-tag">🎉 Total Journey: From app-open to funds in account — under 4 hours</div>
+          </div>
+        </div>
+
+        <div class="fj-stage" style="border:2px dashed rgba(6,214,160,0.4);">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#0d3b0d,#155215);">
+            <div class="fj-stage-num">+</div>
+            <div class="fj-stage-name">Future: Instant Credit Line (Phase 3)</div>
+            <div class="fj-stage-time" style="color:var(--rb-gold);">🔮 Phase 3</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag" style="color:var(--rb-gold);">💡 Innovation Horizon</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">Pre-approved revolving credit line based on account behaviour — no new application needed</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">Draw down instantly from SuperApp — like a digital overdraft, but smarter</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">Pay back flexibly — interest charged only on amount used</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">BNPL integration: split any purchase into instalments directly from the app</div>
+            <div class="fj-auto-tag" style="background:rgba(245,166,35,0.08);border-color:rgba(245,166,35,0.2);color:var(--rb-gold);">🔮 This is the NuBank/Monzo model — Caribbean-first</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="fj-outcome-bar">
+        <div class="fj-outcome">⚡ TAT: <strong>4 hours (down from 1–2 weeks)</strong></div>
+        <div class="fj-outcome">📉 Drop-off: <strong>~35% → &lt;10%</strong></div>
+        <div class="fj-outcome">🤖 STP: <strong>60%+ auto-approved instantly</strong></div>
+        <div class="fj-outcome">📱 Channel: <strong>100% mobile — zero branch visits</strong></div>
+        <div class="fj-outcome">💳 Cross-sell: <strong>CC offer shown post-approval</strong></div>
+      </div>
+    </div>
+
+    <!-- ======= SME LOAN FUTURE JOURNEY ======= -->
+    <div class="fjourney-flow" id="fj-fsme">
+      <div class="fj-compare-bar fade-in">
+        <div class="fj-compare-item red-side">
+          <span class="fj-compare-label">AS-IS</span>
+          <span class="fj-compare-val">2–8 weeks</span>
+          <span class="fj-compare-sub">Physical site visits · Manual underwriting · No SME portal · Territory silos</span>
+        </div>
+        <div class="fj-arrow">→</div>
+        <div class="fj-compare-item green-side">
+          <span class="fj-compare-label">TO-BE</span>
+          <span class="fj-compare-val">5–7 days</span>
+          <span class="fj-compare-sub">Digital SME portal · Automated financials · Group-wide risk view · Clone across markets</span>
+        </div>
+      </div>
+      <div class="fj-stage-grid fade-in">
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#2d0050,#5a0099);">
+            <div class="fj-stage-num">01</div>
+            <div class="fj-stage-name">SME Portal Discovery</div>
+            <div class="fj-stage-time green">⚡ Self-service, 24/7</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">💻 Republic Bank SME Digital Portal</div>
+            <div class="fj-step good">Dedicated SME section in SuperApp and web — not buried in general menu</div>
+            <div class="fj-step good">Business loan products clearly segmented: working capital, equipment, expansion</div>
+            <div class="fj-step good">Business EMI calculator with revenue-to-repayment ratio guide</div>
+            <div class="fj-step good">Eligibility pre-check: business age, revenue range, sector — instant response</div>
+            <div class="fj-step good">Live rates displayed — no "call for a quote" opacity</div>
+            <div class="fj-auto-tag">🤖 Guyana oil-sector SMEs, T&T manufacturers: first touchpoint is digital, not a branch queue</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#2d0050,#7700cc);">
+            <div class="fj-stage-num">02</div>
+            <div class="fj-stage-name">Digital Business Application</div>
+            <div class="fj-stage-time green">⚡ 30–45 minutes</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 HES LoanBox — SME Origination Module</div>
+            <div class="fj-step good">Business registration, ownership, sector — guided form with inline help</div>
+            <div class="fj-step good">Director/owner KYC via GDO (selfie + ID) — same as personal onboarding</div>
+            <div class="fj-step good">Financial statements upload — PDF/image, auto-parsed by AI</div>
+            <div class="fj-step good">Bank statement analysis: income patterns auto-identified</div>
+            <div class="fj-step good">Business plan: optional template provided in-app to assist SME owners</div>
+            <div class="fj-auto-tag">🤖 Was: Physical forms + site visit required → Now: Entirely digital from first application</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#2d0050,#9900ff);">
+            <div class="fj-stage-num">03</div>
+            <div class="fj-stage-name">Automated Financial Spreading</div>
+            <div class="fj-stage-time green">⚡ Minutes (automated)</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🤖 HES Financial Analysis Engine</div>
+            <div class="fj-step good">Uploaded financials auto-spread into standardised analysis template</div>
+            <div class="fj-step good">Revenue trends, debt-to-equity, cash flow cycles auto-calculated</div>
+            <div class="fj-step good">Credit bureau check for business entity AND directors simultaneously</div>
+            <div class="fj-step good">Group-wide delinquency check: are any directors delinquent in other territories?</div>
+            <div class="fj-step good">Risk classification: Low / Medium / High — with recommended loan structure</div>
+            <div class="fj-auto-tag">🤖 Was: Manual analyst spreading (days) → Now: AI-automated in minutes</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#0077a8);">
+            <div class="fj-stage-num">04</div>
+            <div class="fj-stage-name">Officer Review Dashboard</div>
+            <div class="fj-stage-time green">⚡ 1–2 days</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🖥️ HES Officer Workbench</div>
+            <div class="fj-step good">Officer sees pre-populated case: AI analysis, risk score, financial summary</div>
+            <div class="fj-step good">Side-by-side view: business profile + financials + credit history + risk recommendation</div>
+            <div class="fj-step good">Site visit flag: triggered only for High Risk or complex collateral cases (not all cases)</div>
+            <div class="fj-step good">Approval or decline — with one-click rationale selection</div>
+            <div class="fj-step good">Customer receives real-time status update at every stage</div>
+            <div class="fj-auto-tag">🤖 Officer focus: Judgment on edge cases — not data entry and spreadsheet spreading</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#0a3d0a,#0f6b0f);">
+            <div class="fj-stage-num">05</div>
+            <div class="fj-stage-name">Approval + Digital Close</div>
+            <div class="fj-stage-time green">⚡ Same day as decision</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 e-Signature + Facility Letter</div>
+            <div class="fj-step good">Facility letter auto-generated with approved terms and conditions</div>
+            <div class="fj-step good">Director e-signs facility letter digitally — OTP-authenticated</div>
+            <div class="fj-step good">Collateral charge documents prepared (where applicable)</div>
+            <div class="fj-step good">Funds disbursed to business account automatically via Phoenix</div>
+            <div class="fj-step good">SME onboarded to Republic Bank Business Banking — cross-sell begins</div>
+            <div class="fj-auto-tag">🎉 5–7 day end-to-end SME loan — vs 2–8 weeks manual. No site visit for standard cases.</div>
+          </div>
+        </div>
+
+        <div class="fj-stage" style="border:2px dashed rgba(6,214,160,0.4);">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#0d3b0d,#155215);">
+            <div class="fj-stage-num">+</div>
+            <div class="fj-stage-name">Future: SME Embedded & Open Banking</div>
+            <div class="fj-stage-time" style="color:var(--rb-gold);">🔮 Phase 3</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag" style="color:var(--rb-gold);">💡 Innovation Horizon</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">Pre-approved credit line for SMEs with payroll accounts — no application needed</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">Embedded SME lending via partner ERP / accounting software (QuickBooks, Xero)</div>
+            <div class="fj-step" style="border-color:rgba(245,166,35,0.3);color:var(--rb-muted);">Revenue-based lending: repayments auto-match monthly business cash flow</div>
+            <div class="fj-auto-tag" style="background:rgba(245,166,35,0.08);border-color:rgba(245,166,35,0.2);color:var(--rb-gold);">🔮 Guyana oil-sector SMEs + T&T manufacturers — the next frontier</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="fj-outcome-bar">
+        <div class="fj-outcome">⚡ TAT: <strong>2–8 weeks → 5–7 days</strong></div>
+        <div class="fj-outcome">🚫 Site Visits: <strong>Required for all → Only complex/High Risk</strong></div>
+        <div class="fj-outcome">🌍 Scope: <strong>Territory siloed → Group-wide risk view</strong></div>
+        <div class="fj-outcome">🔁 New Markets: <strong>Months to configure → Days to clone</strong></div>
+      </div>
+    </div>
+
+
+    <!-- ======= SALARY TRANSFER FUTURE JOURNEY ======= -->
+    <div class="fjourney-flow" id="fj-fsalary">
+      <div class="fj-compare-bar fade-in">
+        <div class="fj-compare-item red-side">
+          <span class="fj-compare-label">AS-IS</span>
+          <span class="fj-compare-val">Manual Process</span>
+          <span class="fj-compare-sub">Branch visits · Paper forms · Manual payroll setup · Slow disbursal</span>
+        </div>
+        <div class="fj-arrow">→</div>
+        <div class="fj-compare-item green-side">
+          <span class="fj-compare-label">TO-BE</span>
+          <span class="fj-compare-val">Same Day</span>
+          <span class="fj-compare-sub">Pre-approved offer · Zero docs · 30-sec decision · Payroll auto-deduct</span>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--font-display);font-size:26px;font-weight:700;margin:0 0 8px;text-align:center;">The Employee Journey — <span style="color:var(--rb-green);">Salary Transfer Customer</span></h3>
+    <p style="text-align:center;color:var(--rb-muted);font-size:14px;margin-bottom:36px;">Maria works at a Guyana oil company that banks with Republic Bank. Here is her experience applying for a personal loan.</p>
+
+    <div class="fj-stage-grid" style="grid-template-columns:repeat(4,1fr);" class="fade-in">
+
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#003d1a,#006d30);">
+          <div class="fj-stage-num">01</div>
+          <div class="fj-stage-name">Opens App — Sees Her Offer</div>
+          <div class="fj-stage-time green">⚡ Day 1, 8:00 AM</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">📱 Republic Bank SuperApp</div>
+          <div class="fj-step good">App homepage shows: "Maria, you're pre-approved for up to GYD $4.5M"</div>
+          <div class="fj-step good">Employer name displayed: "Exclusive rate for [Company] employees"</div>
+          <div class="fj-step good">Rate shown: 8.5% (vs standard 11%) — employer benefit clearly visible</div>
+          <div class="fj-step good">One tap to see full offer — no application form yet</div>
+          <div class="fj-auto-tag">🤖 Pre-approval built from salary data + employer agreement. Maria sees her benefit — not a generic offer.</div>
+        </div>
+      </div>
+
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#003d1a,#008a38);">
+          <div class="fj-stage-num">02</div>
+          <div class="fj-stage-name">One-Screen Application</div>
+          <div class="fj-stage-time green">⚡ 3 minutes</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">📱 Salary Transfer Fast-Track Flow</div>
+          <div class="fj-step good">Name, employer, salary — all pre-filled from payroll agreement</div>
+          <div class="fj-step good">Zero payslips required — employer has already verified income</div>
+          <div class="fj-step good">Selects loan amount via slider — monthly repayment shown live</div>
+          <div class="fj-step good">Repayment shown as % of net salary — "You'll take home $X after payment"</div>
+          <div class="fj-step good">Submits — no documents to upload</div>
+          <div class="fj-auto-tag">🤖 Employer relationship eliminates the biggest friction point: income verification</div>
+        </div>
+      </div>
+
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#003d1a,#00a844);">
+          <div class="fj-stage-num">03</div>
+          <div class="fj-stage-name">Instant Approval</div>
+          <div class="fj-stage-time green">⚡ 30 seconds</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">🤖 HES — Salary Transfer Decision Engine</div>
+          <div class="fj-step good">STP (Straight-Through Processing) triggered — salary transfer = highest confidence</div>
+          <div class="fj-step good">Automated bureau check completes in background</div>
+          <div class="fj-step good">Approval notification: "Congratulations Maria — loan approved!"</div>
+          <div class="fj-step good">Offer summary: amount, rate, repayment, total cost — clear and simple</div>
+          <div class="fj-step good">e-Sign triggered immediately — no wait for officer review</div>
+          <div class="fj-auto-tag">🤖 Salary deduction = near-zero default risk = automatic STP. No human review needed.</div>
+        </div>
+      </div>
+
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#003d1a,#00c450);">
+          <div class="fj-stage-num">04</div>
+          <div class="fj-stage-name">Funds + Payroll Deduction Set</div>
+          <div class="fj-stage-time green">⚡ Same day</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">🏦 Phoenix + Payroll Integration</div>
+          <div class="fj-step good">Funds credited to Maria's account within hours of signing</div>
+          <div class="fj-step good">Payroll system notified automatically — deduction set up for next pay cycle</div>
+          <div class="fj-step good">HR portal updated — employer sees Maria's facility (anonymised financial detail)</div>
+          <div class="fj-step good">Maria gets repayment schedule on WhatsApp — never misses a payment</div>
+          <div class="fj-step good">First payment auto-deducted from salary — zero effort required</div>
+          <div class="fj-auto-tag">🎉 Maria's total journey: 4 minutes to apply, 30 seconds to decide, same day to funds.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Corporate Portal -->
+    <div style="background:var(--rb-surface);border:1px solid var(--rb-border);border-radius:20px;padding:40px;margin-top:32px;" class="fade-in">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+        <div>
+          <div class="section-tag" style="display:inline-block;text-align:left;">Corporate HR Portal</div>
+          <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;margin:16px 0 12px;">Serve Your Employees.<br><span style="color:var(--rb-blue-light);">We Handle the Credit.</span></h3>
+          <p style="font-size:14px;color:var(--rb-muted);line-height:1.8;margin-bottom:20px;">The Corporate HR Portal gives employers a white-label, branded employee financial wellness tool — powered entirely by Republic Bank's infrastructure. HR teams control eligibility, banks handle everything else.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="fj-step good">HR sets eligibility: minimum tenure, maximum loan-to-salary ratio</div>
+            <div class="fj-step good">Bulk-upload employee roster — automatic Republic Bank account creation if needed</div>
+            <div class="fj-step good">Real-time portfolio view: how many employees have loans, aggregate deductions</div>
+            <div class="fj-step good">Monthly payroll deduction report — feeds directly into payroll system</div>
+            <div class="fj-step good">Employee financial wellness score — flagged when an employee is over-leveraged</div>
+            <div class="fj-step good">Corporate special products: education loans, medical advances, home improvement — defined by HR</div>
+          </div>
+        </div>
+        <div>
+          <!-- Portal mockup -->
+          <div style="background:#0a1628;border:1px solid rgba(0,150,199,0.2);border-radius:16px;overflow:hidden;">
+            <div style="background:#06122a;padding:14px 20px;border-bottom:1px solid rgba(0,150,199,0.15);display:flex;align-items:center;gap:12px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#06D6A0;"></div>
+              <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);">Republic Bank — Employee Lending Portal</div>
+              <div style="margin-left:auto;font-size:11px;color:rgba(255,255,255,0.3);">HR Admin · Guyana Oil Co.</div>
+            </div>
+            <div style="padding:20px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;">
+                <div style="background:rgba(6,214,160,0.08);border:1px solid rgba(6,214,160,0.2);border-radius:8px;padding:12px;text-align:center;">
+                  <div style="font-size:22px;font-weight:700;color:#06D6A0;">847</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Eligible Employees</div>
+                </div>
+                <div style="background:rgba(0,150,199,0.08);border:1px solid rgba(0,150,199,0.2);border-radius:8px;padding:12px;text-align:center;">
+                  <div style="font-size:22px;font-weight:700;color:#00B4E6;">312</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Active Loans</div>
+                </div>
+                <div style="background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:8px;padding:12px;text-align:center;">
+                  <div style="font-size:22px;font-weight:700;color:#F5A623;">0.2%</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:2px;">Delinquency Rate</div>
+                </div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border-radius:8px;padding:12px;margin-bottom:10px;">
+                <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Active Products</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:rgba(255,255,255,0.6);">Personal Loans (Salary Deduct)</span><span style="color:#06D6A0;">245 active</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:rgba(255,255,255,0.6);">Education Loans</span><span style="color:#0096C7;">41 active</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:rgba(255,255,255,0.6);">Medical Advances</span><span style="color:#F5A623;">26 active</span></div>
+                </div>
+              </div>
+              <div style="background:#0096C7;color:white;padding:8px;border-radius:6px;text-align:center;font-size:12px;font-weight:600;">📤 Download This Month's Payroll Deduction Report</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+    <!-- ======= CORPORATE LOAN FUTURE JOURNEY ======= -->
+    <div class="fjourney-flow" id="fj-fcorporate">
+
+      <h3 style="font-family:var(--font-display);font-size:26px;font-weight:700;margin:0 0 8px;text-align:center;">Corporate Loan — <span style="color:var(--rb-blue-light);">CFO Digital Journey</span></h3>
+    <p style="text-align:center;color:var(--rb-muted);font-size:14px;margin-bottom:36px;">A large commercial client requesting a USD $5M working capital facility. Entirely digital — from term sheet to drawdown.</p>
+    <div class="fj-compare-bar fade-in">
+      <div class="fj-compare-item red-side">
+        <span class="fj-compare-label">AS-IS</span>
+        <span class="fj-compare-val">6–12 weeks</span>
+        <span class="fj-compare-sub">Manual underwriting · Physical meetings · No cross-territory view · Paper term sheets</span>
+      </div>
+      <div class="fj-arrow">→</div>
+      <div class="fj-compare-item green-side">
+        <span class="fj-compare-label">TO-BE</span>
+        <span class="fj-compare-val">5–10 days</span>
+        <span class="fj-compare-sub">Digital facility portal · AI financial analysis · e-Sign · Real-time drawdown</span>
+      </div>
+    </div>
+    <div class="fj-stage-grid" style="grid-template-columns:repeat(3,1fr);margin-top:24px;" class="fade-in">
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#001a40,#003380);">
+          <div class="fj-stage-num">01</div>
+          <div class="fj-stage-name">Digital Term Sheet Request</div>
+          <div class="fj-stage-time green">⚡ Day 1</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">💻 Corporate Banking Portal</div>
+          <div class="fj-step good">CFO logs into Republic Bank Corporate Portal — secured, role-based access</div>
+          <div class="fj-step good">Requests new facility: amount, purpose, preferred structure</div>
+          <div class="fj-step good">Uploads financials (audited accounts, management accounts, projections)</div>
+          <div class="fj-step good">AI spreads financials automatically — key ratios extracted in minutes</div>
+          <div class="fj-auto-tag">🤖 Was: Physical meetings + manual submission → Now: Self-serve upload, instant AI spreading</div>
+        </div>
+      </div>
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#001a40,#004db3);">
+          <div class="fj-stage-num">02</div>
+          <div class="fj-stage-name">Credit Committee Review</div>
+          <div class="fj-stage-time green">⚡ Day 2–5</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">🖥️ Officer Workbench + Group Risk Dashboard</div>
+          <div class="fj-step good">Credit officer reviews AI-prepared case: financial ratios, risk score, sector exposure</div>
+          <div class="fj-step good">Group-wide exposure checked: how much is already lent to this sector?</div>
+          <div class="fj-step good">Cross-territory delinquency: any connected entities delinquent in Guyana or BVI?</div>
+          <div class="fj-step good">Credit committee approval workflow — digital, with full audit trail</div>
+          <div class="fj-auto-tag">🤖 Full group risk picture available before approval. Currently impossible without unified system.</div>
+        </div>
+      </div>
+      <div class="fj-stage">
+        <div class="fj-stage-header" style="background:linear-gradient(135deg,#001a40,#0066e6);">
+          <div class="fj-stage-num">03</div>
+          <div class="fj-stage-name">Term Sheet + e-Sign</div>
+          <div class="fj-stage-time green">⚡ Day 5–6</div>
+        </div>
+        <div class="fj-stage-body">
+          <div class="fj-channel-tag">📋 Auto-Generated Facility Documentation</div>
+          <div class="fj-step good">Term sheet auto-generated from approval data — customised, not templated</div>
+          <div class="fj-step good">CFO reviews in portal — can request modifications via tracked comments</div>
+          <div class="fj-step good">Legal documentation prepared and signed digitally by all parties</div>
+          <div class="fj-step good">Facility live in portal — CFO can draw down immediately</div>
+          <div class="fj-auto-tag">🎉 Corporate client onboarded to digital facility in under 10 days. First drawdown: one click.</div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- ======= COLLECTIONS FUTURE JOURNEY ======= -->
+    <div class="fjourney-flow" id="fj-fcollections">
+      <div class="fj-compare-bar fade-in">
+        <div class="fj-compare-item red-side">
+          <span class="fj-compare-label">AS-IS</span>
+          <span class="fj-compare-val">&lt;50% Recovery</span>
+          <span class="fj-compare-sub">Manual letters · Redundant calls · No predictive alerts · TTD $6M/yr labour</span>
+        </div>
+        <div class="fj-arrow">→</div>
+        <div class="fj-compare-item green-side">
+          <span class="fj-compare-label">TO-BE</span>
+          <span class="fj-compare-val">65%+ Recovery</span>
+          <span class="fj-compare-sub">Predictive AI · WhatsApp/SMS · Auto-NPL · 40% labour redeployment</span>
+        </div>
+      </div>
+
+      <!-- CCU Staff View vs Customer View -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;" class="fade-in">
+        <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:12px;padding:20px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rb-blue-light);margin-bottom:16px;">👁️ CUSTOMER VIEW — What the borrower experiences</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Day 1 past due: Friendly WhatsApp message (not a letter days later)</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Message in clear language: amount, due date, easy payment link</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Self-serve payment portal — pay without calling anyone</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Promise-to-Pay option: "I'll pay by [date]" — logged automatically</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Personalised hardship option: "Talk to us" — triggers empathy workflow</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Real-time payment acknowledgment: "Thank you — account updated"</div>
+          <div class="fj-step good">No redundant calls if payment already made — system knows instantly</div>
+        </div>
+        <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:12px;padding:20px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rb-gold);margin-bottom:16px;">🏦 CCU STAFF VIEW — What collectors experience</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Morning: AI-prioritised call list — highest recovery probability cases first</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Each case pre-loaded: customer history, all products, all territories, DPD</div>
+          <div class="fj-step good" style="margin-bottom:8px;">No more envelope stuffing: bulk letter generation is automatic</div>
+          <div class="fj-step good" style="margin-bottom:8px;">PTP tracker: system alerts when a promise is due or broken</div>
+          <div class="fj-step good" style="margin-bottom:8px;">Real-time dashboard: team performance, roll rates, collection rates</div>
+          <div class="fj-step good" style="margin-bottom:8px;">NPL relegation: automatic trigger at 91 DPD — no manual Phoenix entry</div>
+          <div class="fj-step good">DCA commissions: calculated automatically from recovery data</div>
+        </div>
+      </div>
+
+      <div class="fj-stage-grid fade-in">
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg, #2a0038, #9c1b96);">
+            <div class="fj-stage-num">01</div>
+            <div class="fj-stage-name">Early Warning — Day 1+</div>
+            <div class="fj-stage-time green">⚡ Real-time detection</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🤖 Predictive Risk Engine (Phase 3: AI)</div>
+            <div class="fj-step good">Nightly DPD bucket auto-calculated — no manual calculation by staff</div>
+            <div class="fj-step good">Phase 3: AI flags accounts likely to default before they miss a payment</div>
+            <div class="fj-step good">Proactive outreach triggered: "Upcoming payment reminder" — not a collections call</div>
+            <div class="fj-step good">Cross-product view: customer delinquent on CC automatically surfaced in personal loan queue</div>
+            <div class="fj-auto-tag">🤖 Was: Reactive (day 91) → Now: Predictive (before day 1 of delinquency)</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg, #2a0038, #7c1b9c);">
+            <div class="fj-stage-num">02</div>
+            <div class="fj-stage-name">Multi-Channel Contact</div>
+            <div class="fj-stage-time green">⚡ Day 1–30 DPD</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 WhatsApp + SMS + Email + Auto-Call</div>
+            <div class="fj-step good">Day 1: WhatsApp message with secure payment link</div>
+            <div class="fj-step good">Day 3: SMS reminder — concise, clear, branded</div>
+            <div class="fj-step good">Day 7: Email with full statement and self-service options</div>
+            <div class="fj-step good">Day 14: Collector assigned — call list dynamically updated (no redundant calls)</div>
+            <div class="fj-step good">If payment received at any point: all subsequent contacts automatically cancelled</div>
+            <div class="fj-auto-tag">🤖 Was: Manual email copy-paste + physical letters → Now: Automated, channel-optimal contact</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg, #415508, #b6b006);">
+            <div class="fj-stage-num">03</div>
+            <div class="fj-stage-name">Self-Cure & PTP</div>
+            <div class="fj-stage-time green">⚡ Customer-driven</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📱 Self-Service Payment Portal</div>
+            <div class="fj-step good">Customer clicks link in WhatsApp → secure payment portal</div>
+            <div class="fj-step good">Pay in full, pay partial, or set a Promise-to-Pay date — all self-serve</div>
+            <div class="fj-step good">PTP logged in HES — automated reminder sent when promise date approaches</div>
+            <div class="fj-step good">If PTP broken: collector auto-alerted, priority escalation triggered</div>
+            <div class="fj-step good">"Hardship" path: triggers structured arrears plan workflow automatically</div>
+            <div class="fj-auto-tag">🤖 Self-cure reduces collector workload on low-risk accounts by an estimated 40%</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#8f7a06,#548d04);">
+            <div class="fj-stage-num">04</div>
+            <div class="fj-stage-name">Auto-NPL Relegation</div>
+            <div class="fj-stage-time green">⚡ Day 91 — Automated</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🤖 HES ↔ Phoenix Integration</div>
+            <div class="fj-step good">At 91 DPD: NPL status automatically triggered — zero manual book entry</div>
+            <div class="fj-step good">Phoenix accounting entries passed automatically (provisioning, GL movements)</div>
+            <div class="fj-step good">Regulatory notification generated: Central Bank NPL compliance automatically met</div>
+            <div class="fj-step good">All NPL status changes logged in immutable audit trail</div>
+            <div class="fj-step good">Mortgages: 180-day threshold tracked separately per product rule configuration</div>
+            <div class="fj-auto-tag">🤖 Was: Manual Phoenix entries → risk of delays → regulatory breach → Now: Automated, audit-ready</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#1a0030,#3d0070);">
+            <div class="fj-stage-num">05</div>
+            <div class="fj-stage-name">Recovery & DCA</div>
+            <div class="fj-stage-time green">⚡ Automated tracking</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">🏦 HES Recovery + DCA Module</div>
+            <div class="fj-step good">Accounts assigned to DCA electronically — no manual tracking</div>
+            <div class="fj-step good">DCA performance dashboard: recovery rates, SLA adherence, per-agency metrics</div>
+            <div class="fj-step good">Commissions auto-calculated from recovery data — no spreadsheet reconciliation</div>
+            <div class="fj-step good">Legal diary: bailiff instructions, property bids tracked in-system</div>
+            <div class="fj-step good">Write-off workflow: approval chain managed digitally, Phoenix entry auto-posted</div>
+            <div class="fj-auto-tag">🤖 Was: Manual DCA matching + spreadsheet commissions → Now: Automated, accurate, real-time</div>
+          </div>
+        </div>
+
+        <div class="fj-stage">
+          <div class="fj-stage-header" style="background:linear-gradient(135deg,#004d6e,#006d9b);">
+            <div class="fj-stage-num">06</div>
+            <div class="fj-stage-name">Management Intelligence</div>
+            <div class="fj-stage-time green">⚡ Real-time, always-on</div>
+          </div>
+          <div class="fj-stage-body">
+            <div class="fj-channel-tag">📊 CCU Real-Time Dashboard</div>
+            <div class="fj-step good">Roll rates by product, territory, bucket — live</div>
+            <div class="fj-step good">Collection Effectiveness Index (CEI) per team member and per territory</div>
+            <div class="fj-step good">Predictive delinquency heatmap: which branches / segments at risk next month</div>
+            <div class="fj-step good">Cross-territory comparison: Guyana vs T&T vs BVI recovery performance</div>
+            <div class="fj-step good">AI root-cause analysis: why is delinquency rising in Sector X?</div>
+            <div class="fj-auto-tag">📊 Was: Manual mining + weekly reports → Now: CEO-grade real-time intelligence</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="fj-outcome-bar">
+        <div class="fj-outcome">💰 Recovery Rate: <strong>&lt;50% → 65%+ target</strong></div>
+        <div class="fj-outcome">👥 FTE Redeployment: <strong>~7 FTE freed from admin</strong></div>
+        <div class="fj-outcome">💵 Annual Savings: <strong>TTD ~$1M (Year 2)</strong></div>
+        <div class="fj-outcome">⚖️ Compliance: <strong>Zero manual NPL risk</strong></div>
+        <div class="fj-outcome">📊 Intelligence: <strong>Real-time vs weekly manual</strong></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ========== RISK COMPLIANCE FRAUD ========== -->
+<section id="risk-compliance" class="bg-dark section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Enterprise Risk Intelligence</div>
+      <h2 class="section-title">Risk, Compliance & Fraud — Fully Automated End-to-End</h2>
+      <p class="section-desc">The platform goes beyond loan decision-making to provide an enterprise risk intelligence layer that protects the bank, the customer, and the regulator, all with zero manual intervention for standard cases.</p>
+    </div>
+
+    <!-- Three pillars row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;" class="fade-in">
+
+      <!-- FRAUD -->
+      <div style="background:var(--rb-surface);border:1px solid rgba(182, 231, 91, 0.427);border-radius:20px;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#2d0a0a,#88b333);padding:24px 28px 20px;">
+          <div style="font-size:36px;margin-bottom:8px;">🛡️</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;">Real-Time Fraud Prevention</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;">At every touchpoint — not just at application</div>
+        </div>
+        <div style="padding:24px 28px;">
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-red);">⚡</div>
+            <div>
+              <div class="rc-title">Biometric Liveness Detection</div>
+              <div class="rc-body">Selfie during eKYC checks for deepfakes, spoofed photos, and masked identities in real-time. Not just ID scan — live face matched to document.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-red);">📱</div>
+            <div>
+              <div class="rc-title">Device Fingerprinting & Velocity Checks</div>
+              <div class="rc-body">Same device applying for 5 loans across different identities? Flagged instantly. Unusual geolocation? Step-up authentication triggered automatically.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-red);">🔗</div>
+            <div>
+              <div class="rc-title">Cross-Territory Identity Fraud Detection</div>
+              <div class="rc-body">Customer flagged as fraudulent in T&T? Alert fires the moment they attempt a mortgage application in Guyana. The Group-wide CIF makes this possible for the first time.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-red);">📄</div>
+            <div>
+              <div class="rc-title">Document Authenticity AI</div>
+              <div class="rc-body">Payslips, bank statements, property documents verified for tampering, photoshop manipulation, and template fraud automatically — no analyst eye needed.</div>
+            </div>
+          </div>
+          <div class="rc-benefit">
+            <strong>Current State:</strong> Fraud caught retrospectively, after disbursement<br>
+            <strong style="color:var(--rb-green);">Future State:</strong> Fraud blocked at point of application — before a cent moves
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPLIANCE -->
+      <div style="background:var(--rb-surface);border:1px solid rgba(0,150,199,0.3);border-radius:20px;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#003d5e,#006d9b);padding:24px 28px 20px;">
+          <div style="font-size:36px;margin-bottom:8px;">⚖️</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;">Automated Regulatory Compliance</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;">Central Bank ready. Audit-proof. Zero manual entries.</div>
+        </div>
+        <div style="padding:24px 28px;">
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-blue-light);">🔄</div>
+            <div>
+              <div class="rc-title">Auto-AML Screening (Ongoing)</div>
+              <div class="rc-body">Every customer screened against OFAC, PEP, and sanctions lists at onboarding AND on a continuous basis. Not just a one-time check — re-screened automatically when global watchlists update.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-blue-light);">📊</div>
+            <div>
+              <div class="rc-title">Regulatory Reporting — Auto-Generated</div>
+              <div class="rc-body">Central Bank NPL reports, classified loan schedules, and prudential returns generated automatically from live system data. No manual data mining. No spreadsheet risk.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-blue-light);">🔏</div>
+            <div>
+              <div class="rc-title">Immutable Audit Trail</div>
+              <div class="rc-body">Every decision, every status change, every user action timestamped and locked in an immutable audit log. Regulators get full transparency; the bank gets full defensibility.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-blue-light);">🏦</div>
+            <div>
+              <div class="rc-title">FATCA / CRS Compliance</div>
+              <div class="rc-body">Tax residency and foreign account identification automated at onboarding for BVI and cross-border customers — critical for RFHL's international operations and correspondent banking relationships.</div>
+            </div>
+          </div>
+          <div class="rc-benefit">
+            <strong>Current State:</strong> Manual reports, compliance gaps, Phoenix entry errors<br>
+            <strong style="color:var(--rb-green);">Future State:</strong> Regulator-grade real-time compliance — zero manual entries
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTERPRISE RISK -->
+      <div style="background:var(--rb-surface);border:1px solid rgba(6,214,160,0.3);border-radius:20px;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#0a3d2d,#0f7a5a);padding:24px 28px 20px;">
+          <div style="font-size:36px;margin-bottom:8px;">📡</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;">Enterprise Risk Intelligence</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;">Group-wide portfolio view. Predictive. Proactive.</div>
+        </div>
+        <div style="padding:24px 28px;">
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-green);">🗺️</div>
+            <div>
+              <div class="rc-title">Group Portfolio Concentration Dashboard</div>
+              <div class="rc-body">Real-time view of sector, geography, and product concentration across T&T, Guyana, and BVI. Spot over-exposure before it becomes a provisioning problem. Currently invisible without a unified system.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-green);">🤖</div>
+            <div>
+              <div class="rc-title">AI Predictive Default Scoring (Phase 3)</div>
+              <div class="rc-body">GiniMachine identifies accounts likely to default 60–90 days before they miss a payment. Early intervention workflows triggered automatically — the bank protects NIM before losses crystallise.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-green);">📈</div>
+            <div>
+              <div class="rc-title">Forward-Looking Provisioning</div>
+              <div class="rc-body">IFRS 9 expected credit loss modelling driven by live portfolio data and predictive risk scores — not lagging historical averages. Capital efficiency improves; regulatory confidence increases.</div>
+            </div>
+          </div>
+          <div class="rc-item">
+            <div class="rc-icon" style="color:var(--rb-green);">⚡</div>
+            <div>
+              <div class="rc-title">Stress Testing — On Demand</div>
+              <div class="rc-body">Run portfolio stress scenarios (oil price shock in Guyana, Caribbean hurricane season, interest rate spike) against the live book in minutes — not weeks of manual modelling. Board-ready risk reports, always current.</div>
+            </div>
+          </div>
+          <div class="rc-benefit">
+            <strong>Current State:</strong> Blind to cross-territory risk; lagging provisioning data<br>
+            <strong style="color:var(--rb-green);">Future State:</strong> Predictive, group-wide, real-time risk intelligence
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Risk journey flow diagram -->
+    <div style="background:var(--rb-surface);border:1px solid var(--rb-border);border-radius:20px;padding:40px;" class="fade-in">
+      <div class="section-tag" style="text-align:left;display:inline-block;">Risk Automation Flow — From Application to Portfolio</div>
+      <div style="margin-top:28px;display:flex;gap:0;align-items:stretch;flex-wrap:wrap;">
+        <div class="risk-flow-step" style="border-color:rgba(230,57,70,0.4);background:rgba(230,57,70,0.05);">
+          <div class="rfstep-num" style="color:var(--rb-red);">1</div>
+          <div class="rfstep-title">Application In</div>
+          <div class="rfstep-items">
+            <div class="rfstep-item">Device fingerprint check</div>
+            <div class="rfstep-item">Velocity check (frequency)</div>
+            <div class="rfstep-item">Sanctions / PEP screening</div>
+            <div class="rfstep-item">Biometric liveness</div>
+          </div>
+        </div>
+        <div class="risk-flow-arrow">→</div>
+        <div class="risk-flow-step" style="border-color:rgba(255,107,53,0.4);background:rgba(255,107,53,0.05);">
+          <div class="rfstep-num" style="color:var(--rb-orange);">2</div>
+          <div class="rfstep-title">Document Verification</div>
+          <div class="rfstep-items">
+            <div class="rfstep-item">Document tamper AI</div>
+            <div class="rfstep-item">Income validation</div>
+            <div class="rfstep-item">Employer verification</div>
+            <div class="rfstep-item">Cross-territory history</div>
+          </div>
+        </div>
+        <div class="risk-flow-arrow">→</div>
+        <div class="risk-flow-step" style="border-color:rgba(245,166,35,0.4);background:rgba(245,166,35,0.05);">
+          <div class="rfstep-num" style="color:var(--rb-gold);">3</div>
+          <div class="rfstep-title">Credit Decisioning</div>
+          <div class="rfstep-items">
+            <div class="rfstep-item">Bureau API pull</div>
+            <div class="rfstep-item">DSR auto-calculated</div>
+            <div class="rfstep-item">Risk score assigned</div>
+            <div class="rfstep-item">LTV ratio checked</div>
+          </div>
+        </div>
+        <div class="risk-flow-arrow">→</div>
+        <div class="risk-flow-step" style="border-color:rgba(0,150,199,0.4);background:rgba(0,150,199,0.05);">
+          <div class="rfstep-num" style="color:var(--rb-blue-light);">4</div>
+          <div class="rfstep-title">Active Monitoring</div>
+          <div class="rfstep-items">
+            <div class="rfstep-item">Ongoing AML re-screen</div>
+            <div class="rfstep-item">DPD auto-tracked</div>
+            <div class="rfstep-item">Behavioural signals</div>
+            <div class="rfstep-item">PTP auto-monitoring</div>
+          </div>
+        </div>
+        <div class="risk-flow-arrow">→</div>
+        <div class="risk-flow-step" style="border-color:rgba(6,214,160,0.4);background:rgba(6,214,160,0.05);">
+          <div class="rfstep-num" style="color:var(--rb-green);">5</div>
+          <div class="rfstep-title">Portfolio Intelligence</div>
+          <div class="rfstep-items">
+            <div class="rfstep-item">Concentration heatmap</div>
+            <div class="rfstep-item">Predictive defaults</div>
+            <div class="rfstep-item">IFRS 9 provisioning</div>
+            <div class="rfstep-item">Stress test scenarios</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== FINTECH & EMBEDDED FINANCE ========== -->
+<section id="fintech" class="bg-surface section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Fintech & Embedded Finance</div>
+      <h2 class="section-title">Lending Everywhere — Partner-Powered Growth</h2>
+      <p class="section-desc">Open APIs enhance our lending capabilities, allowing partners to seamlessly integrate them into their customer journeys. This approach unlocks new revenue streams without the need for additional branches..</p>
+    </div>
+
+    <!-- SellReady spotlight -->
+    <div style="background:var(--rb-surface2);border:1px solid var(--rb-border);border-radius:24px;overflow:hidden;margin-bottom:48px;" class="fade-in">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+        <div style="padding:40px;border-right:1px solid var(--rb-border);">
+          <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(0,150,199,0.1);border:1px solid var(--rb-border);padding:8px 16px;border-radius:100px;margin-bottom:24px;">
+            <span style="font-size:18px;">🏘️</span>
+            <span style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--rb-blue-light);">SellReady × Republic Bank — Live Example</span>
+          </div>
+          <h3 style="font-family:var(--font-display);font-size:28px;font-weight:700;line-height:1.2;margin-bottom:16px;">A buyer finds their dream property on SellReady.<br><span style="color:var(--rb-blue-light);">Republic Bank approves their mortgage in the same session.</span></h3>
+          <p style="font-size:14px;color:var(--rb-muted);line-height:1.8;margin-bottom:24px;">SellReady is a Caribbean real estate platform connecting buyers with property listings. By embedding Republic Bank's lending API directly into the SellReady property listing page, the bank captures mortgage demand at the exact moment of intent — before the customer ever thinks to call a competitor.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="fj-step good">Buyer views property on SellReady — "Get pre-approved with Republic Bank" button visible on listing</div>
+            <div class="fj-step good">Clicks button → GDO eKYC opens in-flow (new customer) or auto-login (existing RBL customer)</div>
+            <div class="fj-step good">Property details pre-filled from SellReady listing (price, address, type)</div>
+            <div class="fj-step good">Income and ID submitted → HES decisioning runs in background</div>
+            <div class="fj-step good">Pre-approval certificate issued within minutes — buyer downloads and shares with seller</div>
+            <div class="fj-step good">Full mortgage application continues on RBL platform — SellReady earns referral fee</div>
+          </div>
+        </div>
+        <div style="padding:40px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--rb-muted);margin-bottom:20px;">WHAT THIS LOOKS LIKE — SELLREADY LISTING PAGE</div>
+          <!-- Mockup of SellReady integration -->
+          <div style="background:#0f1923;border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;font-family:var(--font-body);">
+            <div style="background:#1a2535;padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06);">
+              <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+              <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:4px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,0.4);margin:0 12px;">sellready.co/listings/tortola-villa-4bed</div>
+            </div>
+            <div style="padding:20px;">
+              <div style="font-size:13px;font-weight:700;color:white;margin-bottom:4px;">Tortola Waterfront Villa — 4 Bed</div>
+              <div style="font-size:20px;font-weight:900;color:#4CAF50;margin-bottom:12px;">USD $1,750,000</div>
+              <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:12px;margin-bottom:12px;font-size:11px;color:rgba(255,255,255,0.5);">4 bed · 3 bath · 3,200 sq ft · Ocean view · Pool</div>
+              <!-- RBL embedded widget -->
+              <div style="background:linear-gradient(135deg,#012940,#024d7a);border:1px solid rgba(0,150,199,0.4);border-radius:12px;padding:16px;margin-top:8px;">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                  <img src="data:image/jpeg;base64,LOGO_PLACEHOLDER" style="height:0px;" alt="">
+                  <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Republic Bank — Embedded Mortgage</div>
+                </div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:12px;">Est. monthly payment: <strong style="color:white;">USD $7,840</strong> over 25 years @ 6.5%</div>
+                <div style="background:#0096C7;color:white;padding:10px 16px;border-radius:8px;text-align:center;font-size:13px;font-weight:700;cursor:pointer;">⚡ Get Pre-Approved Now — 5 Minutes</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.4);text-align:center;margin-top:8px;">Existing RBL customer? <span style="color:#0096C7;">Sign in for instant offer →</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partner grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;" class="fade-in">
+
+      <div class="partner-card">
+        <div class="partner-header" style="background:linear-gradient(135deg,#1a0040,#3d00a0); padding: 10px;">
+          <div class="partner-icon">🛒</div>
+          <div class="partner-name">BNPL — Buy Now Pay Later</div>
+          <div class="partner-sub">Retail & Merchant Integration</div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-how">How it works</div>
+          <div class="fj-step good">Customer at POS (or online checkout) chooses "Pay in 3" with Republic Bank</div>
+          <div class="fj-step good">Existing RBL customers: instant approval based on account history</div>
+          <div class="fj-step good">Merchant gets paid in full immediately — RBL takes the credit risk</div>
+          <div class="fj-step good">Customer repays in equal instalments — interest-free or low-rate</div>
+          <div class="partner-market">
+            <strong>Caribbean Fit:</strong> T&T back-to-school, appliance retail, medical expenses, travel. Targets Gen Y/Z who reject traditional credit cards. Partners: Courts, Massy, local retailers.
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-header" style="background:linear-gradient(135deg,#003d1a,#006d30); padding: 10px;">
+          <div class="partner-icon">💼</div>
+          <div class="partner-name">Payroll-Linked Lending</div>
+          <div class="partner-sub">Employer-Integrated Salary Loans</div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-how">How it works</div>
+          <div class="fj-step good">Corporate client sets up payroll lending agreement with Republic Bank</div>
+          <div class="fj-step good">Employee applies via dedicated portal — income auto-verified via payroll data</div>
+          <div class="fj-step good">Repayment deducted at source from salary before employee is paid</div>
+          <div class="fj-step good">Lower risk for bank = lower rates for employee = happier workforce for employer</div>
+          <div class="partner-market">
+            <strong>Caribbean Fit:</strong> Government ministries, oil companies (Guyana), manufacturing (T&T). Near-zero default risk with salary deduction. Premium product for salary transfer customers.
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-header" style="background:linear-gradient(135deg,#1a1a00,#5a5a00); padding: 10px;">
+          <div class="partner-icon">🌱</div>
+          <div class="partner-name">Green Finance Embedded</div>
+          <div class="partner-sub">Climate & Renewable Energy Loans</div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-how">How it works</div>
+          <div class="fj-step good">Partner: solar installer quotes customer → "Finance with Republic Bank" on quote PDF</div>
+          <div class="fj-step good">Customer taps link → pre-filled application (property address, loan amount from quote)</div>
+          <div class="fj-step good">Preferential green mortgage rate automatically applied</div>
+          <div class="fj-step good">Funds disbursed directly to installer upon completion</div>
+          <div class="partner-market">
+            <strong>Caribbean Fit:</strong> High electricity costs in T&T/BVI drive solar demand. Guyana climate resilience programmes. Government incentives available. First-mover advantage in Caribbean green lending.
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-header" style="background:linear-gradient(135deg,#002040,#004080); padding: 10px;">
+          <div class="partner-icon">🌍</div>
+          <div class="partner-name">Diaspora Lending Portal</div>
+          <div class="partner-sub">Caribbean Expats Buying at Home</div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-how">How it works</div>
+          <div class="fj-step good">Dedicated diaspora mortgage portal — accessible from US, UK, Canada</div>
+          <div class="fj-step good">Remote eKYC: international ID + overseas address verified</div>
+          <div class="fj-step good">Overseas income verified via open banking (UK) or payslip upload</div>
+          <div class="fj-step good">Property in T&T/Guyana/BVI: entire mortgage completed remotely</div>
+          <div class="partner-market">
+            <strong>Caribbean Fit:</strong> 750,000+ T&T diaspora in North America/UK. Significant remittance flows. Growing interest in homeland property investment. BVI luxury market already attracts international buyers.
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-header" style="background:linear-gradient(135deg,#200020,#600060); padding: 10px;">
+          <div class="partner-icon">🔬</div>
+          <div class="partner-name">Microfinance — Unbanked Access</div>
+          <div class="partner-sub">USD $200–$5,000 Micro Loans</div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-how">How it works</div>
+          <div class="fj-step good">WhatsApp-based application — no smartphone app required</div>
+          <div class="fj-step good">Alternative credit scoring: mobile money history, utility bill regularity</div>
+          <div class="fj-step good">Loan approved and disbursed to mobile wallet within hours</div>
+          <div class="fj-step good">Repayment via WhatsApp payment or mobile money — no branch needed</div>
+          <div class="partner-market">
+            <strong>Caribbean Fit:</strong> 30% of Caribbean unbanked. Guyana rural hinterland. Micro-entrepreneurs in T&T informal sector. Agricultural lending in Guyana. Gateway product → full banking relationship.
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-header" style="background:linear-gradient(135deg,#002020,#004040); padding: 10px;">
+          <div class="partner-icon">🔌</div>
+          <div class="partner-name">Republic Bank Lending API</div>
+          <div class="partner-sub">Open Banking for Partner Platforms</div>
+        </div>
+        <div class="partner-body">
+          <div class="partner-how">How it works</div>
+          <div class="fj-step good">RBL publishes documented APIs via Kong gateway</div>
+          <div class="fj-step good">Any approved partner (fintech, employer, retailer, real estate) integrates in days</div>
+          <div class="fj-step good">Partner handles the customer touchpoint — RBL handles the credit and compliance</div>
+          <div class="fj-step good">Revenue share model: bank earns NIM, partner earns referral/service fee</div>
+          <div class="partner-market">
+            <strong>Caribbean Fit:</strong> Caribbean fintech ecosystem growing 340% since 2017. Open banking becoming regional standard. Position RBL as the credit infrastructure layer for Caribbean digital economy.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== CORPORATE LENDING ========== -->
+<section id="corporate" class="bg-dark section-pad">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Corporate & Commercial Banking</div>
+      <h2 class="section-title">Corporate Lending — Hyper-Personalised, End-to-End Digital</h2>
+      <p class="section-desc">Corporate banking is not one customer — it is an organisation, its finance team, its employees, and their families. The future state serves all of them through a single, connected platform with differentiated experiences at every level.</p>
+    </div>
+
+    <!-- Three tiers -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--rb-border);border-radius:20px;overflow:hidden;margin-bottom:48px;" class="fade-in">
+
+      <div style="background:var(--rb-surface);padding:32px;border-right:1px solid var(--rb-border);">
+        <div style="font-size:28px;margin-bottom:12px;">🏛️</div>
+        <div style="font-size:15px;font-weight:700;color:var(--rb-white);margin-bottom:8px;">Tier 1 — The Corporate Entity</div>
+        <div style="font-size:12px;color:var(--rb-muted);margin-bottom:16px;">CFO / Finance Director relationship</div>
+        <div style="font-size:13px;color:var(--rb-muted);line-height:1.8;">Structured credit facilities. Working capital lines. Trade finance. Term loans. All managed through a dedicated Corporate Banking digital dashboard — the CFO sees the entire facility, draws down online, requests limit increases, and tracks covenant compliance in real-time.</div>
+        <div style="margin-top:16px;padding:12px;background:rgba(0,150,199,0.08);border-radius:8px;border:1px solid var(--rb-border);font-size:12px;color:var(--rb-blue-light);">Digital facility portal · Real-time drawdown · Covenant dashboard · e-Sign term sheets</div>
+      </div>
+
+      <div style="background:rgba(0,150,199,0.05);padding:32px;border-right:1px solid var(--rb-border);">
+        <div style="font-size:28px;margin-bottom:12px;">👔</div>
+        <div style="font-size:15px;font-weight:700;color:var(--rb-white);margin-bottom:8px;">Tier 2 — The HR / Payroll Team</div>
+        <div style="font-size:12px;color:var(--rb-muted);margin-bottom:16px;">HR Director / Payroll Manager relationship</div>
+        <div style="font-size:13px;color:var(--rb-muted);line-height:1.8;">HR team manages a white-label employee lending portal — branded to the corporate client. They set eligibility rules, approve employee participation, see anonymised portfolio stats. Employees are onboarded in bulk via payroll file. RBL handles all credit and servicing behind the scenes.</div>
+        <div style="margin-top:16px;padding:12px;background:rgba(6,214,160,0.08);border-radius:8px;border:1px solid rgba(6,214,160,0.2);font-size:12px;color:var(--rb-green);">White-label portal · Bulk employee onboarding · Payroll deduction setup · Portfolio visibility</div>
+      </div>
+
+      <div style="background:rgba(6,214,160,0.03);padding:32px;">
+        <div style="font-size:28px;margin-bottom:12px;">👤</div>
+        <div style="font-size:15px;font-weight:700;color:var(--rb-white);margin-bottom:8px;">Tier 3 — The Employee</div>
+        <div style="font-size:12px;color:var(--rb-muted);margin-bottom:16px;">Salary transfer customer — hyper-personalised</div>
+        <div style="font-size:13px;color:var(--rb-muted);line-height:1.8;">The employee sees a Republic Bank app experience personalised to their employer relationship — pre-approved loan offers based on their salary, special rates shown prominently, no income verification needed (employer already confirmed it), instant decisioning, and deduction that comes straight from payroll so they never miss a payment.</div>
+        <div style="margin-top:16px;padding:12px;background:rgba(245,166,35,0.08);border-radius:8px;border:1px solid rgba(245,166,35,0.2);font-size:12px;color:var(--rb-gold);">Pre-approved offers · Special employer rates · Zero income docs · Payroll deduction · Instant disburse</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div style="margin-bottom:8px;">
+<img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAkCAMAAABPCnNaAAAArlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8tivQqAAAAOXRSTlMACgcDDoIqGFYmEx4i6zLIknlzbdNQ+86+nX12OS71QRCN48KJYaWhU0bYZ+/nq5hLPd6pArmuXLINYLIxAAAFPElEQVRYw82Y6XbaMBCFx/KGNxxjx4AxOyWsZQtQvf+L9Y4MxG5o0185vjlHsbbRp/GM5AOVpTUcImtN9dR7S86FtpLxO9VRPSnlzt9K2aIaCnTQixPWkq8lC5l+HflieZfptevGJ3ryQxnz9TSqj4ayrIjf74HqI80s46WZtf01ojoplmXtqnC6JoTQNPH1gYiBt1ECwr9Pc4QobOn0XDzg0yTPiQdlvjej3NufhN231bET9b+g0y+raZirRcz26dQnqxNpVNF4de6Gk0nHXP4luvPwdFlUm+yjzK8Vvotb6vY3aAm4eP2Pl/CDWFc8NSiQMqaK1hJKAj5in/P5qZTtSoubSLltNip8P8v+a6LBo54q/603hlJ6kXJPmPGLqupKOSv2caWnegV5xXdn5pn00V7SvLS5A+oWOeyQL2Jvfvew2PFTI038P2524I0RBhOGeKprtcfuFDwTZ/GJr3TwNMm67Xi0XNpFvpC7bILJEJpOGte1n9iBw2ElugrULYy4++Y9PN+K1TuKkrxXtkUCJjBqyCH1gwcIDX9lOuZrPOdTeJbCWyJ6UsnXin/cHEPOcuFsgkGEW3G7OTAeYiQ4KLz8unqbrm/nVtJ/4M1I2dpzB2SOyNqm2x1XXoHH4DHMvLyD+PzBM2n+GDzlA17qUIaIFAQjMSInUjdNBoiuG2Fx8jC1IYDX5Q5HR8/STnipUSg3zUym9h1v7uUdmbZ0vujXsH0mLeYojXhi4T1HvS+yVmWetttLy/VkdMfD5IsMxzbtYZ3ERUrfw34452Xel/JENJNywd5b0AtDqdgDqUkRQFX1jqeUCZU+TZ43ZG8GLj82CrxcdkYqJyvK/aBcPboPvAAdM52II9v25rADvK2qZ02F96LwbguE2ph5MriZs8CjWCbuHW8at9B2xrHYjV0PFiLmOMObt9lZX3aLc9saVNyXm88OF+Alw4QdYxzvnWsfzDqBYtev4rGHU8+84bUwbmMT2Vo59twpZo/I2KvYMhlvpT3wkqNc36+EtMLnZB9Hs1FKjYk7QyEEsqETRfE6cvoKb/YcTzoPPKfAq2YuQ8g9f5vHLze8o0a9Ak+p/5zPy0p05cz11LE3fXwMHh54f77cZcV7mDf4jJez06ZApPgznomH+f3idSrvN7TNB131WJ4jamhcWKcGJ8SEOOQj2H4jMh94CwwU99jriQB5xLeVXTqWic8wkLYNyj6/3JZQZ8xTvqmdcaKWL12QSF9BLl0ULqeU6WErpAWcT3w20AkZKFAsKeIFgXegGHjskxiL3NbbqdjrB1iIEW06c2p4ysSaZ79iAF8dKafuk/zo2JFM7PK90ubWkVhxbmNzQaMHuxZq4zl8oOsbnHZzicJro1jAtJ3zpX/Y4tHSQkBemQRCJxyFdtCLCdzwU+XGDMXQA/PJgqGBWPAo+8HXrvivuXCo8kWQBgNpIeQHOFz2nLy4SgGgLBtE+QSkrXayWmZmzFuxKErDZHpONxuEqtHiQ6q4fC9yE/C90olQ77eBMoywYicJt/EwaCft2SpJVofrtp0E+YPACSv5YVFZujsyRq5OhBIe16zcEcR4odf00YwO3xO4dTW+fP0D92oGqq5rGC7wyXV8QUoamoyRob5t2VRzRLrlaEqCC8PgJ6HqVMjYja2OLGuo01fqA4++RYinmVfls+kL6Q2Vzt8hjn3TmJboeoK+kCOhjUHfIQHXRdoH3/o/tvS6X+5fvweP2HU9QBaq349oRsj+69SUjmh0Ur//1JQOfHN5efe28gfVU05mER3q5LvfJuxFoLOrXRkAAAAASUVORK5CYII="  alt="Republic Bank" style="height:40px;width:auto;">
+  </div>
+  <strong>Republic Financial Holding Limited – Group Digital Lending</strong><br>  
+Prepared for Republic Bank Group Business Executives
+April 2026 | Strictly Confidential — Internal Use Only<br>
+  <span style="margin-top:8px;display:block;">All financial projections and performance metrics presented in this document are derived from internal sources.
+These figures are provided for discussion and illustrative purposes only. They are not exhaustive and are subject to change based on final assumptions, market conditions, and further analysis by the Data Unit and relevant business teams.</span>
+</footer>
+<strong> Presented by Jean Paris – Group Digital Strategist
+</strong><br>  
+<br>
+
+<script>
+
+// Screen tabs
+function showScreens(id) {
+  document.querySelectorAll('.screen-group').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.screentab').forEach(t => t.classList.remove('active'));
+  document.getElementById('sg-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// AS-IS Journey tabs
+function showJourney(id) {
+  document.querySelectorAll('.journey-flow').forEach(f => f.classList.remove('active'));
+  document.querySelectorAll('.jtab').forEach(t => t.classList.remove('active'));
+  document.getElementById('journey-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// TO-BE Future Journey tabs
+function showFutureJourney(id, btn) {
+  document.querySelectorAll('.fjourney-flow').forEach(f => f.classList.remove('active'));
+  document.querySelectorAll('.fjtab').forEach(t => t.classList.remove('active'));
+  document.getElementById('fj-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Persona switcher (mortgage)
+function switchPersona(product, persona) {
+  // Hide all flows for this product
+  document.querySelectorAll('[id^="p' + product + '-"]').forEach(f => f.classList.remove('active'));
+  // Deactivate all persona buttons
+  document.querySelectorAll('[id^="persona-"]').forEach(p => p.classList.remove('active-persona'));
+  // Show selected
+  const flow = document.getElementById('p' + product + '-' + persona);
+  if (flow) flow.classList.add('active');
+  const btn = document.getElementById('persona-' + persona);
+  if (btn) btn.classList.add('active-persona');
+}
+
+// Fade in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+

@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDTD - Issue #1</title>
+    <style>
+        :root {
+            --navy: #011D2E;
+            --navy2: #02304A;
+            --surface: #0B1D2E;
+            --surface2: #0F2438;
+            --blue: #0096C7;
+            --blue-lt: #00B4E6;
+            --teal: #00B4D8;
+            --green: #06D6A0;
+            --orange: #FF6B35;
+            --gold: #F5A623;
+            --purple: #8B5CF6;
+            --purp-lt: #A78BFA;
+            --white: #FFFFFF;
+            --light: #CBD5E0;
+            --muted: #64748B;
+            --dim: #475569;
+            --border: rgba(255, 255, 255, 0.06);
+
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --mono: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+            --text-xs: 11px;
+            --text-sm: 14px;
+            --text-base: 16px;
+            --text-lg: 20px;
+            --h2: clamp(28px, 3.5vw, 40px);
+            --h1: clamp(48px, 8vw, 100px);
+
+            --gap-xs: 4px;
+            --gap-sm: 8px;
+            --gap-md: 16px;
+            --gap-lg: 24px;
+            --gap-xl: 36px;
+            --gap-2xl: 48px;
+            --section-pad: 60px;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--navy);
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .snap-wrap {
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .snap-wrap::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .snap-wrap::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+
+        .snap-wrap::-webkit-scrollbar-thumb {
+            background: rgba(0, 150, 199, 0.25);
+            border-radius: 3px;
+        }
+
+        .snap {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            min-height: 100vh;
+            min-height: 100dvh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        }
+
+        .rv.vis {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rv-d1 { transition-delay: 0.08s; }
+        .rv-d2 { transition-delay: 0.16s; }
+        .rv-d3 { transition-delay: 0.24s; }
+        .rv-d4 { transition-delay: 0.32s; }
+        .rv-d5 { transition-delay: 0.4s; }
+
+        .rv-left {
+            opacity: 0;
+            transform: translateX(-24px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        }
+
+        .rv-left.vis {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .rv-right {
+            opacity: 0;
+            transform: translateX(24px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        }
+
+        .rv-right.vis {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .watermark {
+            position: absolute;
+            font-family: var(--mono);
+            font-size: clamp(120px, 20vw, 240px);
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.015);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .wm-right {
+            right: 40px;
+            bottom: 40px;
+        }
+
+        .wm-left {
+            left: 40px;
+            top: 40px;
+        }
+
+        .prog {
+            position: fixed;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--gap-sm);
+        }
+
+        .prog-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid var(--muted);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s var(--ease);
+            position: relative;
+        }
+
+        .prog-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%) translateX(6px);
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            font-size: var(--text-xs);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .prog-dot:hover::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .prog-dot.on {
+            border-color: var(--blue-lt);
+            background: var(--blue-lt);
+            transform: scale(1.4);
+            box-shadow: 0 0 12px rgba(0, 180, 230, 0.4);
+        }
+
+        .prog-dot.done {
+            border-color: var(--teal);
+            background: var(--teal);
+        }
+
+        .prog-counter {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+            letter-spacing: 1px;
+            margin-top: var(--gap-xs);
+        }
+
+        .hero {
+            padding: 0 var(--section-pad);
+            align-items: center;
+            background: var(--navy);
+        }
+
+        .hero-noise {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+        }
+
+        .hero-line,
+        .hero-line-2 {
+            position: absolute;
+            pointer-events: none;
+            width: 1px;
+            transform: rotate(-15deg);
+        }
+
+        .hero-line {
+            height: 60vh;
+            background: linear-gradient(180deg, transparent, rgba(0, 150, 199, 0.12), transparent);
+            top: 10%;
+            right: 28%;
+        }
+
+        .hero-line-2 {
+            height: 40vh;
+            background: linear-gradient(180deg, transparent, rgba(0, 150, 199, 0.06), transparent);
+            top: 25%;
+            right: 22%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .hero-issue {
+            font-family: var(--mono);
+            font-size: var(--text-sm);
+            letter-spacing: 3px;
+            color: var(--dim);
+            margin-bottom: var(--gap-xl);
+            display: inline-block;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: var(--gap-sm);
+        }
+
+        .hero h1 {
+            font-size: var(--h1);
+            font-weight: 800;
+            line-height: 0.92;
+            letter-spacing: -4px;
+            margin-bottom: var(--gap-lg);
+        }
+
+        .hero h1 .w1 {
+            display: block;
+            color: var(--muted);
+            font-weight: 300;
+            font-size: 0.45em;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 .w2 {
+            display: block;
+        }
+
+        .hero h1 .w3 {
+            display: block;
+            -webkit-text-stroke: 1.5px var(--blue-lt);
+            color: transparent;
+        }
+
+        .hero-sub {
+            font-size: var(--text-lg);
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 480px;
+            margin-bottom: var(--gap-2xl);
+        }
+
+        .hero-cue {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            color: var(--dim);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: var(--gap-md);
+        }
+
+        .hero-cue-bar {
+            width: 32px;
+            height: 2px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden;
+            border-radius: 1px;
+        }
+
+        .hero-cue-bar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40%;
+            height: 100%;
+            background: var(--blue-lt);
+            border-radius: 1px;
+            animation: cue-slide 3s ease-in-out infinite;
+        }
+
+        @keyframes cue-slide {
+            0% { left: 0; }
+            50% { left: 60%; }
+            100% { left: 0; }
+        }
+
+        .about {
+            padding: 0 var(--section-pad);
+            align-items: center;
+            background: var(--surface);
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--section-pad);
+            max-width: 1000px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .about-h {
+            font-size: var(--h2);
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: var(--gap-lg);
+        }
+
+        .about-text {
+            font-size: var(--text-lg);
+            line-height: 1.85;
+            color: var(--light);
+        }
+
+        .about-text em {
+            font-style: normal;
+            color: var(--blue-lt);
+            font-weight: 500;
+        }
+
+        .about-text strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .about-nums {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .anum {
+            padding: var(--gap-xl) var(--gap-lg);
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+
+        .anum:nth-child(2n) {
+            border-right: none;
+        }
+
+        .anum:nth-child(n+3) {
+            border-bottom: none;
+        }
+
+        .anum-val {
+            font-family: var(--mono);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .anum-val .sfx {
+            font-size: 0.5em;
+            color: var(--muted);
+            letter-spacing: 0;
+        }
+
+        .anum:nth-child(1) .anum-val { color: var(--blue-lt); }
+        .anum:nth-child(2) .anum-val { color: var(--teal); }
+        .anum:nth-child(3) .anum-val { color: var(--green); }
+        .anum:nth-child(4) .anum-val { color: var(--gold); }
+
+        .anum-lbl {
+            font-size: var(--text-xs);
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: var(--gap-sm);
+            font-weight: 500;
+        }
+
+        .letter {
+            padding: 0 var(--section-pad);
+            align-items: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--surface) 100%);
+        }
+
+        .letter-inner {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .letter-label {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: var(--gap-xl);
+        }
+
+        .letter-body {
+            font-size: var(--text-lg);
+            line-height: 1.85;
+            color: var(--light);
+            max-width: 640px;
+        }
+
+        .letter-body p {
+            margin-bottom: var(--gap-md);
+        }
+
+        .letter-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .letter-body .dcap::first-letter {
+            font-size: 3.4em;
+            font-weight: 800;
+            float: left;
+            line-height: 0.78;
+            margin: 6px 14px 0 0;
+            color: var(--blue-lt);
+        }
+
+        .letter-sig {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-md);
+            margin-top: var(--gap-xl);
+            padding-top: var(--gap-lg);
+            border-top: 1px solid var(--border);
+            max-width: 640px;
+        }
+
+        .letter-av {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-base);
+            font-weight: 700;
+        }
+
+        .letter-name {
+            font-size: var(--text-base);
+            font-weight: 700;
+        }
+
+        .letter-role {
+            font-size: var(--text-sm);
+            color: var(--muted);
+        }
+
+        .org-section {
+            padding: 0 var(--section-pad);
+        }
+
+        .org-inner {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .org-inner h2 {
+            font-size: var(--h2);
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: var(--gap-lg);
+        }
+
+        .org-vp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--gap-md);
+        }
+
+        .org-vp-av {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 0 0 3px var(--navy), 0 0 0 5px var(--blue);
+            margin-bottom: var(--gap-sm);
+        }
+
+        .org-vp-name {
+            font-size: var(--text-base);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .org-vp-role {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .org-line-v {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
+        }
+
+        .org-line-h {
+            display: flex;
+            align-items: flex-start;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .org-line-h-bar {
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .org-line-h-drop {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .org-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .org-teams {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: var(--gap-lg);
+            margin-top: var(--gap-sm);
+        }
+
+        .org-team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .org-lead {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--gap-md);
+        }
+
+        .org-lead-label {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .org-lead-label.apps { color: var(--orange); }
+        .org-lead-label.web { color: var(--blue-lt); }
+        .org-lead-label.cloud { color: var(--purp-lt); }
+        .org-lead-label.ic { color: var(--teal); }
+
+        .org-lead-av {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-base);
+            font-weight: 700;
+            color: white;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .org-lead-av.apps {
+            background: linear-gradient(135deg, var(--orange), var(--gold));
+            box-shadow: 0 0 0 2px var(--navy), 0 0 0 4px var(--orange);
+        }
+
+        .org-lead-av.web {
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            box-shadow: 0 0 0 2px var(--navy), 0 0 0 4px var(--blue);
+        }
+
+        .org-lead-av.cloud {
+            background: linear-gradient(135deg, var(--purple), var(--purp-lt));
+            box-shadow: 0 0 0 2px var(--navy), 0 0 0 4px var(--purple);
+        }
+
+        .org-lead-av.ic {
+            background: linear-gradient(135deg, var(--teal), var(--green));
+            box-shadow: 0 0 0 2px var(--navy), 0 0 0 4px var(--teal);
+        }
+
+        .org-lead-name {
+            font-size: var(--text-base);
+            font-weight: 700;
+        }
+
+        .org-lead-title {
+            font-size: var(--text-sm);
+            color: var(--muted);
+        }
+
+        .org-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .org-support {
+            display: flex;
+            gap: var(--gap-sm);
+            justify-content: center;
+            margin-top: var(--gap-md);
+            padding-top: var(--gap-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .ts-person {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s var(--ease);
+        }
+
+        .ts-person:hover {
+            z-index: 10;
+            transform: translateY(-3px);
+        }
+
+        .ts-av {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-sm);
+            font-weight: 700;
+            color: white;
+            border: 2px solid var(--surface);
+            transition: border-color 0.2s;
+        }
+
+        .ts-person:hover .ts-av {
+            border-color: var(--white);
+        }
+
+        .ts-av.g1 { background: linear-gradient(135deg, var(--orange), var(--gold)); }
+        .ts-av.g2 { background: linear-gradient(135deg, #E63946, var(--orange)); }
+        .ts-av.g3 { background: linear-gradient(135deg, var(--gold), #E6A817); }
+        .ts-av.g4 { background: linear-gradient(135deg, #FF8C61, var(--orange)); }
+        .ts-av.g5 { background: linear-gradient(135deg, var(--blue), var(--teal)); }
+        .ts-av.g6 { background: linear-gradient(135deg, var(--teal), var(--green)); }
+        .ts-av.g7 { background: linear-gradient(135deg, #0077B6, var(--blue)); }
+        .ts-av.g8 { background: linear-gradient(135deg, var(--blue-lt), var(--teal)); }
+        .ts-av.g9 { background: linear-gradient(135deg, var(--purple), var(--purp-lt)); }
+        .ts-av.g10 { background: linear-gradient(135deg, #7C3AED, var(--purple)); }
+        .ts-av.g11 { background: linear-gradient(135deg, var(--purp-lt), #C4B5FD); }
+        .ts-av.g12 { background: linear-gradient(135deg, #6D28D9, var(--purple)); }
+
+        .ts-tip {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%) translateY(6px);
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            width: max-content;
+            max-width: 200px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s, transform 0.2s var(--ease);
+            z-index: 20;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .ts-tip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--surface2);
+        }
+
+        .ts-person:hover .ts-tip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .ts-tip-name {
+            font-size: var(--text-sm);
+            font-weight: 700;
+            margin-bottom: 1px;
+        }
+
+        .ts-tip-role {
+            font-size: var(--text-xs);
+            color: var(--muted);
+        }
+
+        .products-snap {
+            padding: 0 var(--section-pad);
+            align-items: center;
+            background: var(--surface2);
+        }
+
+        .products-inner {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .products-top {
+            margin-bottom: var(--gap-xl);
+        }
+
+        .products-top h2 {
+            font-size: var(--h2);
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: var(--gap-sm);
+        }
+
+        .products-sub {
+            font-size: var(--text-base);
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .plist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-md);
+        }
+
+        .pitem {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--gap-md);
+            padding: var(--gap-lg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+            transition: transform 0.3s var(--ease), border-color 0.3s, background 0.3s;
+        }
+
+        .pitem:hover {
+            transform: translateX(4px);
+            border-color: rgba(255, 255, 255, 0.12);
+            background: var(--navy);
+        }
+
+        .pitem-index {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            font-weight: 600;
+            color: var(--dim);
+            letter-spacing: 1px;
+            padding-top: 2px;
+            flex-shrink: 0;
+            min-width: 24px;
+        }
+
+        .pitem-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pitem-name {
+            font-size: var(--text-base);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--gap-xs);
+            line-height: 1.3;
+        }
+
+        .pitem-desc {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .contact-snap {
+            padding: 0 var(--section-pad);
+            align-items: center;
+            background: var(--navy);
+        }
+
+        .contact-inner {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--section-pad);
+            align-items: center;
+        }
+
+        .cl-eyebrow {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: var(--gap-md);
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+        }
+
+        .cl-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .cl h2 {
+            font-size: var(--h2);
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.05;
+            margin-bottom: var(--gap-lg);
+            text-transform: uppercase;
+        }
+
+        .cl > p {
+            font-size: var(--text-lg);
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: var(--gap-lg);
+            max-width: 420px;
+        }
+
+        .cl-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--gap-sm);
+            padding: var(--gap-sm) var(--gap-md);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.02);
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .cl-meta-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px rgba(6, 214, 160, 0.5);
+        }
+
+        .channels {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-md);
+        }
+
+        .channel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: var(--gap-lg);
+            padding: var(--gap-lg);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.35s var(--ease), border-color 0.35s, background 0.35s;
+        }
+
+        .channel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.35s var(--ease);
+        }
+
+        .channel.teams::before {
+            background: linear-gradient(180deg, var(--purple), var(--purp-lt));
+        }
+
+        .channel.outlook::before {
+            background: linear-gradient(180deg, var(--blue), var(--teal));
+        }
+
+        .channel:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.14);
+            background: var(--surface2);
+        }
+
+        .channel:hover::before {
+            transform: scaleY(1);
+        }
+
+        .channel-ico {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: transform 0.35s var(--ease);
+        }
+
+        .channel:hover .channel-ico {
+            transform: scale(1.05);
+        }
+
+        .channel.teams .channel-ico {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.08));
+            border: 1px solid rgba(139, 92, 246, 0.25);
+        }
+
+        .channel.outlook .channel-ico {
+            background: linear-gradient(135deg, rgba(0, 150, 199, 0.15), rgba(0, 180, 216, 0.08));
+            border: 1px solid rgba(0, 150, 199, 0.25);
+        }
+
+        .channel-ico svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .channel-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .channel-lbl {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--dim);
+            margin-bottom: 4px;
+        }
+
+        .channel-name {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+        }
+
+        .channel-desc {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .channel-arrow {
+            flex-shrink: 0;
+            color: var(--dim);
+            transition: transform 0.35s var(--ease), color 0.35s;
+        }
+
+        .channel-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .channel:hover .channel-arrow {
+            transform: translateX(4px);
+            color: var(--white);
+        }
+
+        .end-snap {
+            padding: 0 var(--section-pad);
+            align-items: center;
+            background: var(--surface);
+        }
+
+        .end-inner {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .end-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: var(--gap-2xl);
+            align-items: center;
+        }
+
+        .end-display {
+            position: relative;
+        }
+
+        .end-eyebrow {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: var(--gap-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+        }
+
+        .end-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .end-num {
+            font-size: clamp(140px, 20vw, 240px);
+            font-weight: 800;
+            line-height: 0.82;
+            letter-spacing: -8px;
+            -webkit-text-stroke: 2px var(--blue-lt);
+            color: transparent;
+            margin-bottom: var(--gap-lg);
+        }
+
+        .end-date {
+            font-family: var(--mono);
+            font-size: var(--text-sm);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+        }
+
+        .end-date-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 8px rgba(6, 214, 160, 0.5);
+        }
+
+        .end-title {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dim);
+            font-weight: 600;
+            margin-bottom: var(--gap-md);
+            padding-bottom: var(--gap-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stories {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--gap-md);
+            align-items: start;
+            padding: var(--gap-md) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .story-tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+            align-self: center;
+        }
+
+        .story-tag.deep {
+            background: rgba(0, 150, 199, 0.1);
+            color: var(--blue-lt);
+            border: 1px solid rgba(0, 150, 199, 0.2);
+        }
+
+        .story-tag.spot {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--purp-lt);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .story-tag.tech {
+            background: rgba(6, 214, 160, 0.1);
+            color: var(--green);
+            border: 1px solid rgba(6, 214, 160, 0.2);
+        }
+
+        .story-name {
+            font-size: var(--text-base);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .story-desc {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .end-cta {
+            margin-top: var(--gap-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--gap-md);
+            flex-wrap: wrap;
+        }
+
+        .end-cta-text {
+            font-size: var(--text-sm);
+            color: var(--muted);
+        }
+
+        .end-cta-link {
+            font-family: var(--mono);
+            font-size: var(--text-xs);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--blue-lt);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--gap-sm);
+            padding: var(--gap-sm) var(--gap-md);
+            border: 1px solid rgba(0, 150, 199, 0.25);
+            border-radius: var(--radius-sm);
+            background: rgba(0, 150, 199, 0.05);
+            transition: background 0.2s, border-color 0.2s, gap 0.2s;
+        }
+
+        .end-cta-link:hover {
+            background: rgba(0, 150, 199, 0.12);
+            border-color: rgba(0, 150, 199, 0.4);
+            gap: 12px;
+        }
+
+        .end-cta-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .foot {
+            padding: var(--gap-lg) var(--section-pad);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--gap-xl);
+            font-size: var(--text-xs);
+            color: var(--dim);
+        }
+
+        .foot strong {
+            color: var(--blue-lt);
+            font-weight: 600;
+        }
+
+        .foot a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: var(--text-xs);
+            transition: color 0.2s;
+        }
+
+        .foot a:hover {
+            color: var(--blue-lt);
+        }
+
+        .foot-counter {
+            user-select: none;
+        }
+
+        @media (max-width: 900px) {
+            .prog {
+                display: none;
+            }
+
+            .hero,
+            .about,
+            .letter,
+            .org-section,
+            .products-snap,
+            .contact-snap,
+            .end-snap {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            .foot {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text {
+                font-size: 18px;
+            }
+
+            .org-teams {
+                grid-template-columns: 2fr 1fr 1fr 2fr;
+                gap: var(--gap-md);
+            }
+
+            .org-members {
+                gap: var(--gap-sm);
+            }
+
+            .ts-av {
+                width: 36px;
+                height: 36px;
+                font-size: 10px;
+            }
+
+            .org-lead-av {
+                width: 44px;
+                height: 44px;
+                font-size: 12px;
+            }
+
+            .org-vp-av {
+                width: 52px;
+                height: 52px;
+                font-size: 16px;
+            }
+
+            .plist {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .end-grid {
+                grid-template-columns: 1fr;
+                gap: var(--gap-xl);
+            }
+
+            .end-num {
+                font-size: 160px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero,
+            .about,
+            .letter,
+            .org-section,
+            .products-snap,
+            .contact-snap,
+            .end-snap {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .foot {
+                padding-left: 20px;
+                padding-right: 20px;
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+                letter-spacing: -1.5px;
+            }
+
+            .hero h1 .w1 {
+                font-size: 0.5em;
+                letter-spacing: 4px;
+            }
+
+            .hero-sub {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .hero-cue {
+                font-size: 10px;
+            }
+
+            .watermark {
+                font-size: 80px;
+            }
+
+            .about-text {
+                font-size: 17px;
+                line-height: 1.75;
+            }
+
+            .anum {
+                padding: 24px 20px;
+            }
+
+            .anum-val {
+                font-size: 32px;
+            }
+
+            .letter-inner {
+                max-width: 100%;
+            }
+
+            .letter-body {
+                font-size: 17px;
+                line-height: 1.8;
+                max-width: 100%;
+            }
+
+            .letter-body .dcap::first-letter {
+                font-size: 2.8em;
+            }
+
+            .letter-label {
+                margin-bottom: 28px;
+            }
+
+            .org-teams {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--gap-md);
+            }
+
+            .org-line-h {
+                max-width: 100%;
+            }
+
+            .org-lead-av {
+                width: 40px;
+                height: 40px;
+                font-size: 11px;
+            }
+
+            .org-vp-av {
+                width: 48px;
+                height: 48px;
+                font-size: 14px;
+            }
+
+            .org-members {
+                gap: 6px;
+            }
+
+            .ts-av {
+                width: 32px;
+                height: 32px;
+                font-size: 9px;
+            }
+
+            .ts-tip {
+                display: none;
+            }
+
+            .pitem {
+                padding: 16px;
+                gap: 12px;
+            }
+
+            .pitem-name {
+                font-size: 14px;
+            }
+
+            .pitem-desc {
+                font-size: 13px;
+            }
+
+            .cl h2 {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+
+            .cl > p {
+                font-size: 15px;
+            }
+
+            .channel {
+                padding: var(--gap-md);
+                gap: var(--gap-md);
+            }
+
+            .channel-ico {
+                width: 44px;
+                height: 44px;
+            }
+
+            .channel-ico svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .channel-name {
+                font-size: var(--text-base);
+            }
+
+            .channel-desc {
+                font-size: var(--text-xs);
+            }
+
+            .end-num {
+                font-size: 120px;
+                letter-spacing: -4px;
+            }
+
+            .story-name {
+                font-size: 15px;
+            }
+
+            .story-desc {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 34px;
+                letter-spacing: -1px;
+            }
+
+            .about-nums {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .anum {
+                padding: 20px 16px;
+            }
+
+            .org-teams {
+                grid-template-columns: 1fr;
+            }
+
+            .ts-av {
+                width: 34px;
+                height: 34px;
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="prog" id="prog"></div>
+
+    <div class="snap-wrap" id="snapWrap">
+        <section class="snap hero" id="s0" data-label="Intro">
+            <div class="hero-noise"></div>
+            <div class="hero-line"></div>
+            <div class="hero-line-2"></div>
+            <span class="watermark wm-right">01</span>
+            <div class="hero-content">
+                <div class="hero-issue rv">ISSUE 01 / APR 2026</div>
+                <h1 class="rv rv-d1">
+                    <span class="w1">Meet</span>
+                    <span class="w2">Group Digital</span>
+                    <span class="w3">Technology</span>
+                </h1>
+                <p class="hero-sub rv rv-d2">
+                    We design, deliver, and evolve the digital platforms that power Republic across every territory.
+                </p>
+                <div class="hero-cue rv rv-d3">
+                    <span class="hero-cue-bar"></span>
+                    Scroll to begin
+                </div>
+            </div>
+        </section>
+
+        <section class="snap about" id="s1" data-label="About">
+            <span class="watermark wm-left">02</span>
+            <div class="about-inner">
+                <div class="about-text rv-left">
+                    <h2 class="about-h">Who We Are</h2>
+                    If you have ever used the app, applied for a loan online, checked your portfolio, or walked into a branch and watched something work seamlessly on screen - <em>that was us</em>.<br><br>
+                    We are the <strong>Group Digital Technology Division</strong> - the team that designs, builds, and operates the digital platforms powering Republic Financial across every territory.<br><br>
+                    From payments and cards to digital onboarding, lending, wealth management, and the SuperApp - we own the platforms that connect our customers to the Group.
+                </div>
+                <div class="about-nums rv-right">
+                    <div class="anum">
+                        <div class="anum-val">
+                            <span class="counter" data-target="58">0</span><span class="sfx">+</span>
+                        </div>
+                        <div class="anum-lbl">RBL Staff</div>
+                    </div>
+                    <div class="anum">
+                        <div class="anum-val">
+                            <span class="counter" data-target="12">0</span><span class="sfx">+</span>
+                        </div>
+                        <div class="anum-lbl">Platforms</div>
+                    </div>
+                    <div class="anum">
+                        <div class="anum-val">
+                            <span class="counter" data-target="8">0</span>
+                        </div>
+                        <div class="anum-lbl">Territories</div>
+                    </div>
+                    <div class="anum">
+                        <div class="anum-val">
+                            <span class="counter" data-target="4">0</span>
+                        </div>
+                        <div class="anum-lbl">Pillars</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="snap letter" id="s2" data-label="Our GM">
+            <span class="watermark wm-right">03</span>
+            <div class="letter-inner">
+                <div class="letter-label rv">A note from our GM</div>
+                <div class="letter-body rv rv-d1">
+                    <p class="dcap">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
+                    </p>
+                </div>
+                <div class="letter-sig rv rv-d2">
+                    <div class="letter-av">LI</div>
+                    <div>
+                        <div class="letter-name">Lorem Ipsum</div>
+                        <div class="letter-role">General Manager, GDTD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="snap org-section" id="s3" data-label="Our Team">
+            <span class="watermark wm-left">04</span>
+            <div class="org-inner">
+                <h2 class="rv">Our Structure</h2>
+
+                <div class="org-vp rv rv-d1">
+                    <div class="org-vp-av">LI</div>
+                    <div class="org-vp-name">Lorem Ipsum</div>
+                    <div class="org-vp-role">General Manager, GDTD</div>
+                </div>
+
+                <div class="org-line-v"></div>
+                <div class="org-line-h">
+                    <div class="org-branch">
+                        <div class="org-line-h-drop"></div>
+                    </div>
+                    <div class="org-line-h-bar"></div>
+                    <div class="org-branch">
+                        <div class="org-line-h-drop"></div>
+                    </div>
+                    <div class="org-line-h-bar"></div>
+                    <div class="org-branch">
+                        <div class="org-line-h-drop"></div>
+                    </div>
+                    <div class="org-line-h-bar"></div>
+                    <div class="org-branch">
+                        <div class="org-line-h-drop"></div>
+                    </div>
+                </div>
+
+                <div class="org-teams rv rv-d2">
+                    <div class="org-team">
+                        <div class="org-lead">
+                            <div class="org-lead-label apps">Engineering</div>
+                            <div class="org-lead-av apps">DS</div>
+                            <div class="org-lead-name">Dolor Sit</div>
+                            <div class="org-lead-title">Sr Manager, Group Engineering</div>
+                        </div>
+                        <div class="org-members">
+                            <div class="ts-person">
+                                <div class="ts-av g1">LI</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Lorem Ipsum</div>
+                                    <div class="ts-tip-role">Lead EM | Platform</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g2">DS</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Dolor Sit</div>
+                                    <div class="ts-tip-role">Lead EM | Products</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g3">AC</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Amet Consect</div>
+                                    <div class="ts-tip-role">Lead EM | Super App</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g4">AE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Adipis Elit</div>
+                                    <div class="ts-tip-role">Engineering Manager</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g1">SE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Sed Eiusmod</div>
+                                    <div class="ts-tip-role">Engineering Manager</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g2">TI</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Tempor Incid</div>
+                                    <div class="ts-tip-role">SuperApp Deployment Lead</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g3">UL</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ut Labore</div>
+                                    <div class="ts-tip-role">SRE / Jr DevOps AWS</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g4">DM</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Dolore Magna</div>
+                                    <div class="ts-tip-role">Junior DevOps</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g1">AQ</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Aliqua Quis</div>
+                                    <div class="ts-tip-role">Junior DevOps</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g2">AM</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ad Minim</div>
+                                    <div class="ts-tip-role">Jr DevOps Azure</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g3">VQ</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Veniam Quis</div>
+                                    <div class="ts-tip-role">Junior AQA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g4">NE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Nostrud Exer</div>
+                                    <div class="ts-tip-role">Junior AQA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g1">UA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ullamco Labo</div>
+                                    <div class="ts-tip-role">Junior AQA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g2">NA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Nisi Aliquip</div>
+                                    <div class="ts-tip-role">Junior AQA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g3">EC</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ex Commodo</div>
+                                    <div class="ts-tip-role">Product Security</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="org-team">
+                        <div class="org-lead">
+                            <div class="org-lead-label web">Digital Platforms</div>
+                            <div class="org-lead-av web">AC</div>
+                            <div class="org-lead-name">Amet Consect</div>
+                            <div class="org-lead-title">Sr Manager, Group Digital Platforms</div>
+                        </div>
+                        <div class="org-members">
+                            <div class="ts-person">
+                                <div class="ts-av g5">DA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Duis Aute</div>
+                                    <div class="ts-tip-role">DPO Onboarding</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">ID</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Irure Dolor</div>
+                                    <div class="ts-tip-role">DPO Branches</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">VV</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Voluptate Velit</div>
+                                    <div class="ts-tip-role">IT Business Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">EI</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Esse Cillum</div>
+                                    <div class="ts-tip-role">IT Business Analyst</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="org-team">
+                        <div class="org-lead">
+                            <div class="org-lead-label cloud">Architecture</div>
+                            <div class="org-lead-av cloud">AE</div>
+                            <div class="org-lead-name">Adipis Elit</div>
+                            <div class="org-lead-title">Group Chief Architect</div>
+                        </div>
+                        <div class="org-members">
+                            <div class="ts-person">
+                                <div class="ts-av g9">FN</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Fugiat Nulla</div>
+                                    <div class="ts-tip-role">Enterprise Business Architect</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="org-team">
+                        <div class="org-lead">
+                            <div class="org-lead-label ic">IC Banking Delivery</div>
+                            <div class="org-lead-av ic">SE</div>
+                            <div class="org-lead-name">Sed Eiusmod</div>
+                            <div class="org-lead-title">IT Delivery Lead</div>
+                        </div>
+                        <div class="org-members">
+                            <div class="ts-person">
+                                <div class="ts-av g5">PS</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Pariatur Sint</div>
+                                    <div class="ts-tip-role">Snr Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">OC</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Occaecat Cupi</div>
+                                    <div class="ts-tip-role">Snr Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">PC</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Proident Culpa</div>
+                                    <div class="ts-tip-role">Snr Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">OD</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Officia Deser</div>
+                                    <div class="ts-tip-role">Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g5">MA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Mollit Anim</div>
+                                    <div class="ts-tip-role">Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">LE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Laborum Esse</div>
+                                    <div class="ts-tip-role">Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">QN</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Quis Nostrum</div>
+                                    <div class="ts-tip-role">Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">FS</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Facere Sequi</div>
+                                    <div class="ts-tip-role">Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g5">NN</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Nesciunt Neque</div>
+                                    <div class="ts-tip-role">Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">PQ</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Porro Quisquam</div>
+                                    <div class="ts-tip-role">Trainee Systems Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">LI</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Lorem Ipsum</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">DS</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Dolor Sit</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g5">AC</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Amet Consect</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">AE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Adipis Elit</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">SE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Sed Eiusmod</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">TI</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Tempor Incid</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g5">UL</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ut Labore</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">DM</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Dolore Magna</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">AQ</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Aliqua Quis</div>
+                                    <div class="ts-tip-role">Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">AM</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ad Minim</div>
+                                    <div class="ts-tip-role">Trainee Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g5">VQ</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Veniam Quis</div>
+                                    <div class="ts-tip-role">Trainee Senior QA</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g6">NE</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Nostrud Exer</div>
+                                    <div class="ts-tip-role">IT Business Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g7">UA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ullamco Labo</div>
+                                    <div class="ts-tip-role">IT Business Analyst</div>
+                                </div>
+                            </div>
+                            <div class="ts-person">
+                                <div class="ts-av g8">NA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Nisi Aliquip</div>
+                                    <div class="ts-tip-role">IT Business Analyst</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-support rv rv-d3">
+                    <div class="ts-person">
+                                <div class="ts-av g9">EC</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Ex Commodo</div>
+                                    <div class="ts-tip-role">Process Manager</div>
+                                </div>
+                            </div>
+                    <div class="ts-person">
+                                <div class="ts-av g10">DA</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Duis Aute</div>
+                                    <div class="ts-tip-role">Process Manager</div>
+                                </div>
+                            </div>
+                    <div class="ts-person">
+                                <div class="ts-av g11">ID</div>
+                                <div class="ts-tip">
+                                    <div class="ts-tip-name">Irure Dolor</div>
+                                    <div class="ts-tip-role">Admin Professional III</div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="snap products-snap" id="s4" data-label="Products">
+            <span class="watermark wm-right">05</span>
+            <div class="products-inner">
+                <div class="products-top rv">
+                    <h2>What We Own</h2>
+                    <p class="products-sub">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+                </div>
+                <div class="plist">
+                    <div class="pitem rv">
+                        <div class="pitem-index">01</div>
+                        <div class="pitem-body">
+                            <div class="pitem-name">Lorem Ipsum</div>
+                            <div class="pitem-desc">Dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</div>
+                        </div>
+                    </div>
+                    <div class="pitem rv rv-d1">
+                        <div class="pitem-index">02</div>
+                        <div class="pitem-body">
+                            <div class="pitem-name">Dolor Sit Amet</div>
+                            <div class="pitem-desc">Incididunt ut labore et dolore magna aliqua ut enim ad minim.</div>
+                        </div>
+                    </div>
+                    <div class="pitem rv rv-d2">
+                        <div class="pitem-index">03</div>
+                        <div class="pitem-body">
+                            <div class="pitem-name">Consectetur Elit</div>
+                            <div class="pitem-desc">Veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.</div>
+                        </div>
+                    </div>
+                    <div class="pitem rv rv-d3">
+                        <div class="pitem-index">04</div>
+                        <div class="pitem-body">
+                            <div class="pitem-name">Adipiscing Tempor</div>
+                            <div class="pitem-desc">Ex ea commodo consequat duis aute irure dolor in reprehenderit.</div>
+                        </div>
+                    </div>
+                    <div class="pitem rv rv-d4">
+                        <div class="pitem-index">05</div>
+                        <div class="pitem-body">
+                            <div class="pitem-name">Eiusmod Labore</div>
+                            <div class="pitem-desc">Voluptate velit esse cillum fugiat nulla pariatur excepteur sint.</div>
+                        </div>
+                    </div>
+                    <div class="pitem rv rv-d5">
+                        <div class="pitem-index">06</div>
+                        <div class="pitem-body">
+                            <div class="pitem-name">Magna Aliqua</div>
+                            <div class="pitem-desc">Occaecat cupidatat non proident sunt in culpa qui officia deserunt.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="snap contact-snap" id="s5" data-label="Contact">
+            <span class="watermark wm-left">06</span>
+            <div class="contact-inner">
+                <div class="cl rv-left">
+                    <div class="cl-eyebrow">Reach Out</div>
+                    <h2>Let's Talk</h2>
+                    <p>Bug report, feature request, or just a question - drop us a line and we will route it to the right team.</p>
+                    <div class="cl-meta">
+                        <span class="cl-meta-dot"></span>
+                        Typically replies within 24h
+                    </div>
+                </div>
+                <div class="channels rv-right">
+                    <a class="channel teams" href="#">
+                        <div class="channel-ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 6.1H3a1 1 0 0 0-1 1v9.8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7.1a1 1 0 0 0-1-1z"/>
+                                <path d="M22 8v8"/>
+                                <path d="M18 10l4-2v8l-4-2"/>
+                                <circle cx="10" cy="11" r="2"/>
+                                <path d="M7 16c.5-1.5 1.5-2 3-2s2.5.5 3 2"/>
+                            </svg>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-lbl">Microsoft Teams</div>
+                            <div class="channel-name">Chat with the team</div>
+                            <div class="channel-desc">Drop into our channel for quick questions and real-time support.</div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <a class="channel outlook" href="mailto:gdtd@rfhl.com">
+                        <div class="channel-ico">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                        </div>
+                        <div class="channel-body">
+                            <div class="channel-lbl">Outlook</div>
+                            <div class="channel-name">Send us an email</div>
+                            <div class="channel-desc">Prefer the long form? Our inbox is always open for detailed requests.</div>
+                        </div>
+                        <div class="channel-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="snap end-snap" id="s6" data-label="Next">
+            <span class="watermark wm-right">07</span>
+            <div class="end-inner">
+                <div class="end-grid">
+                    <div class="end-display rv-left">
+                        <div class="end-eyebrow">Coming Next</div>
+                        <div class="end-num">02</div>
+                        <div class="end-date">
+                            <span class="end-date-dot"></span>
+                            Issue 02 &middot; May 2026
+                        </div>
+                    </div>
+                    <div class="end-stories rv-right">
+                        <div class="end-title">In This Issue</div>
+                        <div class="stories">
+                            <div class="story">
+                                <div class="story-tag deep">Deep Dive</div>
+                                <div class="story-body">
+                                    <div class="story-name">How we rebuilt the mobile banking experience from scratch</div>
+                                    <div class="story-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</div>
+                                </div>
+                            </div>
+                            <div class="story">
+                                <div class="story-tag spot">Spotlight</div>
+                                <div class="story-body">
+                                    <div class="story-name">Meet the people behind Cloud &amp; Infra</div>
+                                    <div class="story-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</div>
+                                </div>
+                            </div>
+                            <div class="story">
+                                <div class="story-tag tech">Tech Talk</div>
+                                <div class="story-body">
+                                    <div class="story-name">Our journey from 99.9% to 99.99% uptime</div>
+                                    <div class="story-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="end-cta">
+                            <div class="end-cta-text">Get notified when it drops</div>
+                            <a class="end-cta-link" href="#">
+                                #gdtd-updates
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                    <polyline points="12 5 19 12 12 19"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="foot">
+            <div><strong>GDTD</strong> / Issue 01 / April 2026</div>
+            <div class="foot-counter" id="footCounter">01 / 07</div>
+            <a href="#s0">Back to top</a>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var wrap = document.getElementById('snapWrap');
+            var progEl = document.getElementById('prog');
+            var snaps = document.querySelectorAll('.snap');
+
+            var revealEls = document.querySelectorAll('.rv, .rv-left, .rv-right');
+            var revealObs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('vis');
+                    }
+                });
+            }, {
+                root: wrap,
+                threshold: 0.1,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            revealEls.forEach(function (el) {
+                revealObs.observe(el);
+            });
+
+            snaps.forEach(function (section) {
+                var dot = document.createElement('span');
+                dot.className = 'prog-dot';
+                dot.setAttribute('data-label', section.getAttribute('data-label') || '');
+                dot.addEventListener('click', function () {
+                    wrap.scrollTo({
+                        top: section.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+                progEl.appendChild(dot);
+            });
+
+            var counterEl = document.createElement('div');
+            counterEl.className = 'prog-counter';
+            counterEl.id = 'progCounter';
+            counterEl.textContent = '01 / 0' + snaps.length;
+            progEl.appendChild(counterEl);
+
+            var dots = progEl.querySelectorAll('.prog-dot');
+            var currentIdx = -1;
+
+            var snapObs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    var idx = Array.prototype.indexOf.call(snaps, entry.target);
+                    if (idx < 0 || idx === currentIdx) {
+                        return;
+                    }
+                    currentIdx = idx;
+
+                    dots.forEach(function (d, i) {
+                        d.classList.remove('on', 'done');
+                        if (i < idx) {
+                            d.classList.add('done');
+                        }
+                        if (i === idx) {
+                            d.classList.add('on');
+                        }
+                    });
+
+                    var label = '0' + (idx + 1) + ' / 0' + snaps.length;
+                    counterEl.textContent = label;
+                    var foot = document.getElementById('footCounter');
+                    if (foot) {
+                        foot.textContent = label;
+                    }
+                });
+            }, {
+                root: wrap,
+                threshold: 0.5
+            });
+            snaps.forEach(function (section) {
+                snapObs.observe(section);
+            });
+
+            var counters = document.querySelectorAll('.counter');
+            var counted = new Set();
+
+            function easeOutQuart(t) {
+                return 1 - Math.pow(1 - t, 4);
+            }
+
+            function animateCounter(el) {
+                var target = parseFloat(el.getAttribute('data-target'));
+                var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+                var duration = 2000;
+                var start = null;
+
+                function tick(timestamp) {
+                    if (start === null) {
+                        start = timestamp;
+                    }
+                    var progress = Math.min((timestamp - start) / duration, 1);
+                    var value = easeOutQuart(progress) * target;
+                    if (decimals > 0) {
+                        el.textContent = value.toFixed(decimals);
+                    } else {
+                        el.textContent = Math.floor(value);
+                    }
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+                    }
+                }
+
+                requestAnimationFrame(tick);
+            }
+
+            var counterObs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting && !counted.has(entry.target)) {
+                        counted.add(entry.target);
+                        animateCounter(entry.target);
+                    }
+                });
+            }, {
+                root: wrap,
+                threshold: 0.3
+            });
+            counters.forEach(function (el) {
+                counterObs.observe(el);
+            });
+
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[href^="#"]');
+                if (!link) {
+                    return;
+                }
+                var id = link.getAttribute('href');
+                var target = document.querySelector(id);
+                if (target) {
+                    e.preventDefault();
+                    wrap.scrollTo({
+                        top: target.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
