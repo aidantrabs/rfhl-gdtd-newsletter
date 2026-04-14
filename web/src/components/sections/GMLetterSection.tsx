@@ -1,6 +1,7 @@
 import { gmLetter } from '../../data/gm';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 export default function GMLetterSection() {
@@ -8,7 +9,9 @@ export default function GMLetterSection() {
 
     return (
         <SectionShell id="gm-letter" background="navy">
-            <Watermark number="04" position="left" />
+            <Parallax range={[0, -100]}>
+                <Watermark number="04" position="left" />
+            </Parallax>
             <div className="relative z-10 grid w-full max-w-[1100px] grid-cols-[1.2fr_0.8fr] gap-16">
                 <div>
                     <Reveal index={0}>
