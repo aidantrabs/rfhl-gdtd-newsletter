@@ -1,3 +1,4 @@
+import HeroSection from './components/sections/HeroSection';
 import { useLenis } from './hooks/useLenis';
 
 export default function App() {
@@ -5,7 +6,7 @@ export default function App() {
 
     return (
         <main>
-            <h1>GDTD Newsletter</h1>
+            <HeroSection />
         </main>
     );
 }
