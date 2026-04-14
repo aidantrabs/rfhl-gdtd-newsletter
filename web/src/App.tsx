@@ -1,3 +1,4 @@
+import AboutSection from './components/sections/AboutSection';
 import HeroSection from './components/sections/HeroSection';
 import { useLenis } from './hooks/useLenis';
 
@@ -7,6 +8,7 @@ export default function App() {
     return (
         <main>
             <HeroSection />
+            <AboutSection />
         </main>
     );
 }
