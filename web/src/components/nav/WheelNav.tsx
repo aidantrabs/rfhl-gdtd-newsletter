@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 
 import { sections } from '../../data/sections';
+import { scrollToSection } from '../../hooks/useLenis';
 import { useSectionProgress } from '../../hooks/useSectionProgress';
+import WheelSegment from './WheelSegment';
 
 const SIZE = 140;
 const CENTER = SIZE / 2;
@@ -40,10 +42,10 @@ function describeSegmentPath(index: number): string {
 }
 
 export default function WheelNav() {
-    const { rotation } = useSectionProgress();
+    const { rotation, activeIndex } = useSectionProgress();
 
     return (
-        <div className="pointer-events-none fixed right-10 bottom-10 z-40">
+        <div className="fixed right-10 bottom-10 z-40">
             <svg
                 width={SIZE}
                 height={SIZE}
@@ -58,12 +60,13 @@ export default function WheelNav() {
                     }}
                 >
                     {sections.map((section, index) => (
-                        <path
+                        <WheelSegment
                             key={section.id}
-                            d={describeSegmentPath(index)}
-                            fill="var(--color-navy-2)"
-                            stroke="var(--color-line)"
-                            strokeWidth="1"
+                            path={describeSegmentPath(index)}
+                            accent={section.accent}
+                            label={section.label}
+                            isActive={index === activeIndex}
+                            onClick={() => scrollToSection(section.id)}
                         />
                     ))}
                 </motion.g>
