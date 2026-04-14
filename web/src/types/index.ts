@@ -12,7 +12,7 @@ export type Person = {
     name: string;
     initials: string;
     photo: string;
-    pillar: Pillar;
+    pillar?: Pillar;
     level: Level;
     role: string;
     quote?: string;
