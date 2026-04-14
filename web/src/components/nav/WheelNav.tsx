@@ -3,12 +3,14 @@ import { motion } from 'motion/react';
 import { sections } from '../../data/sections';
 import { scrollToSection } from '../../hooks/useLenis';
 import { useSectionProgress } from '../../hooks/useSectionProgress';
+import WheelLabel from './WheelLabel';
 import WheelSegment from './WheelSegment';
 
 const SIZE = 140;
 const CENTER = SIZE / 2;
 const OUTER_RADIUS = 64;
 const INNER_RADIUS = 44;
+const LABEL_RADIUS = (OUTER_RADIUS + INNER_RADIUS) / 2;
 const SEGMENT_ANGLE = 360 / sections.length;
 const HALF_SEGMENT = SEGMENT_ANGLE / 2;
 
@@ -76,6 +78,15 @@ export default function WheelNav() {
                             label={section.label}
                             isActive={index === activeIndex}
                             onClick={() => scrollToSection(section.id)}
+                        />
+                    ))}
+                    {sections.map((section, index) => (
+                        <WheelLabel
+                            key={`label-${section.id}`}
+                            index={index}
+                            position={polarToCartesian(LABEL_RADIUS, index * SEGMENT_ANGLE)}
+                            rotation={rotation}
+                            isActive={index === activeIndex}
                         />
                     ))}
                 </motion.g>
