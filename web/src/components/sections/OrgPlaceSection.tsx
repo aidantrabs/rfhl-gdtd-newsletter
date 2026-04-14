@@ -73,11 +73,24 @@ export default function OrgPlaceSection() {
                         </span>
                         <span className="text-h3 font-semibold text-paper">GTSD</span>
                     </div>
-                    <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 rounded-lg border border-blue bg-navy px-8 py-4 shadow-[0_0_32px_rgba(0,150,199,0.18)]">
-                        <span className="text-[11px] tracking-[0.2em] text-blue-lt uppercase">
+                    <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 rounded-lg border border-blue bg-navy px-8 py-4 shadow-[0_0_32px_rgba(0,150,199,0.25)]">
+                        <motion.span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-blue-lt"
+                            animate={{
+                                opacity: [0.4, 0, 0.4],
+                                scale: [1, 1.08, 1],
+                            }}
+                            transition={{
+                                duration: 2.8,
+                                repeat: Number.POSITIVE_INFINITY,
+                                ease: 'easeInOut',
+                            }}
+                        />
+                        <span className="relative text-[11px] tracking-[0.2em] text-blue-lt uppercase">
                             That's us
                         </span>
-                        <span className="text-h3 font-semibold text-blue-lt">GDTD</span>
+                        <span className="relative text-h3 font-semibold text-blue-lt">GDTD</span>
                     </div>
                     <div className="absolute right-[16.6%] bottom-0 flex translate-x-1/2 flex-col items-center gap-1 rounded-lg border border-line bg-navy-2 px-8 py-4">
                         <span className="text-[11px] tracking-[0.2em] text-dim uppercase">
