@@ -1,4 +1,7 @@
+import { motion } from 'motion/react';
+
 import { sections } from '../../data/sections';
+import { useSectionProgress } from '../../hooks/useSectionProgress';
 
 const SIZE = 140;
 const CENTER = SIZE / 2;
@@ -37,6 +40,8 @@ function describeSegmentPath(index: number): string {
 }
 
 export default function WheelNav() {
+    const { rotation } = useSectionProgress();
+
     return (
         <div className="pointer-events-none fixed right-10 bottom-10 z-40">
             <svg
@@ -46,15 +51,22 @@ export default function WheelNav() {
                 className="drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
                 aria-hidden="true"
             >
-                {sections.map((section, index) => (
-                    <path
-                        key={section.id}
-                        d={describeSegmentPath(index)}
-                        fill="var(--color-navy-2)"
-                        stroke="var(--color-line)"
-                        strokeWidth="1"
-                    />
-                ))}
+                <motion.g
+                    style={{
+                        rotate: rotation,
+                        transformOrigin: `${CENTER}px ${CENTER}px`,
+                    }}
+                >
+                    {sections.map((section, index) => (
+                        <path
+                            key={section.id}
+                            d={describeSegmentPath(index)}
+                            fill="var(--color-navy-2)"
+                            stroke="var(--color-line)"
+                            strokeWidth="1"
+                        />
+                    ))}
+                </motion.g>
             </svg>
         </div>
     );
