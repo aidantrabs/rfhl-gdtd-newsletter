@@ -1,55 +1,73 @@
-# Digital Products Newsletter
+# GDTD Newsletter
 
-Internal company newsletter for the Digital Products department. Each issue is a self-contained interactive webpage + an Outlook-compatible email teaser.
+Internal monthly newsletter for **Group Digital Technology Division (GDTD)** at Republic Financial Holdings Limited. Shipped as a single-page interactive web app hosted on the company intranet.
 
-## How It Works
+Currently in **v2 rebuild**. The v1 single-file HTML version lives in git history.
 
-1. **Email goes out** via Outlook — a short teaser with a link
-2. **Link opens** the full interactive newsletter on the intranet
-3. **Each issue** is a single `.html` file — no server, no build step, no dependencies
+## Quick start
 
-## Publishing a New Issue
+```sh
+cd web
+bun install
+bun run dev
+```
 
-1. Copy the latest issue from `issues/` (e.g., `issue-1.html` → `issue-2.html`)
-2. Update the content — all placeholder sections are marked with `<!-- [PLACEHOLDER] -->` comments
-3. Create a matching email teaser in `email/` (copy and update `issue-1-teaser.html`)
-4. Upload `issue-X.html` to the intranet
-5. Send the email teaser with the link to the hosted page
+Then open [http://localhost:5173](http://localhost:5173).
 
-## File Structure
+## Stack
+
+- **Bun** (runtime + package manager)
+- **Vite 5** + **React 18** + **TypeScript 5**
+- **Tailwind CSS v4** via `@tailwindcss/vite`
+- **motion/react** (Framer Motion) for animations
+- **Lenis** for smooth scroll
+- **Biome** for lint + format (replaces ESLint + Prettier)
+- **IIS** on a Windows intranet server (static hosting, URL rewrite, security headers)
+
+## Repository layout
 
 ```
 newsletter/
-├── README.md              — This file
-├── reference/             — Design reference files
-├── issues/
-│   ├── issue-1.html       — First newsletter (self-contained)
-│   └── issue-2.html       — Second newsletter, etc.
-└── email/
-    ├── issue-1-teaser.html — Outlook email for Issue 1
-    └── issue-2-teaser.html — etc.
+    web/                 ← the Bun + Vite app (source of truth)
+    iis/                 ← web.config + deploy docs
+    README.md            ← this file
 ```
 
-## Tech Details
+## Commands
 
-- **No build step** — each issue is a single HTML file with inline CSS and JS
-- **No external dependencies** — works offline, passes IT security review
-- **System fonts** — no Google Fonts or CDN requests
-- **Dark theme** — consistent brand across all issues
-- **Mobile responsive** — works on phone, tablet, and desktop
-- **Interactive** — scroll animations, expandable cards, tabs, polls
+All commands run from `web/`.
 
-## Content Calendar (Template)
+| Command | What it does |
+|---|---|
+| `bun install` | Install dependencies |
+| `bun run dev` | Vite dev server with HMR at `localhost:5173` |
+| `bun run build` | Production build to `web/dist/` |
+| `bun run preview` | Serve the built `dist/` locally |
+| `bun run biome check .` | Lint + format check |
+| `bun run biome check --write .` | Auto-fix formatting + safe lint fixes |
 
-| Month | Theme | Key Sections |
-|-------|-------|--------------|
-| 1     | Meet Digital Products | Intro, org structure, product map, how to reach us |
-| 2     | What We Shipped | Recent launches, behind the scenes, team spotlight |
-| 3     | By the Numbers | Metrics, uptime, usage stats, data stories |
-| 4     | Roadmap Preview | What's coming, early previews, feedback poll |
+## Deployment
 
-## Who Maintains This
+Static site deploy to a Windows server running IIS.
 
-- **Editor rotation**: A different team member leads each issue
-- **Coordinator**: [PLACEHOLDER: Name] — owns the schedule and quality bar
-- **Design/code**: The newsletter is built by our own team — it's a showcase of what we do
+1. `cd web && bun run build`
+2. Copy `web/dist/*` and `iis/web.config` to the server's site root
+3. IIS handles URL rewrite, security headers, compression
+
+See `iis/DEPLOY.md` for the full step-by-step.
+
+## Constraints
+
+- **Desktop-only** - intranet users are on work machines, no mobile responsive
+- **Network-restricted access** - no app-level auth, IT firewalls the server
+- **Bundle budget**: < 250kb gzipped JS, < 30kb gzipped CSS
+- **No 3D**, no WebGL, no heavy visualization libraries
+
+## Contributing
+
+- **4-space indentation** everywhere, no tabs
+- **Minimal comments** - well-named identifiers first. If a comment must exist, it is lowercase and explains *why*.
+- **Expand code** for readability - no clever one-liners, no compressed JSX
+- **Atomic commits** - small, meaningful units. Target 50+ commits for the v2 rebuild. User drives every git operation.
+- `bun run build` and `bun run biome check .` must pass cleanly at every commit
+
