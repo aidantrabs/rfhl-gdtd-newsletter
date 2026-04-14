@@ -43,7 +43,7 @@ export default function HeroSection() {
                         Meet the team behind
                     </span>
                     <span className="block">Group Digital</span>
-                    <span className="block text-transparent [-webkit-text-stroke:1.25px_var(--color-gold)]">
+                    <span className="block text-transparent [-webkit-text-stroke:1.25px_var(--color-blue-lt)]">
                         Technology
                     </span>
                 </motion.h1>
@@ -60,7 +60,7 @@ export default function HeroSection() {
                 >
                     <span className="relative block h-[2px] w-10 overflow-hidden rounded-full bg-line">
                         <motion.span
-                            className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-gold"
+                            className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-blue-lt"
                             animate={{ x: ['-120%', '220%'] }}
                             transition={{
                                 duration: 2.6,
