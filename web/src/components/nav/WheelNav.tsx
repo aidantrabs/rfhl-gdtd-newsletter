@@ -2,8 +2,8 @@ import { motion, useTransform } from 'motion/react';
 import { useState } from 'react';
 
 import { sections } from '../../data/sections';
-import { scrollToSection } from '../../hooks/useLenis';
 import { useSectionProgress } from '../../hooks/useSectionProgress';
+import { scrollToSection } from '../../lib/scroll';
 import WheelLabel from './WheelLabel';
 import WheelSegment from './WheelSegment';
 

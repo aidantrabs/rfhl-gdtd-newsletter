@@ -9,11 +9,8 @@ import HeroSection from './components/sections/HeroSection';
 import OrgPlaceSection from './components/sections/OrgPlaceSection';
 import ProductsSection from './components/sections/ProductsSection';
 import TeamSection from './components/sections/TeamSection';
-import { useLenis } from './hooks/useLenis';
 
 export default function App() {
-    useLenis();
-
     return (
         <MotionConfig reducedMotion="user">
             <main>
