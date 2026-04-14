@@ -1,0 +1,52 @@
+import SectionShell from '../common/SectionShell';
+import Watermark from '../common/Watermark';
+import Reveal from '../effects/Reveal';
+
+type ContactChannel = {
+    label: string;
+    handle: string;
+};
+
+const channels: ContactChannel[] = [
+    { label: 'Email', handle: 'gdtd@rfhl.com' },
+    { label: 'Intranet', handle: 'republic.net/gdtd' },
+    { label: 'Slack', handle: '#gdtd-announcements' },
+];
+
+export default function ContactSection() {
+    return (
+        <SectionShell id="contact" background="navy">
+            <Watermark number="07" position="right" />
+            <div className="relative z-10 w-full max-w-[1100px]">
+                <Reveal index={0}>
+                    <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                        07 / GET IN TOUCH
+                    </p>
+                </Reveal>
+                <Reveal index={1}>
+                    <h2 className="mb-4 max-w-[820px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em]">
+                        Got a question? We want to hear from you.
+                    </h2>
+                </Reveal>
+                <Reveal index={2}>
+                    <p className="mb-16 max-w-[560px] text-lg leading-relaxed text-muted">
+                        Whether it's a bug, a platform request, or just a curious question about
+                        what we do - here's how to reach us.
+                    </p>
+                </Reveal>
+                <div className="grid grid-cols-3 gap-8">
+                    {channels.map((channel, i) => (
+                        <Reveal key={channel.label} index={i + 3}>
+                            <div className="border-t border-line pt-6">
+                                <div className="mb-3 font-mono text-xs tracking-[0.2em] text-dim uppercase">
+                                    {channel.label}
+                                </div>
+                                <div className="font-mono text-lg text-light">{channel.handle}</div>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
+            </div>
+        </SectionShell>
+    );
+}
