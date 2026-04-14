@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-    --color-navy: #011d2e;
-    --color-navy-2: #02304a;
-    --color-surface: #0b1d2e;
-    --color-surface-2: #0f2438;
+    --color-navy: #081019;
+    --color-navy-2: #101a26;
+    --color-surface: #0c1521;
+    --color-surface-2: #141e2b;
     --color-blue: #0096c7;
     --color-blue-lt: #00b4e6;
     --color-teal: #00b4d8;
@@ -13,18 +13,20 @@
     --color-gold: #f5a623;
     --color-purple: #8b5cf6;
     --color-purple-lt: #a78bfa;
-    --color-light: #cbd5e0;
-    --color-muted: #64748b;
-    --color-dim: #475569;
-    --color-line: #ffffff0f;
+    --color-paper: #f1ede6;
+    --color-light: #dcd6c8;
+    --color-muted: #8a8579;
+    --color-dim: #575249;
+    --color-line: #ffffff0c;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
 
     --text-xs: 11px;
-    --text-lg: 20px;
-    --text-h2: clamp(28px, 3.5vw, 40px);
-    --text-h1: clamp(48px, 8vw, 100px);
+    --text-lg: 18px;
+    --text-h3: clamp(20px, 2vw, 26px);
+    --text-h2: clamp(30px, 3.8vw, 46px);
+    --text-h1: clamp(52px, 7.5vw, 96px);
 
     --ease-out-quart: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -36,7 +38,14 @@
         background: var(--color-navy);
         color: var(--color-light);
         font-family: var(--font-sans);
+        font-feature-settings: "ss01", "cv11";
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background: var(--color-gold);
+        color: var(--color-navy);
     }
 }
 
