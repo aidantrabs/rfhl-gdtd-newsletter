@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { fadeUp, staggerChildren } from '../../lib/motion';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 
 export default function HeroSection() {
     return (
@@ -19,7 +20,9 @@ export default function HeroSection() {
                 aria-hidden="true"
                 className="pointer-events-none absolute top-[25%] right-[22%] h-[40vh] w-px rotate-[-15deg] bg-gradient-to-b from-transparent via-blue/[0.06] to-transparent"
             />
-            <Watermark number="01" position="right" />
+            <Parallax range={[0, -120]}>
+                <Watermark number="01" position="right" />
+            </Parallax>
             <motion.div
                 className="relative z-10 w-full max-w-[1000px]"
                 initial="hidden"
