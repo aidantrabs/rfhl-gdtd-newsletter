@@ -1,3 +1,6 @@
+import { motion } from 'motion/react';
+
+import { fadeUp, staggerChildren } from '../../lib/motion';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 
@@ -17,11 +20,22 @@ export default function HeroSection() {
                 className="pointer-events-none absolute top-[25%] right-[22%] h-[40vh] w-px rotate-[-15deg] bg-gradient-to-b from-transparent via-blue/[0.06] to-transparent"
             />
             <Watermark number="01" position="right" />
-            <div className="relative z-10 w-full max-w-[1000px]">
-                <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+            <motion.div
+                className="relative z-10 w-full max-w-[1000px]"
+                initial="hidden"
+                animate="visible"
+                variants={staggerChildren}
+            >
+                <motion.p
+                    variants={fadeUp}
+                    className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim"
+                >
                     ISSUE 01 / APR 2026
-                </p>
-                <h1 className="mb-6 text-h1 leading-[0.92] font-extrabold tracking-[-0.04em]">
+                </motion.p>
+                <motion.h1
+                    variants={fadeUp}
+                    className="mb-6 text-h1 leading-[0.92] font-extrabold tracking-[-0.04em]"
+                >
                     <span className="mb-3 block text-[0.45em] font-light tracking-[8px] text-muted uppercase">
                         Meet
                     </span>
@@ -29,16 +43,22 @@ export default function HeroSection() {
                     <span className="block text-transparent [-webkit-text-stroke:1.5px_var(--color-blue-lt)]">
                         Technology
                     </span>
-                </h1>
-                <p className="mb-12 max-w-[480px] text-lg leading-relaxed text-muted">
+                </motion.h1>
+                <motion.p
+                    variants={fadeUp}
+                    className="mb-12 max-w-[480px] text-lg leading-relaxed text-muted"
+                >
                     We design, deliver, and evolve the digital platforms that power Republic across
                     every territory.
-                </p>
-                <div className="flex items-center gap-4 font-mono text-xs tracking-widest text-dim uppercase">
+                </motion.p>
+                <motion.div
+                    variants={fadeUp}
+                    className="flex items-center gap-4 font-mono text-xs tracking-widest text-dim uppercase"
+                >
                     <span className="block h-[2px] w-8 rounded-full bg-line" />
                     Scroll to begin
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </SectionShell>
     );
 }
