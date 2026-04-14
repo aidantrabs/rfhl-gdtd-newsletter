@@ -1,23 +1,3 @@
-export type Pillar =
-    | 'engineering'
-    | 'digital-platforms'
-    | 'architecture'
-    | 'ic-banking'
-    | 'support';
-
-export type Level = 'head' | 'pillar-lead' | 'lead-em' | 'em' | 'ic';
-
-export type Person = {
-    id: string;
-    name: string;
-    initials: string;
-    photo: string;
-    pillar?: Pillar;
-    level: Level;
-    role: string;
-    quote?: string;
-};
-
 export type Accent =
     | 'blue'
     | 'blue-lt'
@@ -27,6 +7,24 @@ export type Accent =
     | 'gold'
     | 'purple'
     | 'purple-lt';
+
+export type Manager = {
+    name: string;
+    initials: string;
+    role: string;
+    focus: string;
+    since?: string;
+};
+
+export type Team = {
+    id: string;
+    name: string;
+    shortName: string;
+    accent: Accent;
+    seniorManager: Manager;
+    manager: Manager;
+    reports: Manager[];
+};
 
 export type Section = {
     id: string;
@@ -38,5 +36,5 @@ export type Product = {
     id: string;
     name: string;
     description: string;
-    pillar: Pillar;
+    accent: Accent;
 };

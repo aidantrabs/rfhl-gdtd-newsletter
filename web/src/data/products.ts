@@ -2,39 +2,44 @@ import type { Product } from '../types';
 
 export const products: Product[] = [
     {
-        id: 'payments-cards',
-        name: 'Payments & Cards',
-        description: 'Modern issuer and acquirer processing for the entire group.',
-        pillar: 'digital-platforms',
+        id: 'cards-payments',
+        name: 'Cards & Payments',
+        description:
+            'Own and evolve high-value payment and cards capabilities that drive secure, real-time customer transactions.',
+        accent: 'orange',
     },
     {
         id: 'digital-onboarding',
         name: 'Digital Onboarding',
-        description: 'Group-wide KYC, AML and customer signup flows across territories.',
-        pillar: 'digital-platforms',
+        description:
+            'Create fast, compliant digital journeys that reduce friction and increase customer conversion.',
+        accent: 'blue-lt',
     },
     {
-        id: 'superapp',
-        name: 'Republic SuperApp',
-        description: 'The next-generation customer-facing digital banking experience.',
-        pillar: 'engineering',
+        id: 'core-integrations',
+        name: 'Core Integrations',
+        description:
+            'Expose and orchestrate core services across channels, systems, and operational teams.',
+        accent: 'teal',
     },
     {
-        id: 'branch-digitalization',
-        name: 'Branch Digitalization',
-        description: 'Assisted-channel tooling that powers in-branch staff and customers.',
-        pillar: 'digital-platforms',
+        id: 'enterprise-platforms',
+        name: 'Enterprise Platforms',
+        description:
+            'Provide secure cloud and shared services that enable product teams to move quickly with control.',
+        accent: 'purple-lt',
     },
     {
-        id: 'wealth-treasury',
-        name: 'Wealth & Treasury',
-        description: 'Investment, wealth management and treasury platforms for the group.',
-        pillar: 'digital-platforms',
+        id: 'customer-channels',
+        name: 'Customer Channels',
+        description:
+            'Support experiences across mobile, online, branch-adjacent, and partner-connected touchpoints.',
+        accent: 'gold',
     },
     {
-        id: 'compliance',
-        name: 'Compliance & Financial Crime',
-        description: 'Detection, monitoring and reporting tools for regulatory compliance.',
-        pillar: 'ic-banking',
+        id: 'change-governance',
+        name: 'Change Governance',
+        description: 'Drive standards, visibility, and execution confidence across the portfolio.',
+        accent: 'green',
     },
 ];

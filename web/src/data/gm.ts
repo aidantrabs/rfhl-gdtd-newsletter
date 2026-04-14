@@ -1,18 +1,18 @@
-import type { Person } from '../types';
-import { head } from './team';
+import type { Manager } from '../types';
+import { gm } from './team';
 
 type GMLetter = {
     label: string;
     paragraphs: string[];
-    person: Person;
+    person: Manager;
 };
 
 export const gmLetter: GMLetter = {
     label: 'A note from our GM',
     paragraphs: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.',
+        'This first issue of the GDTD newsletter is a window into the team building the digital platforms Republic runs on. It is a chance to put faces, names, and real work in front of the rest of the organisation.',
+        'Every month, we will share what is shipping, who is behind it, and how our work connects to the wider business. The goal is simple: give the whole company a clearer picture of how technology is being delivered and where it is heading.',
+        'I am proud of what this team has built so far, and just as excited about what is coming next. Thanks for reading, and welcome to issue one.',
     ],
-    person: head,
+    person: gm,
 };
