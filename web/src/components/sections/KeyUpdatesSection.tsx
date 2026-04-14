@@ -27,7 +27,7 @@ export default function KeyUpdatesSection() {
                 <div className="grid grid-cols-2 gap-6">
                     {keyUpdates.map((update, i) => (
                         <Reveal key={update.title} index={i + 3}>
-                            <article className="h-full rounded-xl border border-line bg-navy-2/40 p-10 transition-colors duration-300 hover:border-light/20">
+                            <article className="group h-full rounded-xl border border-line bg-navy-2/40 p-10 transition-all duration-300 hover:-translate-y-1 hover:border-light/25 hover:bg-navy-2/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
                                 <div className="mb-6 flex items-center gap-3 text-xs tracking-[0.18em] text-muted uppercase">
                                     <span className="block h-px w-5 bg-line" />
                                     <span className="tabular-nums">

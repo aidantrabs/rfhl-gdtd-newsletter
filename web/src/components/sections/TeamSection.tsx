@@ -160,7 +160,7 @@ export default function TeamSection() {
                 <div className="grid grid-cols-3 items-start gap-6">
                     {teams.map((team, i) => (
                         <Reveal key={team.id} index={i + 4}>
-                            <article className="flex h-full flex-col rounded-2xl border border-line bg-navy p-8 transition-colors duration-300 hover:border-light/20">
+                            <article className="flex h-full flex-col rounded-2xl border border-line bg-navy p-8 transition-all duration-300 hover:-translate-y-1 hover:border-light/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
                                 <div className="mb-8 flex items-center justify-between">
                                     <div
                                         className={cn(

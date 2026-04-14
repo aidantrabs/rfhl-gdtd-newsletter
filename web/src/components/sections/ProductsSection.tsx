@@ -40,7 +40,7 @@ export default function ProductsSection() {
                 <div className="grid grid-cols-3 gap-6">
                     {products.map((product, i) => (
                         <Reveal key={product.id} index={i + 3}>
-                            <article className="group h-full rounded-xl border border-line bg-navy-2/40 p-8 transition-colors duration-300 hover:border-light/20">
+                            <article className="group h-full rounded-xl border border-line bg-navy-2/40 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-light/25 hover:bg-navy-2/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
                                 <div
                                     className={cn(
                                         'mb-6 h-1.5 w-1.5 rounded-full',
