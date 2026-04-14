@@ -4,6 +4,10 @@ import Watermark from '../common/Watermark';
 export default function HeroSection() {
     return (
         <SectionShell id="hero" background="navy">
+            <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-grain opacity-[0.035]"
+            />
             <Watermark number="01" position="right" />
             <div className="relative z-10 w-full max-w-[1000px]">
                 <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
