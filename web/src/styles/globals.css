@@ -46,3 +46,22 @@
         background-size: 256px 256px;
     }
 }
+
+@media print {
+    html,
+    body {
+        background: white;
+        color: black;
+    }
+
+    section {
+        min-height: auto !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        padding: 2rem 1rem !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}

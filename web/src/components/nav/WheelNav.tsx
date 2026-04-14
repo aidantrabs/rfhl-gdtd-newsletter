@@ -53,7 +53,7 @@ export default function WheelNav() {
     const displaySection = sections[displayIndex];
 
     return (
-        <motion.div className="fixed right-10 bottom-10 z-40" style={{ opacity, scale }}>
+        <motion.div className="no-print fixed right-10 bottom-10 z-40" style={{ opacity, scale }}>
             <div className="pointer-events-none absolute top-1/2 right-[calc(100%+16px)] flex -translate-y-1/2 items-baseline gap-2 font-mono text-xs tracking-[0.18em] whitespace-nowrap uppercase">
                 <span className="text-dim">{String(displayIndex + 1).padStart(2, '0')}</span>
                 <span className="text-light">{displaySection.label}</span>
