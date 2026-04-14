@@ -199,4 +199,22 @@ export const team: Person[] = [
         level: 'ic',
         role: 'IT Business Analyst',
     },
+    {
+        id: 'satish-sundar',
+        name: 'Satish Sundar',
+        initials: 'SS',
+        photo: '/photos/satish-sundar.webp',
+        pillar: 'architecture',
+        level: 'pillar-lead',
+        role: 'Group Chief Architect',
+    },
+    {
+        id: 'karthik-srinivasan',
+        name: 'Karthik Srinivasan',
+        initials: 'KS',
+        photo: '/photos/karthik-srinivasan.webp',
+        pillar: 'architecture',
+        level: 'ic',
+        role: 'Enterprise Business Architect',
+    },
 ];
