@@ -1,5 +1,6 @@
 import AboutSection from './components/sections/AboutSection';
 import HeroSection from './components/sections/HeroSection';
+import OrgPlaceSection from './components/sections/OrgPlaceSection';
 import { useLenis } from './hooks/useLenis';
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
         <main>
             <HeroSection />
             <AboutSection />
+            <OrgPlaceSection />
         </main>
     );
 }
