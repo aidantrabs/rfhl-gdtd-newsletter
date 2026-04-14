@@ -1,4 +1,5 @@
 import AboutSection from './components/sections/AboutSection';
+import ContactSection from './components/sections/ContactSection';
 import GMLetterSection from './components/sections/GMLetterSection';
 import HeroSection from './components/sections/HeroSection';
 import OrgPlaceSection from './components/sections/OrgPlaceSection';
@@ -17,6 +18,7 @@ export default function App() {
             <GMLetterSection />
             <TeamSection />
             <ProductsSection />
+            <ContactSection />
         </main>
     );
 }
