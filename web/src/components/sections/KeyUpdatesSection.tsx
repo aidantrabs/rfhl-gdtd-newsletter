@@ -1,4 +1,5 @@
 import { keyUpdates } from '../../data/keyUpdates';
+import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import Reveal from '../effects/Reveal';
@@ -8,11 +9,7 @@ export default function KeyUpdatesSection() {
         <SectionShell id="key-updates" background="navy">
             <Watermark number="05" position="right" />
             <div className="relative z-10 w-full max-w-[1200px]">
-                <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        05 / KEY UPDATES
-                    </p>
-                </Reveal>
+                <SectionEyebrow label="05 / KEY UPDATES" />
                 <Reveal index={1}>
                     <h2 className="mb-4 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
                         What shipped this month.

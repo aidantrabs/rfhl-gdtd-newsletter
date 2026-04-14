@@ -2,6 +2,7 @@ import { stats, territories } from '../../data/stats';
 import { cn } from '../../lib/cn';
 import type { Accent } from '../../types';
 import Marquee from '../common/Marquee';
+import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import NumberCounter from '../effects/NumberCounter';
@@ -23,11 +24,7 @@ export default function AboutSection() {
         <SectionShell id="about" background="navy-2" fullHeight={false}>
             <Watermark number="02" position="left" />
             <div className="relative z-10 w-full max-w-[1280px]">
-                <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        02 / ABOUT
-                    </p>
-                </Reveal>
+                <SectionEyebrow label="02 / ABOUT" />
                 <Reveal index={1}>
                     <h2 className="mb-10 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
                         We build the digital core of Republic Financial Holdings.

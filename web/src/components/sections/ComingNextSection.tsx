@@ -1,3 +1,4 @@
+import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import Reveal from '../effects/Reveal';
@@ -7,11 +8,7 @@ export default function ComingNextSection() {
         <SectionShell id="coming-next" background="navy-2">
             <Watermark number="09" position="left" />
             <div className="relative z-10 w-full max-w-[1000px]">
-                <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        09 / COMING NEXT
-                    </p>
-                </Reveal>
+                <SectionEyebrow label="09 / COMING NEXT" />
                 <Reveal index={1}>
                     <p className="mb-6 text-xs tracking-[0.2em] text-purple-lt uppercase">
                         Issue 02 / May 2026

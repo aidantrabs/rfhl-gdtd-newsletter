@@ -1,4 +1,5 @@
 import { gmLetter } from '../../data/gm';
+import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import Parallax from '../effects/Parallax';
@@ -14,11 +15,7 @@ export default function GMLetterSection() {
             </Parallax>
             <div className="relative z-10 grid w-full max-w-[1180px] grid-cols-[1.25fr_0.75fr] items-center gap-20">
                 <div>
-                    <Reveal index={0}>
-                        <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                            04 / FROM THE GM
-                        </p>
-                    </Reveal>
+                    <SectionEyebrow label="04 / FROM THE GM" />
                     <Reveal index={1}>
                         <h2 className="mb-10 max-w-[620px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em] text-paper">
                             {label}

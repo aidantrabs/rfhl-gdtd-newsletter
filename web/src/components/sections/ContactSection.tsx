@@ -1,3 +1,4 @@
+import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import Reveal from '../effects/Reveal';
@@ -18,11 +19,7 @@ export default function ContactSection() {
         <SectionShell id="contact" background="navy">
             <Watermark number="08" position="right" />
             <div className="relative z-10 w-full max-w-[1100px]">
-                <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        08 / GET IN TOUCH
-                    </p>
-                </Reveal>
+                <SectionEyebrow label="08 / GET IN TOUCH" />
                 <Reveal index={1}>
                     <h2 className="mb-4 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
                         Got a question? We want to hear from you.

@@ -1,6 +1,7 @@
 import { products } from '../../data/products';
 import { cn } from '../../lib/cn';
 import type { Accent } from '../../types';
+import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import Reveal from '../effects/Reveal';
@@ -21,11 +22,7 @@ export default function ProductsSection() {
         <SectionShell id="products" background="surface">
             <Watermark number="07" position="left" />
             <div className="relative z-10 w-full max-w-[1200px]">
-                <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
-                        07 / WHAT WE OWN
-                    </p>
-                </Reveal>
+                <SectionEyebrow label="07 / WHAT WE OWN" />
                 <Reveal index={1}>
                     <h2 className="mb-4 max-w-[820px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em] text-paper">
                         The platforms that run Republic.
