@@ -30,6 +30,11 @@ export function useTeamHover({ containerRef, graceDelay = 60 }: UseTeamHoverOpti
         return callback;
     }, []);
 
+    const getCardRect = useCallback((id: string): DOMRect | null => {
+        const el = cardRefs.current.get(id);
+        return el ? el.getBoundingClientRect() : null;
+    }, []);
+
     useEffect(() => {
         const container = containerRef.current;
 
@@ -87,5 +92,5 @@ export function useTeamHover({ containerRef, graceDelay = 60 }: UseTeamHoverOpti
         };
     }, [containerRef, graceDelay]);
 
-    return { activeId, registerCard };
+    return { activeId, registerCard, getCardRect };
 }

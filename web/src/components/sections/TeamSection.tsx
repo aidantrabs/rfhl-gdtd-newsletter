@@ -1,8 +1,13 @@
+import { AnimatePresence } from 'motion/react';
+import { useRef } from 'react';
+
 import { team } from '../../data/team';
+import { useTeamHover } from '../../hooks/useTeamHover';
 import type { Pillar } from '../../types';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import Reveal from '../effects/Reveal';
+import PersonCardExpanded from '../team/PersonCardExpanded';
 import PillarColumn from '../team/PillarColumn';
 
 const pillarOrder: Pillar[] = [
@@ -14,6 +19,11 @@ const pillarOrder: Pillar[] = [
 ];
 
 export default function TeamSection() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { activeId, registerCard, getCardRect } = useTeamHover({ containerRef });
+    const activePerson = activeId ? team.find((person) => person.id === activeId) : null;
+    const activeRect = activeId ? getCardRect(activeId) : null;
+
     return (
         <SectionShell id="team" background="navy-2">
             <Watermark number="05" position="right" />
@@ -34,7 +44,7 @@ export default function TeamSection() {
                         below.
                     </p>
                 </Reveal>
-                <div className="space-y-20">
+                <div ref={containerRef} className="space-y-20">
                     {pillarOrder.map((pillar) => {
                         const people = team.filter((person) => person.pillar === pillar);
 
@@ -42,10 +52,32 @@ export default function TeamSection() {
                             return null;
                         }
 
-                        return <PillarColumn key={pillar} pillar={pillar} people={people} />;
+                        return (
+                            <PillarColumn
+                                key={pillar}
+                                pillar={pillar}
+                                people={people}
+                                getCardRef={registerCard}
+                            />
+                        );
                     })}
                 </div>
             </div>
+            <AnimatePresence>
+                {activePerson && activeRect && (
+                    <div
+                        key={activePerson.id}
+                        className="pointer-events-none fixed z-50"
+                        style={{
+                            left: activeRect.left + activeRect.width / 2,
+                            top: activeRect.top + activeRect.height / 2,
+                            transform: 'translate(-50%, -50%)',
+                        }}
+                    >
+                        <PersonCardExpanded person={activePerson} />
+                    </div>
+                )}
+            </AnimatePresence>
         </SectionShell>
     );
 }

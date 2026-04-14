@@ -13,9 +13,10 @@ const pillarMeta: Record<Pillar, { label: string; dotClass: string }> = {
 type PillarColumnProps = {
     pillar: Pillar;
     people: Person[];
+    getCardRef?: (id: string) => (el: HTMLElement | null) => void;
 };
 
-export default function PillarColumn({ pillar, people }: PillarColumnProps) {
+export default function PillarColumn({ pillar, people, getCardRef }: PillarColumnProps) {
     const meta = pillarMeta[pillar];
 
     return (
@@ -29,7 +30,7 @@ export default function PillarColumn({ pillar, people }: PillarColumnProps) {
             </div>
             <div className="grid grid-cols-6 gap-x-4 gap-y-10">
                 {people.map((person) => (
-                    <PersonCard key={person.id} person={person} />
+                    <PersonCard key={person.id} person={person} ref={getCardRef?.(person.id)} />
                 ))}
             </div>
         </div>
