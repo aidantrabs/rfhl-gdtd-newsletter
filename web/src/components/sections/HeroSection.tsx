@@ -31,7 +31,7 @@ export default function HeroSection() {
             >
                 <motion.p
                     variants={fadeUp}
-                    className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim"
+                    className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim"
                 >
                     ISSUE 01 / APR 2026
                 </motion.p>
@@ -56,7 +56,7 @@ export default function HeroSection() {
                 </motion.p>
                 <motion.div
                     variants={fadeUp}
-                    className="flex items-center gap-4 font-mono text-xs tracking-widest text-dim uppercase"
+                    className="flex items-center gap-4 text-xs tracking-widest text-dim uppercase"
                 >
                     <span className="relative block h-[2px] w-10 overflow-hidden rounded-full bg-line">
                         <motion.span

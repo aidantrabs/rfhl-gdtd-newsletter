@@ -8,12 +8,12 @@ export default function ComingNextSection() {
             <Watermark number="08" position="left" />
             <div className="relative z-10 w-full max-w-[1000px]">
                 <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
                         08 / COMING NEXT
                     </p>
                 </Reveal>
                 <Reveal index={1}>
-                    <p className="mb-6 font-mono text-xs tracking-[0.2em] text-purple-lt uppercase">
+                    <p className="mb-6 text-xs tracking-[0.2em] text-purple-lt uppercase">
                         Issue 02 / May 2026
                     </p>
                 </Reveal>
@@ -33,7 +33,7 @@ export default function ComingNextSection() {
                     </p>
                 </Reveal>
                 <Reveal index={4}>
-                    <div className="flex items-center gap-4 font-mono text-xs tracking-widest text-dim uppercase">
+                    <div className="flex items-center gap-4 text-xs tracking-widest text-dim uppercase">
                         <span className="block h-[2px] w-8 rounded-full bg-line" />
                         See you next month
                     </div>

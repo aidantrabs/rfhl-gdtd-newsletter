@@ -22,7 +22,7 @@ export default function ProductsSection() {
             <Watermark number="06" position="left" />
             <div className="relative z-10 w-full max-w-[1200px]">
                 <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
                         06 / WHAT WE OWN
                     </p>
                 </Reveal>
@@ -47,7 +47,7 @@ export default function ProductsSection() {
                                         accentDotClass[product.accent],
                                     )}
                                 />
-                                <h3 className="mb-3 text-xl font-semibold text-paper">
+                                <h3 className="mb-3 text-h3 font-semibold text-paper">
                                     {product.name}
                                 </h3>
                                 <p className="text-sm leading-relaxed text-muted">

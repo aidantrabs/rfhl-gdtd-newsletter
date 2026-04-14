@@ -58,7 +58,7 @@ function Avatar({ initials, size, ringClass, textClass }: AvatarProps) {
     return (
         <div
             className={cn(
-                'flex shrink-0 items-center justify-center rounded-full bg-navy-2 font-mono font-light tracking-[0.08em] ring-1',
+                'flex shrink-0 items-center justify-center rounded-full bg-navy-2 font-light tracking-[0.08em] ring-1',
                 avatarSizeClass[size],
                 ringClass ?? 'ring-line',
                 textClass ?? 'text-light',
@@ -89,7 +89,7 @@ function PersonCard({ label, person, size, ringClass, textClass }: PersonCardPro
                 />
                 <div className="min-w-0 flex-1">
                     {label && (
-                        <div className="mb-1 font-mono text-[10px] tracking-[0.22em] text-dim uppercase">
+                        <div className="mb-1 text-[10px] tracking-[0.22em] text-dim uppercase">
                             {label}
                         </div>
                     )}
@@ -97,7 +97,7 @@ function PersonCard({ label, person, size, ringClass, textClass }: PersonCardPro
                     <div className="truncate text-sm text-muted">{person.role}</div>
                 </div>
                 {person.since && (
-                    <div className="shrink-0 font-mono text-[10px] tracking-[0.15em] text-dim uppercase opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    <div className="shrink-0 text-[10px] tracking-[0.15em] text-dim uppercase opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                         Since {person.since}
                     </div>
                 )}
@@ -119,7 +119,7 @@ export default function TeamSection() {
             <Watermark number="05" position="right" />
             <div className="relative z-10 w-full max-w-[1280px]">
                 <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
                         05 / THE TEAM
                     </p>
                 </Reveal>
@@ -143,13 +143,13 @@ export default function TeamSection() {
                             ringClass="ring-blue-lt/50"
                             textClass="text-blue-lt"
                         />
-                        <div className="mt-5 mb-2 font-mono text-[11px] tracking-[0.24em] text-blue-lt uppercase">
+                        <div className="mt-5 mb-2 text-[11px] tracking-[0.24em] text-blue-lt uppercase">
                             General Manager
                         </div>
                         <div className="mb-2 text-3xl leading-tight font-semibold text-paper">
                             {gm.name}
                         </div>
-                        <div className="font-mono text-xs tracking-[0.14em] text-muted uppercase">
+                        <div className="text-xs tracking-[0.14em] text-muted uppercase">
                             Group Digital Technology Division
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function TeamSection() {
                                     />
                                     <span
                                         className={cn(
-                                            'font-mono text-[11px] tracking-[0.22em] uppercase',
+                                            'text-[11px] tracking-[0.22em] uppercase',
                                             accentTextClass[team.accent],
                                         )}
                                     >
@@ -178,7 +178,7 @@ export default function TeamSection() {
                                     </span>
                                 </div>
 
-                                <h3 className="mb-10 text-2xl leading-tight font-semibold text-paper">
+                                <h3 className="mb-10 text-h3 leading-tight font-semibold text-paper">
                                     {team.name}
                                 </h3>
 
@@ -195,12 +195,12 @@ export default function TeamSection() {
 
                                 <div className="mt-auto border-t border-line pt-6">
                                     <div className="mb-5 flex items-center justify-between">
-                                        <span className="font-mono text-[10px] tracking-[0.22em] text-dim uppercase">
+                                        <span className="text-[10px] tracking-[0.22em] text-dim uppercase">
                                             The Team
                                         </span>
                                         <span
                                             className={cn(
-                                                'font-mono text-[11px] tracking-[0.18em] uppercase',
+                                                'text-[11px] tracking-[0.18em] uppercase',
                                                 accentTextClass[team.accent],
                                             )}
                                         >

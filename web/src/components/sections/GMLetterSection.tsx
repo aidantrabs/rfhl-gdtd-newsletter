@@ -15,7 +15,7 @@ export default function GMLetterSection() {
             <div className="relative z-10 grid w-full max-w-[1180px] grid-cols-[1.25fr_0.75fr] items-center gap-20">
                 <div>
                     <Reveal index={0}>
-                        <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                        <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
                             04 / FROM THE GM
                         </p>
                     </Reveal>
@@ -34,12 +34,12 @@ export default function GMLetterSection() {
                 </div>
                 <aside className="flex flex-col items-center gap-8">
                     <Reveal index={1}>
-                        <div className="flex aspect-square w-[260px] items-center justify-center overflow-hidden rounded-xl border border-line bg-navy-2 font-mono text-6xl font-light tracking-widest text-dim shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+                        <div className="flex aspect-square w-[260px] items-center justify-center overflow-hidden rounded-xl border border-line bg-navy-2 text-6xl font-light tracking-widest text-dim shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                             {person.initials}
                         </div>
                     </Reveal>
                     <Reveal index={3}>
-                        <div className="text-center font-mono text-xs tracking-[0.2em] uppercase">
+                        <div className="text-center text-xs tracking-[0.2em] uppercase">
                             <div className="mx-auto mb-3 h-px w-10 bg-line" />
                             <div className="mb-1 text-paper">{person.name}</div>
                             <div className="text-dim">{person.role}</div>

@@ -19,7 +19,7 @@ export default function Watermark({ number, position = 'right', className }: Wat
             aria-hidden="true"
             className={cn(
                 'pointer-events-none absolute select-none',
-                'font-mono text-[clamp(120px,20vw,240px)] leading-none font-extrabold text-white/[0.015]',
+                'text-[clamp(120px,20vw,240px)] leading-none font-extrabold text-white/[0.015]',
                 positionClasses[position],
                 className,
             )}

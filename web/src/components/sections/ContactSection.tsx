@@ -19,12 +19,12 @@ export default function ContactSection() {
             <Watermark number="07" position="right" />
             <div className="relative z-10 w-full max-w-[1100px]">
                 <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
                         07 / GET IN TOUCH
                     </p>
                 </Reveal>
                 <Reveal index={1}>
-                    <h2 className="mb-4 max-w-[820px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em]">
+                    <h2 className="mb-4 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
                         Got a question? We want to hear from you.
                     </h2>
                 </Reveal>
@@ -38,10 +38,10 @@ export default function ContactSection() {
                     {channels.map((channel, i) => (
                         <Reveal key={channel.label} index={i + 3}>
                             <div className="border-t border-line pt-6">
-                                <div className="mb-3 font-mono text-xs tracking-[0.2em] text-dim uppercase">
+                                <div className="mb-3 text-xs tracking-[0.2em] text-dim uppercase">
                                     {channel.label}
                                 </div>
-                                <div className="font-mono text-lg text-light">{channel.handle}</div>
+                                <div className="text-lg text-light">{channel.handle}</div>
                             </div>
                         </Reveal>
                     ))}

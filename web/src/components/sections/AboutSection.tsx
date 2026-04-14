@@ -8,12 +8,12 @@ export default function AboutSection() {
             <Watermark number="02" position="left" />
             <div className="relative z-10 w-full max-w-[1000px]">
                 <Reveal index={0}>
-                    <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
+                    <p className="mb-9 inline-block border-b border-line pb-2 text-sm tracking-[0.2em] text-dim">
                         02 / ABOUT
                     </p>
                 </Reveal>
                 <Reveal index={1}>
-                    <h2 className="mb-10 max-w-[820px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em]">
+                    <h2 className="mb-10 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
                         We build the digital core of Republic Financial Holdings.
                     </h2>
                 </Reveal>

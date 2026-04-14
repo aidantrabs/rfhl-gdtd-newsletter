@@ -89,10 +89,10 @@ export default function WheelNav() {
                     </motion.g>
                 </svg>
                 <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-                    <span className="font-mono text-[11px] tracking-[0.3em] text-dim">
+                    <span className="text-[11px] tracking-[0.3em] text-dim">
                         {String(displayIndex + 1).padStart(2, '0')}
                     </span>
-                    <span className="mt-1.5 max-w-[104px] font-mono text-[11px] leading-tight tracking-[0.08em] text-paper uppercase">
+                    <span className="mt-1.5 max-w-[104px] text-[11px] leading-tight tracking-[0.08em] text-paper uppercase">
                         {displaySection.label}
                     </span>
                 </div>
