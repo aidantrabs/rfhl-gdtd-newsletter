@@ -1,3 +1,4 @@
+import WheelNav from './components/nav/WheelNav';
 import AboutSection from './components/sections/AboutSection';
 import ComingNextSection from './components/sections/ComingNextSection';
 import ContactSection from './components/sections/ContactSection';
@@ -12,15 +13,18 @@ export default function App() {
     useLenis();
 
     return (
-        <main>
-            <HeroSection />
-            <AboutSection />
-            <OrgPlaceSection />
-            <GMLetterSection />
-            <TeamSection />
-            <ProductsSection />
-            <ContactSection />
-            <ComingNextSection />
-        </main>
+        <>
+            <main>
+                <HeroSection />
+                <AboutSection />
+                <OrgPlaceSection />
+                <GMLetterSection />
+                <TeamSection />
+                <ProductsSection />
+                <ContactSection />
+                <ComingNextSection />
+            </main>
+            <WheelNav />
+        </>
     );
 }
