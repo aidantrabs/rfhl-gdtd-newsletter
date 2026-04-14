@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, useTransform } from 'motion/react';
 
 import { sections } from '../../data/sections';
 import { scrollToSection } from '../../hooks/useLenis';
@@ -44,10 +44,12 @@ function describeSegmentPath(index: number): string {
 }
 
 export default function WheelNav() {
-    const { rotation, activeIndex } = useSectionProgress();
+    const { rotation, activeIndex, progress } = useSectionProgress();
+    const opacity = useTransform(progress, [0, 0.05], [0, 1]);
+    const scale = useTransform(progress, [0, 0.05], [0.85, 1]);
 
     return (
-        <div className="fixed right-10 bottom-10 z-40">
+        <motion.div className="fixed right-10 bottom-10 z-40" style={{ opacity, scale }}>
             <div
                 aria-hidden="true"
                 className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1"
@@ -91,6 +93,6 @@ export default function WheelNav() {
                     ))}
                 </motion.g>
             </svg>
-        </div>
+        </motion.div>
     );
 }
