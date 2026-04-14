@@ -8,6 +8,14 @@ export default function HeroSection() {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 bg-grain opacity-[0.035]"
             />
+            <span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-[10%] right-[28%] h-[60vh] w-px rotate-[-15deg] bg-gradient-to-b from-transparent via-blue/[0.12] to-transparent"
+            />
+            <span
+                aria-hidden="true"
+                className="pointer-events-none absolute top-[25%] right-[22%] h-[40vh] w-px rotate-[-15deg] bg-gradient-to-b from-transparent via-blue/[0.06] to-transparent"
+            />
             <Watermark number="01" position="right" />
             <div className="relative z-10 w-full max-w-[1000px]">
                 <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
