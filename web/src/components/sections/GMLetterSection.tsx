@@ -9,10 +9,10 @@ export default function GMLetterSection() {
 
     return (
         <SectionShell id="gm-letter" background="navy">
-            <Parallax range={[0, -100]}>
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -80]}>
                 <Watermark number="04" position="left" />
             </Parallax>
-            <div className="relative z-10 grid w-full max-w-[1100px] grid-cols-[1.2fr_0.8fr] gap-16">
+            <div className="relative z-10 grid w-full max-w-[1180px] grid-cols-[1.25fr_0.75fr] items-center gap-20">
                 <div>
                     <Reveal index={0}>
                         <p className="mb-9 inline-block border-b border-line pb-2 font-mono text-sm tracking-[0.2em] text-dim">
@@ -20,11 +20,11 @@ export default function GMLetterSection() {
                         </p>
                     </Reveal>
                     <Reveal index={1}>
-                        <h2 className="mb-10 max-w-[620px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em]">
+                        <h2 className="mb-10 max-w-[620px] text-h2 leading-[1.1] font-semibold tracking-[-0.02em] text-paper">
                             {label}
                         </h2>
                     </Reveal>
-                    <div className="max-w-[560px] space-y-6 text-lg leading-relaxed text-light">
+                    <div className="max-w-[580px] space-y-6 text-lg leading-relaxed text-light">
                         {paragraphs.map((paragraph, i) => (
                             <Reveal key={paragraph.slice(0, 24)} index={i + 2}>
                                 <p>{paragraph}</p>
@@ -32,17 +32,17 @@ export default function GMLetterSection() {
                         ))}
                     </div>
                 </div>
-                <aside className="flex flex-col gap-6 border-l border-line pl-10">
+                <aside className="flex flex-col items-center gap-8">
                     <Reveal index={1}>
-                        <div className="flex aspect-square w-[220px] items-center justify-center overflow-hidden rounded-lg border border-line bg-navy-2 font-mono text-5xl font-light tracking-widest text-dim">
+                        <div className="flex aspect-square w-[260px] items-center justify-center overflow-hidden rounded-xl border border-line bg-navy-2 font-mono text-6xl font-light tracking-widest text-dim shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                             {person.initials}
                         </div>
                     </Reveal>
                     <Reveal index={3}>
-                        <div className="font-mono text-xs tracking-[0.18em] text-dim uppercase">
-                            <div className="mb-2 h-px w-10 bg-line" />
-                            <div className="mb-1 text-light">{person.name}</div>
-                            <div>{person.role}</div>
+                        <div className="text-center font-mono text-xs tracking-[0.2em] uppercase">
+                            <div className="mx-auto mb-3 h-px w-10 bg-line" />
+                            <div className="mb-1 text-paper">{person.name}</div>
+                            <div className="text-dim">{person.role}</div>
                         </div>
                     </Reveal>
                 </aside>

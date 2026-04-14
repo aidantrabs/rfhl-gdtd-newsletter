@@ -20,7 +20,7 @@ export default function HeroSection() {
                 aria-hidden="true"
                 className="pointer-events-none absolute top-[25%] right-[22%] h-[40vh] w-px rotate-[-15deg] bg-gradient-to-b from-transparent via-blue/[0.06] to-transparent"
             />
-            <Parallax range={[0, -120]}>
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -100]}>
                 <Watermark number="01" position="right" />
             </Parallax>
             <motion.div
