@@ -55,7 +55,18 @@ export default function HeroSection() {
                     variants={fadeUp}
                     className="flex items-center gap-4 font-mono text-xs tracking-widest text-dim uppercase"
                 >
-                    <span className="block h-[2px] w-8 rounded-full bg-line" />
+                    <span className="relative block h-[2px] w-8 overflow-hidden rounded-full bg-line">
+                        <motion.span
+                            className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-blue-lt"
+                            animate={{ x: ['-100%', '200%'] }}
+                            transition={{
+                                duration: 2.4,
+                                repeat: Number.POSITIVE_INFINITY,
+                                ease: 'easeInOut',
+                                repeatDelay: 0.4,
+                            }}
+                        />
+                    </span>
                     Scroll to begin
                 </motion.div>
             </motion.div>
