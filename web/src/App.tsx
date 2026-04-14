@@ -1,3 +1,5 @@
+import { MotionConfig } from 'motion/react';
+
 import WheelNav from './components/nav/WheelNav';
 import AboutSection from './components/sections/AboutSection';
 import ComingNextSection from './components/sections/ComingNextSection';
@@ -13,7 +15,7 @@ export default function App() {
     useLenis();
 
     return (
-        <>
+        <MotionConfig reducedMotion="user">
             <main>
                 <HeroSection />
                 <AboutSection />
@@ -25,6 +27,6 @@ export default function App() {
                 <ComingNextSection />
             </main>
             <WheelNav />
-        </>
+        </MotionConfig>
     );
 }
