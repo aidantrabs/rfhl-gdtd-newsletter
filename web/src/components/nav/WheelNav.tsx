@@ -46,6 +46,15 @@ export default function WheelNav() {
 
     return (
         <div className="fixed right-10 bottom-10 z-40">
+            <div
+                aria-hidden="true"
+                className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1"
+            >
+                <svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true">
+                    <title>Active section indicator</title>
+                    <path d="M0 0 L14 0 L7 10 Z" fill="var(--color-blue-lt)" />
+                </svg>
+            </div>
             <svg
                 width={SIZE}
                 height={SIZE}
