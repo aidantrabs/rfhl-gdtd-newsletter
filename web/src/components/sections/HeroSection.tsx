@@ -37,13 +37,13 @@ export default function HeroSection() {
                 </motion.p>
                 <motion.h1
                     variants={fadeUp}
-                    className="mb-6 text-h1 leading-[0.92] font-extrabold tracking-[-0.04em]"
+                    className="mb-6 text-h1 leading-[0.9] font-bold tracking-[-0.035em] text-paper"
                 >
-                    <span className="mb-3 block text-[0.45em] font-light tracking-[8px] text-muted uppercase">
-                        Meet
+                    <span className="mb-4 block text-[0.22em] font-light tracking-[0.5em] text-muted uppercase">
+                        Meet the team behind
                     </span>
                     <span className="block">Group Digital</span>
-                    <span className="block text-transparent [-webkit-text-stroke:1.5px_var(--color-blue-lt)]">
+                    <span className="block text-transparent [-webkit-text-stroke:1.25px_var(--color-gold)]">
                         Technology
                     </span>
                 </motion.h1>
@@ -58,12 +58,12 @@ export default function HeroSection() {
                     variants={fadeUp}
                     className="flex items-center gap-4 font-mono text-xs tracking-widest text-dim uppercase"
                 >
-                    <span className="relative block h-[2px] w-8 overflow-hidden rounded-full bg-line">
+                    <span className="relative block h-[2px] w-10 overflow-hidden rounded-full bg-line">
                         <motion.span
-                            className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-blue-lt"
-                            animate={{ x: ['-100%', '200%'] }}
+                            className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-gold"
+                            animate={{ x: ['-120%', '220%'] }}
                             transition={{
-                                duration: 2.4,
+                                duration: 2.6,
                                 repeat: Number.POSITIVE_INFINITY,
                                 ease: 'easeInOut',
                                 repeatDelay: 0.4,
