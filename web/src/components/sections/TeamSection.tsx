@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 
-import { gm, teams } from '../../data/team';
+import { gm, pillars } from '../../data/team';
 import { cn } from '../../lib/cn';
-import type { Accent, Manager } from '../../types';
+import type { Accent, Person, TeamUnit } from '../../types';
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
@@ -42,12 +42,11 @@ const accentRingClass: Record<Accent, string> = {
     'purple-lt': 'ring-purple-lt/40',
 };
 
-type AvatarSize = 'sm' | 'md' | 'lg' | 'xl';
+type AvatarSize = 'md' | 'lg' | 'xl';
 
 const avatarSizeClass: Record<AvatarSize, string> = {
-    sm: 'h-10 w-10 text-[11px]',
     md: 'h-14 w-14 text-sm',
-    lg: 'h-16 w-16 text-base',
+    lg: 'h-20 w-20 text-lg',
     xl: 'h-24 w-24 text-2xl',
 };
 
@@ -73,47 +72,96 @@ function Avatar({ initials, size, ringClass, textClass }: AvatarProps) {
     );
 }
 
-type PersonCardProps = {
-    label?: string;
-    person: Manager;
-    size: AvatarSize;
-    ringClass?: string;
-    textClass?: string;
+type UnitCardProps = {
+    unit: TeamUnit;
+    index: number;
 };
 
-function PersonCard({ label, person, size, ringClass, textClass }: PersonCardProps) {
+function UnitCard({ unit, index }: UnitCardProps) {
     return (
-        <div className="group -mx-3 cursor-pointer rounded-lg px-3 py-3 transition-colors duration-200 hover:bg-surface/50">
-            <div className="flex items-center gap-4">
-                <Avatar
-                    initials={person.initials}
-                    size={size}
-                    ringClass={ringClass}
-                    textClass={textClass}
-                />
-                <div className="min-w-0 flex-1">
-                    {label && (
-                        <div className="mb-1 text-[10px] tracking-[0.22em] text-dim uppercase">
-                            {label}
+        <Reveal index={index}>
+            <article className="group flex h-full flex-col rounded-2xl border border-line bg-navy p-8 transition-all duration-300 hover:-translate-y-1 hover:border-light/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+                <div className="mb-7 flex items-center justify-between">
+                    <div className={cn('h-1 w-10 rounded-full', accentBarClass[unit.accent])} />
+                    <span
+                        className={cn(
+                            'text-[11px] tracking-[0.22em] uppercase',
+                            accentTextClass[unit.accent],
+                        )}
+                    >
+                        {unit.shortName}
+                    </span>
+                </div>
+                <h3 className="mb-7 text-h3 leading-tight font-semibold text-paper">{unit.name}</h3>
+                <div className="mb-7 flex items-center gap-4">
+                    <Avatar
+                        initials={unit.lead.initials}
+                        size="md"
+                        ringClass={accentRingClass[unit.accent]}
+                        textClass={accentTextClass[unit.accent]}
+                    />
+                    <div className="min-w-0 flex-1">
+                        <div className="truncate text-base font-semibold text-paper">
+                            {unit.lead.name}
                         </div>
+                        <div className="truncate text-sm text-muted">{unit.lead.role}</div>
+                    </div>
+                </div>
+                <p className="mt-auto text-sm leading-relaxed text-light">{unit.description}</p>
+            </article>
+        </Reveal>
+    );
+}
+
+type SeniorManagerCardProps = {
+    person: Person;
+    label: string;
+    accent: Accent;
+    revealIndex: number;
+};
+
+function SeniorManagerCard({ person, label, accent, revealIndex }: SeniorManagerCardProps) {
+    return (
+        <Reveal index={revealIndex}>
+            <div className="mx-auto mb-10 flex w-full max-w-[420px] flex-col items-center rounded-2xl border border-line bg-navy px-10 py-8 text-center shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+                <div className="relative">
+                    <motion.span
+                        aria-hidden="true"
+                        className={cn(
+                            'pointer-events-none absolute inset-0 rounded-full ring-1',
+                            accentRingClass[accent],
+                        )}
+                        animate={{
+                            opacity: [0.4, 0, 0.4],
+                            scale: [1, 1.18, 1],
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: 'easeInOut',
+                        }}
+                    />
+                    <Avatar
+                        initials={person.initials}
+                        size="lg"
+                        ringClass={accentRingClass[accent]}
+                        textClass={accentTextClass[accent]}
+                    />
+                </div>
+                <div
+                    className={cn(
+                        'mt-5 mb-2 text-[11px] tracking-[0.24em] uppercase',
+                        accentTextClass[accent],
                     )}
-                    <div className="truncate text-base font-semibold text-paper">{person.name}</div>
-                    <div className="truncate text-sm text-muted">{person.role}</div>
+                >
+                    {label}
                 </div>
-                {person.since && (
-                    <div className="shrink-0 text-[10px] tracking-[0.15em] text-dim uppercase opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                        Since {person.since}
-                    </div>
-                )}
-            </div>
-            <div className="mt-0 grid grid-rows-[0fr] transition-[grid-template-rows,margin] duration-300 ease-out group-hover:mt-3 group-hover:grid-rows-[1fr]">
-                <div className="overflow-hidden">
-                    <div className="border-l-2 border-line pl-4 text-sm leading-relaxed text-light">
-                        {person.focus}
-                    </div>
+                <div className="mb-1 text-2xl leading-tight font-semibold text-paper">
+                    {person.name}
                 </div>
+                <div className="text-sm text-muted">{person.role}</div>
             </div>
-        </div>
+        </Reveal>
     );
 }
 
@@ -131,20 +179,20 @@ export default function TeamSection() {
                     </h2>
                 </Reveal>
                 <Reveal index={2}>
-                    <p className="mb-14 max-w-[640px] text-lg leading-relaxed text-muted">
-                        One general manager, three teams, and the people behind every Republic
-                        platform.
+                    <p className="mb-16 max-w-[640px] text-lg leading-relaxed text-muted">
+                        One general manager, two senior leaders, and the teams shipping every
+                        Republic platform.
                     </p>
                 </Reveal>
 
                 <Reveal index={3}>
-                    <div className="relative mx-auto mb-6 flex w-full max-w-[440px] flex-col items-center rounded-2xl border border-line bg-navy px-10 pt-10 pb-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
+                    <div className="relative mx-auto mb-12 flex w-full max-w-[460px] flex-col items-center rounded-2xl border border-line bg-navy px-10 pt-10 pb-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.4)]">
                         <div className="relative">
                             <motion.span
                                 aria-hidden="true"
-                                className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-blue-lt"
+                                className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-blue-lt/50"
                                 animate={{
-                                    opacity: [0.35, 0, 0.35],
+                                    opacity: [0.45, 0, 0.45],
                                     scale: [1, 1.2, 1],
                                 }}
                                 transition={{
@@ -172,72 +220,47 @@ export default function TeamSection() {
                     </div>
                 </Reveal>
 
-                <div className="mx-auto mb-8 h-10 w-px bg-gradient-to-b from-line to-transparent" />
+                <div className="mx-auto mb-20 h-12 w-px bg-gradient-to-b from-line to-transparent" />
 
-                <div className="grid grid-cols-3 items-start gap-6">
-                    {teams.map((team, i) => (
-                        <Reveal key={team.id} index={i + 4}>
-                            <article className="flex h-full flex-col rounded-2xl border border-line bg-navy p-8 transition-all duration-300 hover:-translate-y-1 hover:border-light/25 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
-                                <div className="mb-8 flex items-center justify-between">
-                                    <div
-                                        className={cn(
-                                            'h-1 w-10 rounded-full',
-                                            accentBarClass[team.accent],
-                                        )}
-                                    />
-                                    <span
-                                        className={cn(
-                                            'text-[11px] tracking-[0.22em] uppercase',
-                                            accentTextClass[team.accent],
-                                        )}
-                                    >
-                                        {team.shortName}
-                                    </span>
-                                </div>
-
-                                <h3 className="mb-10 text-h3 leading-tight font-semibold text-paper">
-                                    {team.name}
-                                </h3>
-
-                                <div className="mb-8 space-y-2">
-                                    <PersonCard
-                                        label="Senior Manager"
-                                        person={team.seniorManager}
-                                        size="md"
-                                        ringClass={accentRingClass[team.accent]}
-                                        textClass={accentTextClass[team.accent]}
-                                    />
-                                    <PersonCard label="Manager" person={team.manager} size="md" />
-                                </div>
-
-                                <div className="mt-auto border-t border-line pt-6">
-                                    <div className="mb-5 flex items-center justify-between">
-                                        <span className="text-[10px] tracking-[0.22em] text-dim uppercase">
-                                            The Team
-                                        </span>
-                                        <span
-                                            className={cn(
-                                                'text-[11px] tracking-[0.18em] uppercase',
-                                                accentTextClass[team.accent],
-                                            )}
-                                        >
-                                            {team.reports.length} people
-                                        </span>
-                                    </div>
-                                    <div className="space-y-1">
-                                        {team.reports.map((person) => (
-                                            <PersonCard
-                                                key={`${team.id}-${person.name}`}
-                                                person={person}
-                                                size="sm"
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            </article>
+                {pillars.map((pillar, pillarIndex) => (
+                    <div key={pillar.id} className="mb-24 last:mb-0">
+                        <Reveal index={4 + pillarIndex * 2}>
+                            <div className="mb-10 flex items-baseline gap-4 border-b border-line pb-4">
+                                <span className="text-sm tracking-[0.24em] text-dim uppercase tabular-nums">
+                                    {String(pillarIndex + 1).padStart(2, '0')}
+                                </span>
+                                <span className="text-sm tracking-[0.24em] text-light uppercase">
+                                    {pillar.label}
+                                </span>
+                                <span className="ml-auto text-xs tracking-[0.18em] text-dim uppercase">
+                                    {pillar.units.length} teams
+                                </span>
+                            </div>
                         </Reveal>
-                    ))}
-                </div>
+
+                        <SeniorManagerCard
+                            person={pillar.seniorManager}
+                            label="Senior Manager"
+                            accent={pillar.units[0].accent}
+                            revealIndex={5 + pillarIndex * 2}
+                        />
+
+                        <div
+                            className={cn(
+                                'grid gap-6',
+                                pillar.units.length <= 3 ? 'grid-cols-3' : 'grid-cols-3',
+                            )}
+                        >
+                            {pillar.units.map((unit, unitIndex) => (
+                                <UnitCard
+                                    key={unit.id}
+                                    unit={unit}
+                                    index={6 + pillarIndex * 2 + unitIndex}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </SectionShell>
     );

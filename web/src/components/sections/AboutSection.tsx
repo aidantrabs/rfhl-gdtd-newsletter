@@ -29,23 +29,34 @@ export default function AboutSection() {
             <div className="relative z-10 w-full max-w-[1280px]">
                 <SectionEyebrow label="02 / ABOUT" />
                 <Reveal index={1}>
-                    <h2 className="mb-10 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
-                        We build the digital core of Republic Financial Holdings.
+                    <h2 className="mb-10 max-w-[860px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
+                        The central execution arm for digital innovation at RFHL.
                     </h2>
                 </Reveal>
-                <div className="mb-20 max-w-[620px] space-y-6 text-lg leading-relaxed text-light">
+                <div className="mb-20 max-w-[680px] space-y-6 text-lg leading-relaxed text-light">
                     <Reveal index={2}>
                         <p>
-                            Group Digital Technology Division - GDTD - is the team behind the web
-                            and mobile platforms every Republic customer touches, from account
-                            onboarding to everyday banking to wealth and compliance.
+                            The Group Digital Technology Division was established as one of the
+                            pillars of the RFHL Group's Digital Transformation journey - formed to
+                            translate strategic ambition into tangible, technology-enabled outcomes
+                            across the business.
                         </p>
                     </Reveal>
                     <Reveal index={3}>
                         <p>
-                            We design, deliver, and evolve these platforms across every RBL
-                            territory. Engineering, architecture, product delivery, and
-                            round-the-clock support - all under one roof.
+                            GDTD is responsible for the design, engineering, and delivery of the
+                            digital solutions that modernise the Group's operations, elevate
+                            customer experience, and enable scalable growth. The division brings
+                            together a full engineering capability alongside a dedicated digital
+                            platform team, ensuring that every initiative is built on secure and
+                            reusable foundations.
+                        </p>
+                    </Reveal>
+                    <Reveal index={4}>
+                        <p>
+                            We partner closely with business units to deliver enterprise-grade
+                            platforms, digital products, and automation initiatives that drive
+                            efficiency, agility, and long-term value for the RFHL Group.
                         </p>
                     </Reveal>
                 </div>

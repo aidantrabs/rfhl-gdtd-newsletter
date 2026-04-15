@@ -1,10 +1,10 @@
-import type { Manager } from '../types';
+import type { Person } from '../types';
 import { gm } from './team';
 
 type GMLetter = {
     label: string;
     paragraphs: string[];
-    person: Manager;
+    person: Person;
 };
 
 export const gmLetter: GMLetter = {

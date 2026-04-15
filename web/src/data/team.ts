@@ -1,175 +1,150 @@
-import type { Manager, Team } from '../types';
+import type { Person, Pillar } from '../types';
 
-export const gm: Manager = {
+export const gm: Person = {
     name: 'Marlon Persad',
     initials: 'MP',
     role: 'General Manager, Group Digital Technology Division',
-    focus: 'Division strategy, delivery, and leadership across all three teams.',
-    since: '2019',
 };
 
-export const teams: Team[] = [
+export const pillars: Pillar[] = [
     {
-        id: 'engineering-platforms',
-        name: 'Engineering Platforms',
-        shortName: 'EPL',
-        accent: 'orange',
+        id: 'engineering',
+        label: 'Engineering',
+        name: 'Group Engineering',
         seniorManager: {
             name: 'Dmytro Lavrinenko',
             initials: 'DL',
             role: 'Senior Manager, Group Engineering',
-            focus: 'Shared platform architecture, engineering standards, and team uplift.',
-            since: '2020',
         },
-        manager: {
-            name: 'Adrian Lee',
-            initials: 'AL',
-            role: 'Manager',
-            focus: 'Day-to-day delivery, planning, and engineering team leadership.',
-            since: '2018',
-        },
-        reports: [
+        units: [
             {
-                name: 'Serhii Sypalo',
-                initials: 'SS',
-                role: 'Engineering Manager / AWS DevOps Lead',
-                focus: 'AWS infrastructure strategy and DevOps tooling across the group.',
-                since: '2021',
+                id: 'digital-banking-support',
+                name: 'Digital Banking & Support Systems',
+                shortName: 'DB & SS',
+                accent: 'purple-lt',
+                description:
+                    "Responsible for the operational stability, security, and continuous enhancement of the Bank's digital banking platforms and supporting technology. Ensures high availability of Internet and Mobile Banking services while maintaining alignment with enterprise architecture, risk management, and regulatory standards.",
+                lead: {
+                    name: 'Nigel George',
+                    initials: 'NG',
+                    role: 'Manager, Digital Banking & Support Systems',
+                },
             },
             {
-                name: 'Oleksandr Soshenko',
-                initials: 'OS',
-                role: 'Azure DevOps Technical Lead',
-                focus: 'Azure cloud architecture, DevOps tooling, and platform reliability.',
-                since: '2021',
+                id: 'engineering-platforms',
+                name: 'Engineering Platforms',
+                shortName: 'EPL',
+                accent: 'orange',
+                description:
+                    "Ensures the Bank's digital systems work reliably behind the scenes. Maintains the technology foundation that allows online and mobile banking, internal systems, and other digital services to run smoothly, securely, and without interruption - delivering updates safely while protecting customer information.",
+                lead: {
+                    name: 'Adrian Lee',
+                    initials: 'AL',
+                    role: 'Manager, Engineering Platforms',
+                },
             },
             {
-                name: 'Satish Maharaj',
-                initials: 'SM',
-                role: 'AWS DevOps Engineer',
-                focus: 'CI/CD pipelines, cloud provisioning, and infrastructure as code.',
-                since: '2022',
-            },
-            {
-                name: 'Michael Sam',
-                initials: 'MS',
-                role: 'AWS DevOps Engineer',
-                focus: 'Observability, logging, and production monitoring.',
-                since: '2022',
-            },
-            {
-                name: 'Jonathan Joseph',
-                initials: 'JJ',
-                role: 'AWS DevOps Engineer',
-                focus: 'Build systems, deployment automation, and environment management.',
-                since: '2023',
-            },
-            {
-                name: 'Danelle Modeste',
-                initials: 'DM',
-                role: 'Azure DevOps Engineer',
-                focus: 'Azure cloud resources and cross-cloud integration.',
-                since: '2023',
+                id: 'engineering-products',
+                name: 'Engineering Products',
+                shortName: 'EPR',
+                accent: 'gold',
+                description:
+                    "Leads teams that build and improve the Bank's systems, ensuring work is delivered to a high standard and supports the Bank's overall goals. Works closely with other departments, business partners, and senior leadership to deliver results effectively.",
+                lead: {
+                    name: 'Kiran Ramlakhan',
+                    initials: 'KR',
+                    role: 'Manager, Engineering Products',
+                },
             },
         ],
     },
     {
-        id: 'engineering-products',
-        name: 'Engineering Products',
-        shortName: 'EPR',
-        accent: 'blue-lt',
-        seniorManager: {
-            name: 'Dmytro Lavrinenko',
-            initials: 'DL',
-            role: 'Senior Manager, Group Engineering',
-            focus: 'Digital product engineering direction and technical guidance.',
-            since: '2020',
-        },
-        manager: {
-            name: 'Kiran Ramlakhan',
-            initials: 'KR',
-            role: 'Manager',
-            focus: 'Product delivery, stakeholder management, and team coaching.',
-            since: '2019',
-        },
-        reports: [
-            {
-                name: 'Anh Diep',
-                initials: 'AD',
-                role: 'GDO Technical Lead',
-                focus: 'Group Digital Onboarding platform and customer journey engineering.',
-                since: '2021',
-            },
-            {
-                name: 'Vitalii Levash',
-                initials: 'VL',
-                role: 'Cards Technical Lead',
-                focus: 'Cards and payments platform, issuer integrations, and processing flows.',
-                since: '2020',
-            },
-            {
-                name: 'Denys Bloshenko',
-                initials: 'DB',
-                role: 'SuperApp Technical Lead',
-                focus: 'Republic SuperApp mobile architecture and feature delivery.',
-                since: '2022',
-            },
-        ],
-    },
-    {
-        id: 'group-digital-products',
-        name: 'Group Digital Products',
-        shortName: 'GDP',
-        accent: 'teal',
+        id: 'digital-platforms',
+        label: 'Digital Platforms',
+        name: 'Digital Platforms',
         seniorManager: {
             name: 'David Kell',
             initials: 'DK',
-            role: 'Senior Manager, Group Digital Products',
-            focus: 'Product strategy, portfolio direction, and cross-team coordination.',
-            since: '2018',
+            role: 'Senior Manager, Digital Platforms',
         },
-        manager: {
-            name: 'Sasha Ramoutar',
-            initials: 'SR',
-            role: 'Manager',
-            focus: 'Delivery operations, business analysis, and stakeholder alignment.',
-            since: '2020',
-        },
-        reports: [
+        units: [
             {
-                name: 'Kimone Baldeo',
-                initials: 'KB',
-                role: 'IT Business Analyst',
-                focus: 'Requirements, user journeys, and cross-team coordination.',
-                since: '2021',
+                id: 'loan-management',
+                name: 'Loan Management Platform',
+                shortName: 'LMP',
+                accent: 'blue-lt',
+                description:
+                    'Leading the rollout of a group-wide digital lending platform that enables faster, fully digital loan products across the Republic Group, replacing manual processes and supporting future growth.',
+                lead: {
+                    name: 'Fahad Siddiqui',
+                    initials: 'FS',
+                    role: 'Product Owner, Loan Management Platform',
+                },
             },
             {
-                name: 'Ihor Yehorov',
-                initials: 'IY',
-                role: 'IT Business Analyst',
-                focus: 'Process mapping, business rules, and functional specifications.',
-                since: '2022',
+                id: 'products',
+                name: 'Products',
+                shortName: 'PRD',
+                accent: 'teal',
+                description:
+                    "Sets the long-term vision and roadmap for the Bank's mobile and app platforms, ensuring they support business goals, regulatory needs, and deliver secure, customer-focused solutions across all markets.",
+                lead: {
+                    name: 'Vasileios Kapralos',
+                    initials: 'VK',
+                    role: 'Digital Platform Owner, Products',
+                },
             },
             {
-                name: 'Vidhi Narendra Shah',
-                initials: 'VN',
-                role: 'IT Business Analyst',
-                focus: 'Test planning, data flows, and release readiness.',
-                since: '2022',
+                id: 'instant-payments',
+                name: 'Instant Payment System',
+                shortName: 'IPS',
+                accent: 'green',
+                description:
+                    'Leads the Group-wide instant payments work, delivering one shared system that makes sending and receiving money faster, easier, and more reliable for customers.',
+                lead: {
+                    name: 'Kosti Reshetniak',
+                    initials: 'KR',
+                    role: 'Digital Platform Owner, Instant Payment System',
+                },
             },
             {
-                name: 'Vanessa Somra',
-                initials: 'VS',
-                role: 'IT Business Analyst',
-                focus: 'Stakeholder workshops, backlog grooming, and delivery support.',
-                since: '2023',
+                id: 'branch-digitalisation',
+                name: 'Branch Digitalisation',
+                shortName: 'BRD',
+                accent: 'purple',
+                description:
+                    "Leading the rollout of new digital tools in branches as part of the Bank's digital transformation. Focused on improving the customer journey and making daily work easier for branch staff, while supporting more efficient and modern branch operations.",
+                lead: {
+                    name: 'Sasha Ramoutar',
+                    initials: 'SR',
+                    role: 'Digital Platform Owner, Branch Digitalisation',
+                },
             },
             {
-                name: 'Nicholas Seegobin',
-                initials: 'NS',
-                role: 'IT Project Lead',
-                focus: 'Project management, risk tracking, and delivery governance.',
-                since: '2019',
+                id: 'wealth-management',
+                name: 'Wealth Management',
+                shortName: 'WMG',
+                accent: 'gold',
+                description:
+                    "Drives the strategy and delivery of the Bank's digital wealth capabilities. Leads the rollout of a new Wealth Management core system and enhancements to the customer wealth portal, focused on modern and accessible digital investing.",
+                lead: {
+                    name: 'Andrew Streinykov',
+                    initials: 'AS',
+                    role: 'Digital Platform Owner, Wealth Management',
+                },
+            },
+            {
+                id: 'digital-onboarding',
+                name: 'Digital Onboarding',
+                shortName: 'GDO',
+                accent: 'blue',
+                description:
+                    "Leads the delivery of the Bank's Group Digital Onboarding platform, providing a seamless online onboarding experience for new and existing customers across the Group's long-term digital transformation goals.",
+                lead: {
+                    name: 'Nicholas Seegobin',
+                    initials: 'NS',
+                    role: 'Digital Platform Owner (Acting), Digital Onboarding',
+                },
             },
         ],
     },

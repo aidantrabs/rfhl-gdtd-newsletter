@@ -8,22 +8,27 @@ export type Accent =
     | 'purple'
     | 'purple-lt';
 
-export type Manager = {
+export type Person = {
     name: string;
     initials: string;
     role: string;
-    focus: string;
-    since?: string;
 };
 
-export type Team = {
+export type TeamUnit = {
     id: string;
     name: string;
     shortName: string;
     accent: Accent;
-    seniorManager: Manager;
-    manager: Manager;
-    reports: Manager[];
+    description: string;
+    lead: Person;
+};
+
+export type Pillar = {
+    id: string;
+    label: string;
+    name: string;
+    seniorManager: Person;
+    units: TeamUnit[];
 };
 
 export type Section = {
