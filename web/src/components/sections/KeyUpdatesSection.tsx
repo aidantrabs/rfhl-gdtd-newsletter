@@ -7,7 +7,7 @@ import Reveal from '../effects/Reveal';
 
 export default function KeyUpdatesSection() {
     return (
-        <SectionShell id="key-updates" background="navy" fullHeight={false}>
+        <SectionShell id="key-updates" background="navy">
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="05" position="right" />
             </Parallax>

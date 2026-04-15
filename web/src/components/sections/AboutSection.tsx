@@ -22,7 +22,7 @@ const accentTextClass: Record<Accent, string> = {
 
 export default function AboutSection() {
     return (
-        <SectionShell id="about" background="navy-2" fullHeight={false}>
+        <SectionShell id="about" background="navy-2">
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="02" position="left" />
             </Parallax>

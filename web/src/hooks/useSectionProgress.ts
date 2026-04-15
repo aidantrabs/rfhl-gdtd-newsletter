@@ -5,8 +5,14 @@ import { sections } from '../data/sections';
 
 const SEGMENT_ANGLE = 360 / sections.length;
 
+type SectionBounds = {
+    top: number;
+    bottom: number;
+};
+
 export function useSectionProgress() {
     const { scrollY, scrollYProgress } = useScroll();
+
     const progress = useSpring(scrollYProgress, {
         stiffness: 80,
         damping: 20,
@@ -14,69 +20,76 @@ export function useSectionProgress() {
 
     const targetRotation = useMotionValue(0);
     const rotation = useSpring(targetRotation, {
-        stiffness: 120,
-        damping: 26,
+        stiffness: 160,
+        damping: 28,
     });
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const midpointsRef = useRef<number[]>([]);
+    const boundsRef = useRef<SectionBounds[]>([]);
 
     useEffect(() => {
-        function computeMidpoints() {
-            midpointsRef.current = sections.map((section) => {
-                const el = document.getElementById(section.id);
+        const elements = sections
+            .map((section) => document.getElementById(section.id))
+            .filter((el): el is HTMLElement => el !== null);
 
-                if (!el) {
-                    return 0;
-                }
+        if (elements.length === 0) {
+            return;
+        }
 
+        function recomputeBounds() {
+            boundsRef.current = elements.map((el) => {
                 const rect = el.getBoundingClientRect();
-                return rect.top + window.scrollY + rect.height / 2;
+                const top = rect.top + window.scrollY;
+                return {
+                    top,
+                    bottom: top + rect.height,
+                };
             });
         }
 
-        computeMidpoints();
-        window.addEventListener('resize', computeMidpoints);
+        recomputeBounds();
+
+        const resizeObserver = new ResizeObserver(() => {
+            recomputeBounds();
+        });
+
+        for (const el of elements) {
+            resizeObserver.observe(el);
+        }
+
+        window.addEventListener('resize', recomputeBounds);
 
         return () => {
-            window.removeEventListener('resize', computeMidpoints);
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', recomputeBounds);
         };
     }, []);
 
     useMotionValueEvent(scrollY, 'change', (value) => {
-        const midpoints = midpointsRef.current;
+        const bounds = boundsRef.current;
 
-        if (midpoints.length === 0) {
+        if (bounds.length === 0) {
             return;
         }
 
-        const viewportMid = value + window.innerHeight / 2;
+        const midline = value + window.innerHeight / 2;
+        const lastBoundIndex = bounds.length - 1;
 
         let index = 0;
-        let fraction = 0;
 
-        if (viewportMid <= midpoints[0]) {
-            index = 0;
-            fraction = 0;
-        } else if (viewportMid >= midpoints[midpoints.length - 1]) {
-            index = midpoints.length - 1;
-            fraction = 0;
+        if (midline >= bounds[lastBoundIndex].bottom) {
+            index = lastBoundIndex;
         } else {
-            for (let i = 0; i < midpoints.length - 1; i += 1) {
-                if (viewportMid >= midpoints[i] && viewportMid < midpoints[i + 1]) {
+            for (let i = 0; i <= lastBoundIndex; i += 1) {
+                if (midline < bounds[i].bottom) {
                     index = i;
-                    const span = midpoints[i + 1] - midpoints[i];
-                    fraction = span > 0 ? (viewportMid - midpoints[i]) / span : 0;
                     break;
                 }
             }
         }
 
-        targetRotation.set(-(index + fraction) * SEGMENT_ANGLE);
-
-        const nearest = Math.round(index + fraction);
-        const safeNearest = Math.max(0, Math.min(sections.length - 1, nearest));
-        setActiveIndex((prev) => (prev === safeNearest ? prev : safeNearest));
+        targetRotation.set(-index * SEGMENT_ANGLE);
+        setActiveIndex((prev) => (prev === index ? prev : index));
     });
 
     return {

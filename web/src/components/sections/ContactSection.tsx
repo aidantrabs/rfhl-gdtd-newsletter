@@ -17,7 +17,7 @@ const channels: ContactChannel[] = [
 
 export default function ContactSection() {
     return (
-        <SectionShell id="contact" background="navy" fullHeight={false}>
+        <SectionShell id="contact" background="navy">
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="08" position="right" />
             </Parallax>
