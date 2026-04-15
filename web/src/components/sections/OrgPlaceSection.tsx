@@ -13,7 +13,7 @@ export default function OrgPlaceSection() {
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="03" position="right" />
             </Parallax>
-            <div className="relative z-10 w-full max-w-[1100px]">
+            <div className="relative z-10 w-full max-w-[1200px]">
                 <SectionEyebrow label="03 / OUR PLACE" />
                 <Reveal index={1}>
                     <h2 className="mb-14 max-w-[820px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">

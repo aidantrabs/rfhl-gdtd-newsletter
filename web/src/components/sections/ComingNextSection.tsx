@@ -10,7 +10,7 @@ export default function ComingNextSection() {
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="09" position="left" />
             </Parallax>
-            <div className="relative z-10 w-full max-w-[1000px]">
+            <div className="relative z-10 w-full max-w-[1200px]">
                 <SectionEyebrow label="09 / COMING NEXT" />
                 <Reveal index={1}>
                     <p className="mb-6 text-xs tracking-[0.2em] text-purple-lt uppercase">

@@ -13,7 +13,7 @@ export default function GMLetterSection() {
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -80]}>
                 <Watermark number="04" position="left" />
             </Parallax>
-            <div className="relative z-10 grid w-full max-w-[1180px] grid-cols-[1.25fr_0.75fr] items-center gap-20">
+            <div className="relative z-10 grid w-full max-w-[1200px] grid-cols-[1.25fr_0.75fr] items-center gap-20">
                 <div>
                     <SectionEyebrow label="04 / FROM THE GM" />
                     <Reveal index={1}>

@@ -24,7 +24,7 @@ export default function HeroSection() {
                 <Watermark number="01" position="right" />
             </Parallax>
             <motion.div
-                className="relative z-10 w-full max-w-[1000px]"
+                className="relative z-10 w-full max-w-[1200px]"
                 initial="hidden"
                 animate="visible"
                 variants={staggerChildren}

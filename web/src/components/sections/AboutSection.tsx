@@ -26,7 +26,7 @@ export default function AboutSection() {
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="02" position="left" />
             </Parallax>
-            <div className="relative z-10 w-full max-w-[1280px]">
+            <div className="relative z-10 w-full max-w-[1200px]">
                 <SectionEyebrow label="02 / ABOUT" />
                 <Reveal index={1}>
                     <h2 className="mb-10 max-w-[860px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
