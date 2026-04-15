@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-    --color-navy: #081019;
-    --color-navy-2: #101a26;
-    --color-surface: #0c1521;
-    --color-surface-2: #141e2b;
-    --color-blue: #0096c7;
-    --color-blue-lt: #00b4e6;
-    --color-teal: #00b4d8;
-    --color-green: #06d6a0;
-    --color-orange: #ff6b35;
-    --color-gold: #f5a623;
-    --color-purple: #8b5cf6;
-    --color-purple-lt: #a78bfa;
-    --color-paper: #f1ede6;
-    --color-light: #dcd6c8;
-    --color-muted: #8a8579;
-    --color-dim: #575249;
-    --color-line: #ffffff0c;
+    --color-navy: #0d1521;
+    --color-navy-2: #141e2d;
+    --color-surface: #101a28;
+    --color-surface-2: #17222f;
+    --color-blue: #17a9d4;
+    --color-blue-lt: #38c6ee;
+    --color-teal: #1fc4de;
+    --color-green: #14dca8;
+    --color-orange: #ff7d3d;
+    --color-gold: #f6b23a;
+    --color-purple: #9b75ff;
+    --color-purple-lt: #b89bff;
+    --color-paper: #f7f3e8;
+    --color-light: #ebe5d4;
+    --color-muted: #b4ae9c;
+    --color-dim: #7c7566;
+    --color-line: #ffffff14;
 
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
