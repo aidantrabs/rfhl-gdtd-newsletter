@@ -12,6 +12,27 @@ Internal monthly newsletter for **Group Digital Technology Division (GDTD)** at 
 
 ## Local development
 
+This project uses **Bun** as both the runtime and package manager.
+
+Install Bun (once). On a locked-down work machine the easiest route is via npm:
+
+```sh
+# works anywhere Node + npm is already installed
+npm install -g bun
+```
+
+Alternative installers if you don't have Node:
+
+```sh
+# macOS / Linux / WSL
+curl -fsSL https://bun.sh/install | bash
+
+# Windows (PowerShell, if script execution is allowed)
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
+
+Restart your shell, confirm with `bun --version` (>= 1.1), then run the app:
+
 ```sh
 cd web
 bun install
