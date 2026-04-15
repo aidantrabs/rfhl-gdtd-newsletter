@@ -121,7 +121,7 @@ export default function TeamSection() {
     return (
         <SectionShell id="team" background="navy-2" fullHeight={false}>
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
-                <Watermark number="06" position="right" />
+                <Watermark number="06" position="left" />
             </Parallax>
             <div className="relative z-10 w-full max-w-[1280px]">
                 <SectionEyebrow label="06 / THE TEAM" />
