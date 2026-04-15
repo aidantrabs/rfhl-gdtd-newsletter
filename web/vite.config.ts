@@ -8,6 +8,11 @@ export default defineConfig({
         port: 5173,
         strictPort: false,
     },
+    preview: {
+        host: true,
+        port: 4173,
+        strictPort: false,
+    },
     build: {
         target: 'es2022',
         sourcemap: false,

@@ -52,8 +52,23 @@ bun run check     # biome check --write (auto-fix)
 
 ## Deployment
 
+The simplest path: build once, then run Vite's preview server on the host machine so anyone on the network can reach it by hostname.
+
 ```sh
-cd web && bun run build
+cd web
+bun install
+bun run build
+bun run preview
 ```
 
-Copy `web/dist/*` and `iis/web.config` to the server's site root. Full steps in `iis/DEPLOY.md`.
+`bun run preview` binds to all network interfaces (`host: true` in `vite.config.ts`) on port `4173`, so colleagues can open `http://<server-hostname>:4173` from their browser.
+
+To change the port, pass it as a flag:
+
+```sh
+bun run preview -- --port 80
+```
+
+To keep it running after you close the terminal, use whatever your machine supports - `pm2`, `nssm` (Windows service), `tmux`, `screen`, a scheduled task, etc.
+
+An alternative IIS-based deployment (URL rewrite, security headers, compression) is documented in `iis/DEPLOY.md` if you'd rather serve the static `web/dist/` through IIS directly.
