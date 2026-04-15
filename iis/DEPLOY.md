@@ -2,6 +2,8 @@
 
 The newsletter ships as a fully-static SPA. There is no backend to install - just a build artifact, a config file, and a web root on the intranet server.
 
+> The simplest path is `bun run build && bun run preview` on the host machine (see `../README.md`). This IIS guide is for when you want proper URL rewriting, security headers, compression, and caching headers served by a real web server.
+
 ## Server prerequisites
 
 - Windows Server with **IIS 10 or newer** (for `removeServerHeader` support).
@@ -51,7 +53,7 @@ If the server rejects UNC access, zip `web/dist/`, copy it to the server over yo
 After the copy:
 
 1. Open the public URL from a workstation on the RBL network.
-2. Confirm the hero section loads, Lenis smooth scroll works, and the wheel nav rotates.
+2. Confirm the hero section loads, the wheel nav rotates with scroll, and every section animates in.
 3. Open DevTools Network and confirm:
     - `index.html` responds with `Cache-Control: no-cache, no-store, must-revalidate`.
     - Hashed assets (`/assets/index-*.js`, `/assets/index-*.css`) respond with `Cache-Control: max-age=31536000`.
