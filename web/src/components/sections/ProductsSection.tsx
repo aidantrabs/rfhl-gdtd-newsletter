@@ -20,7 +20,7 @@ const accentDotClass: Record<Accent, string> = {
 
 export default function ProductsSection() {
     return (
-        <SectionShell id="products" background="surface">
+        <SectionShell id="products" background="surface" fullHeight={false}>
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
                 <Watermark number="07" position="left" />
             </Parallax>

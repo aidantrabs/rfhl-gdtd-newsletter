@@ -9,7 +9,7 @@ export default function GMLetterSection() {
     const { label, paragraphs, person } = gmLetter;
 
     return (
-        <SectionShell id="gm-letter" background="navy">
+        <SectionShell id="gm-letter" background="navy" fullHeight={false}>
             <Parallax className="pointer-events-none absolute inset-0" range={[0, -80]}>
                 <Watermark number="04" position="left" />
             </Parallax>
