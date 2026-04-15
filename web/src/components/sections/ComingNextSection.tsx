@@ -1,12 +1,15 @@
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 export default function ComingNextSection() {
     return (
         <SectionShell id="coming-next" background="navy-2">
-            <Watermark number="09" position="left" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="09" position="left" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1000px]">
                 <SectionEyebrow label="09 / COMING NEXT" />
                 <Reveal index={1}>

@@ -4,6 +4,7 @@ import type { Accent } from '../../types';
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 const accentDotClass: Record<Accent, string> = {
@@ -20,7 +21,9 @@ const accentDotClass: Record<Accent, string> = {
 export default function ProductsSection() {
     return (
         <SectionShell id="products" background="surface">
-            <Watermark number="07" position="left" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="07" position="left" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1200px]">
                 <SectionEyebrow label="07 / WHAT WE OWN" />
                 <Reveal index={1}>

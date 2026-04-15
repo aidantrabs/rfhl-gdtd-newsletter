@@ -1,6 +1,7 @@
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 type ContactChannel = {
@@ -17,7 +18,9 @@ const channels: ContactChannel[] = [
 export default function ContactSection() {
     return (
         <SectionShell id="contact" background="navy">
-            <Watermark number="08" position="right" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="08" position="right" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1100px]">
                 <SectionEyebrow label="08 / GET IN TOUCH" />
                 <Reveal index={1}>

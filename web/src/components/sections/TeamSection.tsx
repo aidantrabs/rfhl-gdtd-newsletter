@@ -6,6 +6,7 @@ import type { Accent, Manager } from '../../types';
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 const accentBarClass: Record<Accent, string> = {
@@ -119,7 +120,9 @@ function PersonCard({ label, person, size, ringClass, textClass }: PersonCardPro
 export default function TeamSection() {
     return (
         <SectionShell id="team" background="navy-2" fullHeight={false}>
-            <Watermark number="06" position="right" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="06" position="right" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1280px]">
                 <SectionEyebrow label="06 / THE TEAM" />
                 <Reveal index={1}>

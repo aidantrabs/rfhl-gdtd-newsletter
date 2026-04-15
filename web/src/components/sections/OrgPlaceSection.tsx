@@ -4,12 +4,15 @@ import { ease } from '../../lib/motion';
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 export default function OrgPlaceSection() {
     return (
         <SectionShell id="rbl-fit" background="surface">
-            <Watermark number="03" position="right" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="03" position="right" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1100px]">
                 <SectionEyebrow label="03 / OUR PLACE" />
                 <Reveal index={1}>

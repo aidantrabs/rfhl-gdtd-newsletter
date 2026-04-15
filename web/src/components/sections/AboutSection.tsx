@@ -6,6 +6,7 @@ import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
 import NumberCounter from '../effects/NumberCounter';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 const accentTextClass: Record<Accent, string> = {
@@ -22,7 +23,9 @@ const accentTextClass: Record<Accent, string> = {
 export default function AboutSection() {
     return (
         <SectionShell id="about" background="navy-2" fullHeight={false}>
-            <Watermark number="02" position="left" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="02" position="left" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1280px]">
                 <SectionEyebrow label="02 / ABOUT" />
                 <Reveal index={1}>

@@ -2,12 +2,15 @@ import { keyUpdates } from '../../data/keyUpdates';
 import SectionEyebrow from '../common/SectionEyebrow';
 import SectionShell from '../common/SectionShell';
 import Watermark from '../common/Watermark';
+import Parallax from '../effects/Parallax';
 import Reveal from '../effects/Reveal';
 
 export default function KeyUpdatesSection() {
     return (
         <SectionShell id="key-updates" background="navy">
-            <Watermark number="05" position="right" />
+            <Parallax className="pointer-events-none absolute inset-0" range={[0, -90]}>
+                <Watermark number="05" position="right" />
+            </Parallax>
             <div className="relative z-10 w-full max-w-[1200px]">
                 <SectionEyebrow label="05 / KEY UPDATES" />
                 <Reveal index={1}>
