@@ -1,5 +1,6 @@
 import { MotionConfig } from 'motion/react';
 
+import ScrollProgress from './components/nav/ScrollProgress';
 import WheelNav from './components/nav/WheelNav';
 import AboutSection from './components/sections/AboutSection';
 import ComingNextSection from './components/sections/ComingNextSection';
@@ -14,6 +15,7 @@ import TeamSection from './components/sections/TeamSection';
 export default function App() {
     return (
         <MotionConfig reducedMotion="user">
+            <ScrollProgress />
             <main>
                 <HeroSection />
                 <AboutSection />
