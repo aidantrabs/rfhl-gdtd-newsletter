@@ -29,37 +29,33 @@ export default function AboutSection() {
             <div className="relative z-10 w-full max-w-[1200px]">
                 <SectionEyebrow label="02 / ABOUT" />
                 <Reveal index={1}>
-                    <h2 className="mb-10 max-w-[860px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
+                    <h2 className="mb-14 max-w-[980px] text-h2 leading-[1.05] font-semibold tracking-[-0.02em] text-paper">
                         The central execution arm for digital innovation at RFHL.
                     </h2>
                 </Reveal>
-                <div className="mb-20 max-w-[680px] space-y-6 text-lg leading-relaxed text-light">
-                    <Reveal index={2}>
-                        <p>
+
+                <Reveal index={2}>
+                    <div className="mb-20 grid grid-cols-3 divide-x divide-line text-base leading-relaxed text-light">
+                        <p className="pr-10">
                             The Group Digital Technology Division was established as one of the
                             pillars of the RFHL Group's Digital Transformation journey - formed to
                             translate strategic ambition into tangible, technology-enabled outcomes
                             across the business.
                         </p>
-                    </Reveal>
-                    <Reveal index={3}>
-                        <p>
+                        <p className="px-10">
                             GDTD is responsible for the design, engineering, and delivery of the
                             digital solutions that modernise the Group's operations, elevate
-                            customer experience, and enable scalable growth. The division brings
-                            together a full engineering capability alongside a dedicated digital
-                            platform team, ensuring that every initiative is built on secure and
-                            reusable foundations.
+                            customer experience, and enable scalable growth - bringing together
+                            engineering and a dedicated digital platform team on secure, reusable
+                            foundations.
                         </p>
-                    </Reveal>
-                    <Reveal index={4}>
-                        <p>
+                        <p className="pl-10">
                             We partner closely with business units to deliver enterprise-grade
                             platforms, digital products, and automation initiatives that drive
                             efficiency, agility, and long-term value for the RFHL Group.
                         </p>
-                    </Reveal>
-                </div>
+                    </div>
+                </Reveal>
 
                 <div className="mb-16 grid grid-cols-4 gap-10 border-t border-b border-line py-14">
                     {stats.map((stat, i) => (
